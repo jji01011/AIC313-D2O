@@ -18,8 +18,13 @@ while read -r asset path md5 size; do
     id=$(printf '%s' "$release" | python3 -c "import json,sys; print(next(a['id'] for a in json.load(sys.stdin)['assets'] if a['name'] == sys.argv[1]))" "$asset")
     echo "fetch   $path ($((size / 1000000)) MB)"
     mkdir -p "$(dirname "$path")"
-    api -H "Accept: application/octet-stream" -o "$path.part" "https://api.github.com/repos/$REPO/releases/assets/$id"
-    [ "$(md5sum "$path.part" | cut -d' ' -f1)" = "$md5" ] || { echo "md5 mismatch: $path" >&2; exit 1; }
+    # Downloads of the 1.3 GB state have dropped mid-way (2026-10-27): resume the .part file until it is complete.
+    for try in 1 2 3 4 5 6 7 8; do
+        [ "$(stat -c %s "$path.part" 2>/dev/null || echo 0)" = "$size" ] && break
+        api -C - -H "Accept: application/octet-stream" -o "$path.part" "https://api.github.com/repos/$REPO/releases/assets/$id" \
+            || echo "        connection dropped at $(stat -c %s "$path.part" 2>/dev/null || echo 0) bytes, resuming (try $try)"
+    done
+    [ "$(md5sum "$path.part" | cut -d' ' -f1)" = "$md5" ] || { echo "md5 mismatch: $path (delete $path.part and run again)" >&2; exit 1; }
     mv "$path.part" "$path"
 done < handoff/checkpoints.txt
 

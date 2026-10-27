@@ -28,6 +28,47 @@ GH_TOKEN=<이 저장소를 읽을 수 있는 토큰> bash handoff/fetch_checkpoi
 두 후보의 공식 FID 차이(0.38)는 측정 흔들림(±0.3~0.5) 안입니다. **`checkpoints/one_nfe.ckpt`는 아직 만들지 않았습니다** (어느 후보를 낼지 미정).
 checkpoint는 출력 gain 1.10을 가중치에 접어 넣은 것이라 `ModelOneNFE`로 그대로 로드해서 평가하면 됩니다.
 
+## 바로 실행하기
+
+환경은 `requirements.txt` 그대로입니다 (torch, torchvision, clean-fid, kagglehub, Pillow, tqdm). clean-fid 0.1.35는 SciPy 1.18 이상에서 깨지므로 `scipy<1.18`.
+모든 명령은 저장소 루트에서 실행합니다.
+
+```bash
+python download_dataset.py                       # 데이터셋 (처음 한 번)
+GH_TOKEN=<토큰> bash handoff/fetch_checkpoints.sh   # checkpoint 8개
+```
+
+**후보 평가 (공식 evaluate.py, val 기준이라 보고용으로만)**. `one_nfe.ckpt`를 만들지 않고 경로를 직접 넘깁니다.
+
+```bash
+python evaluate.py --model_checkpoint runs/e112_treal_lr3/calib-005675.ckpt --evaluate_mode one_nfe
+```
+
+생성 이미지는 `results/evaluation/`에 남습니다. 처음 실행할 때 val 기준 이미지를 `results/reference/`에 만듭니다. 측정마다 ±0.3~0.5 흔들립니다.
+
+**이어서 학습 (5825 kimg 상태에서)**. 두 후보가 있는 `runs/e112_treal_lr3/`를 건드리지 않도록 새 폴더에 씁니다. 50 kimg에 A100 20 GB 조각 기준 약 75분, peak VRAM 12.8 GB입니다.
+
+```bash
+python train_d2o.py runs/e112_treal_lr3_cont --resume runs/e112_treal_lr3/d2o-state-latest.pt \
+    --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 \
+    --lr 3e-4 --dlr 3e-5 --batch_gpu 16 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/teacher_unguided-0058720256-0.130.pt \
+    --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 \
+    --dmd_fake_steps 5 --dmd_guidance 1.0 --extra_real data/cache/teacher58_real --extra_real_p 1.0 \
+    --fid_reference results/reference_teacher58 --kimg 5875
+```
+
+인자는 `e112_treal_lr3`를 돌린 줄과 같습니다 (`runs/director.log` 1064행). `--extra_real`은 상태에 저장되지 않아서 이어 갈 때마다 다시 넣어야 합니다.
+
+**고르기 (teacher 기준 점수, 이 줄의 선택 규칙)**. gain 1.0/1.1/1.2 × 시드 3개로 보정해 `calib-<kimg>.ckpt`를 쓰고 `results/tref_calibration.log`에 적습니다.
+
+```bash
+PY=python bash runs/tref_score.sh e112_treal_lr3_cont 5875
+```
+
+주의: 이 스크립트는 같은 run 폴더에서 그 run의 최저가 아닌 calib 파일을 지웁니다 (공식 최저 파일은 남김). 줄 전체의 최저가 되면 `evaluate.py`를 세 번 돌려 `results/official_fid.log`에 적습니다 (보고용).
+
+`runs/chain_final.sh`, `runs/director.py`, `runs/watchdog.sh`, `runs/status.sh`는 원래 서버의 cron과 경로에 묶인 자동화라 다른 기계에서는 그대로 돌지 않습니다.
+
 ## 저장소에 없는 것
 
 - 데이터셋: `python download_dataset.py`로 받습니다.

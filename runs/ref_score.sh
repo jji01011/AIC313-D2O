@@ -8,9 +8,9 @@
 #   3. only the run's lowest checkpoint stays (and never the lowest official score, runs/lowest_official.sh); when it is
 #      the lowest of all runs matching <line>, evaluate.py three times (reporting only, one line in results/official_fid.log)
 #   bash runs/ref_score.sh <ref> <log> <line regex> <description> <run> <kimg>
-cd /home/jiin/AIC313-D2O || exit 1
+cd "$(dirname "$0")/.." || exit 1
 export PYTHONPATH=. OPENBLAS_NUM_THREADS=3 OMP_NUM_THREADS=3
-PY=${PY:-/home/jiin/.venvs/d2o/bin/python}  # PY and OFFICIAL_LOG can be replaced for a test
+PY=${PY:-/home/jiin/.venvs/d2o/bin/python}  # PY and OFFICIAL_LOG can be replaced (PY=python on another machine)
 REF=$1; OUT=$2; LINE=$3; WHAT=$4; run=$5; kimg=$6
 REFS=${REFS:-$REF,results/reference_holdout_h20,results/reference_holdout_c5,results/reference_train}
 state=runs/$run/d2o-state-latest.pt

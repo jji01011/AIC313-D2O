@@ -194,7 +194,9 @@ Claude 세션이 끊겨도 이어서 작업할 수 있도록 목표, 제한사�
 - **2026-10-27 08:15 UTC: 사용자 "팀원에게 지금 버전을 checkpoint와 코드 전부 GitHub으로 넘긴다".** 사용자 선택: 사용자 계정의 새 private 저장소, checkpoint는 핵심만, 큰 파일은 GitHub Release 첨부.
   - 로컬 브랜치 `d2o-handoff` 커밋 `7a18e63` (과제 원본 `main`은 그대로). `.gitignore`로 `*.pt`, `*.ckpt`, 데이터셋, `data/cache/`, FID 샘플 폴더 제외. 1,273개 파일, 약 690 MB.
   - Release에 붙일 8개 파일(약 3.7 GB)과 md5: `handoff/checkpoints.txt`. 받는 스크립트 `handoff/fetch_checkpoints.sh`, 설명 `handoff/README.md`. teacher 표본 tar는 scratchpad에 만듦 (세션이 끊기면 `tar -cf ... -C data/cache teacher58_real`로 다시).
-  - **남은 것**: 이 서버에 GitHub 인증이 없음 (gh, git-lfs, 토큰 없음). 사용자가 빈 private 저장소와 토큰을 주면 push, Release 생성, 업로드, `fetch_checkpoints.sh`의 `__REPO__` 채우기.
+  - ~~이 서버에 GitHub 인증이 없음~~ → 사용자가 `jji01011/AIC313-D2O` (private)를 만들고 토큰을 `~/.config/d2o-handoff/token`에 저장 (Contents read/write, 만료 2026-11-26). 사용자 지시: main은 건드리지 말 것, `one_nfe.ckpt`는 만들지 말고 두 후보 보존.
+  - 08:20 UTC `d2o-handoff` push (`fe88eb6`, 원격의 기본 브랜치가 됨, 원격에 main 없음). Release `handoff-2026-10-27` (id 425182577) 생성, 8개 업로드는 scratchpad의 `upload.sh`/`upload.log`.
+  - 원격 collaborator는 아직 `jji01011` 하나뿐 (초대 목록은 토큰 권한으로 못 봄). 팀원이 초대를 수락해야 받을 수 있음.
 
 - **2026-10-25 14:50 UTC: 사용자 "학습 더 개선 안 되는 것 같으니 stop". GPU 학습 전부 멈춤 (GPU 비어 있음).**
   - `runs/watchdog.stop`, `runs/director.stop`을 만든 뒤 `_lr3b`에 SIGTERM. 10,009 kimg에서 상태 저장 후 정상 종료 (14:40). 그 조각의 보정 점수 11.532 (로그상 kimg 10025로 기록), 최저(11.303 @6825)가 아니라 calib은 스크립트가 지움.
