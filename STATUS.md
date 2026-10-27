@@ -197,6 +197,12 @@ Claude 세션이 끊겨도 이어서 작업할 수 있도록 목표, 제한사�
   - ~~이 서버에 GitHub 인증이 없음~~ → 사용자가 `jji01011/AIC313-D2O` (private)를 만들고 토큰을 `~/.config/d2o-handoff/token`에 저장 (Contents read/write, 만료 2026-11-26). 사용자 지시: main은 건드리지 말 것, `one_nfe.ckpt`는 만들지 말고 두 후보 보존.
   - 08:20 UTC `d2o-handoff` push (`fe88eb6`, 원격의 기본 브랜치가 됨, 원격에 main 없음). Release `handoff-2026-10-27` (id 425182577) 생성, 8개 업로드는 scratchpad의 `upload.sh`/`upload.log`.
   - 원격 collaborator는 아직 `jji01011` 하나뿐 (초대 목록은 토큰 권한으로 못 봄). 팀원이 초대를 수락해야 받을 수 있음.
+  - 08:23 업로드 8개 전부 201. 다시 받아 md5: 7개 일치, state(1.33 GB)는 받는 중 연결이 끊김 (크기는 맞음) → 64 MB 조각 재검증 (scratchpad `verify_ranged.py`). `fetch_checkpoints.sh`에 이어받기 추가.
+  - 사용자 추가 요청 "팀원이 checkpoint에서 바로 실행할 수 있어야": scratchpad의 새 clone(png 제외 sparse)에서 시험. fetch로 calib-005675 받고 md5 확인, `evaluate.py` 공식 21.25 (보고용, clone 안에서만), `train_d2o.py --resume` 5825→5827 정상 (99,992,471, nonfinite 0, 12.7 GB).
+    처음 README의 학습 명령은 틀렸음 (`--outdir` 빠짐, chain의 BASE 인자 빠짐) → 고침. `--edm`은 `--g_edm2`가 있으면 안 읽음 (`train_d2o.py:137`).
+    `ref_score.sh`, `tref_score.sh`, `lowest_official.sh`는 `cd "$(dirname "$0")/.."`로 바꿈 (이 서버 동작은 같음). 디스크 여유가 시험 중 0.9 GB까지 내려갔고 clone 안의 시험 산출물만 지움.
+  - **09:10 UTC 끝**: state도 조각 재검증으로 md5 일치 → **Release 8개 전부 일치**. clone에서 `tref_score.sh`(다른 폴더에서 실행)가 5825를 10.460으로 재현하고 calib-005825의 md5까지 원본과 같음 (공식 21.74도 같음, clone 안에서만 기록).
+    clone과 scratchpad tar는 지움 (디스크 4.1 GB). 원본 두 후보와 state md5 그대로, `one_nfe.ckpt`는 만들지 않음 (사용자 지시). 남은 일: 팀원 초대 수락 여부는 사용자가 확인.
 
 - **2026-10-25 14:50 UTC: 사용자 "학습 더 개선 안 되는 것 같으니 stop". GPU 학습 전부 멈춤 (GPU 비어 있음).**
   - `runs/watchdog.stop`, `runs/director.stop`을 만든 뒤 `_lr3b`에 SIGTERM. 10,009 kimg에서 상태 저장 후 정상 종료 (14:40). 그 조각의 보정 점수 11.532 (로그상 kimg 10025로 기록), 최저(11.303 @6825)가 아니라 calib은 스크립트가 지움.

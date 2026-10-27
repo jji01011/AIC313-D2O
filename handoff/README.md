@@ -49,15 +49,16 @@ python evaluate.py --model_checkpoint runs/e112_treal_lr3/calib-005675.ckpt --ev
 **이어서 학습 (5825 kimg 상태에서)**. 두 후보가 있는 `runs/e112_treal_lr3/`를 건드리지 않도록 새 폴더에 씁니다. 50 kimg에 A100 20 GB 조각 기준 약 75분, peak VRAM 12.8 GB입니다.
 
 ```bash
-python train_d2o.py runs/e112_treal_lr3_cont --resume runs/e112_treal_lr3/d2o-state-latest.pt \
-    --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 \
-    --lr 3e-4 --dlr 3e-5 --batch_gpu 16 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/teacher_unguided-0058720256-0.130.pt \
+python train_d2o.py --outdir runs/e112_treal_lr3_cont --resume runs/e112_treal_lr3/d2o-state-latest.pt \
+    --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze 0 --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 \
+    --xflip 1 --ada_target 0.6 --lr 3e-4 --dlr 3e-5 --batch_gpu 16 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/teacher_unguided-0058720256-0.130.pt \
     --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 \
     --dmd_fake_steps 5 --dmd_guidance 1.0 --extra_real data/cache/teacher58_real --extra_real_p 1.0 \
-    --fid_reference results/reference_teacher58 --kimg 5875
+    --fid_reference results/reference_teacher58 --snap_kimg 25 --keep_snapshots 0 --kimg 5875
 ```
 
-인자는 `e112_treal_lr3`를 돌린 줄과 같습니다 (`runs/director.log` 1064행). `--extra_real`은 상태에 저장되지 않아서 이어 갈 때마다 다시 넣어야 합니다.
+인자는 `e112_treal_lr3`를 돌린 줄(`runs/director.log` 1064행)에 `runs/chain_final.sh`가 덧붙이던 공통 인자(`--freeze 0 --xflip 1 --ada_target 0.6 --snap_kimg 25 --keep_snapshots 0`)를 더한 것입니다. chain은 `--edm runs/edm_c96/edm-005000.pt`도 붙였지만 `--g_edm2`가 있으면 읽지 않으므로 뺐습니다 (`train_d2o.py:137`).
+`--extra_real`은 상태에 저장되지 않아서 이어 갈 때마다 다시 넣어야 합니다. 같은 `--outdir`로 더 가려면 `--resume runs/e112_treal_lr3_cont/d2o-state-latest.pt`와 늘린 `--kimg`를 줍니다.
 
 **고르기 (teacher 기준 점수, 이 줄의 선택 규칙)**. gain 1.0/1.1/1.2 × 시드 3개로 보정해 `calib-<kimg>.ckpt`를 쓰고 `results/tref_calibration.log`에 적습니다.
 
@@ -66,6 +67,10 @@ PY=python bash runs/tref_score.sh e112_treal_lr3_cont 5875
 ```
 
 주의: 이 스크립트는 같은 run 폴더에서 그 run의 최저가 아닌 calib 파일을 지웁니다 (공식 최저 파일은 남김). 줄 전체의 최저가 되면 `evaluate.py`를 세 번 돌려 `results/official_fid.log`에 적습니다 (보고용).
+
+**확인한 것 (2026-10-27, 이 저장소를 새로 clone하고 Release에서 받은 파일로)**: 8개 파일 md5 일치.
+`evaluate.py`로 calib-005675 공식 21.25 (기록 21.26~21.45). `train_d2o.py` 위 명령으로 5825 → 5827 재개 (99,992,471 파라미터, nonfinite 0, peak 12.7 GB).
+`tref_score.sh`로 상태에서 5825를 다시 보정하면 teacher 기준 10.460이 그대로 나오고, 만들어진 `calib-005825.ckpt`가 Release 파일과 md5까지 같습니다.
 
 `runs/chain_final.sh`, `runs/director.py`, `runs/watchdog.sh`, `runs/status.sh`는 원래 서버의 cron과 경로에 묶인 자동화라 다른 기계에서는 그대로 돌지 않습니다.
 
