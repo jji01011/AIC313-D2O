@@ -1,0 +1,1280 @@
+2026-10-07T13:50:35Z pausing EDM pre-training (pid 39285)
+2026-10-07T13:50:45Z multi-step FID of runs/edm_c96/edm-001000.pt
+runs/edm_c96/edm-001000.pt: 35 NFE Heun, FID vs train reference 57.575
+2026-10-07T13:56:17Z starting D2O in runs/d2o_c96_edm1000
+2026-10-07T15:25:48Z baseline D2O (runs/d2o_c96_edm1000) paused by hand; resumable from d2o-state-latest.pt
+2026-10-07T15:27:08Z starting D2O in runs/d2o_x_lr2.5: --lr 5e-5 --dlr 1e-4
+2026-10-07T16:29:35Z D2O in runs/d2o_x_lr2.5 exited with status 0
+2026-10-07T16:29:35Z starting D2O in runs/d2o_x_reuse: --reuse_fake 1
+2026-10-07T17:18:24Z D2O in runs/d2o_x_reuse exited with status 0
+2026-10-07T17:18:24Z starting D2O in runs/d2o_x_lr5: --lr 1e-4 --dlr 2e-4
+2026-10-07T18:20:13Z D2O in runs/d2o_x_lr5 exited with status 0
+2026-10-07T18:20:13Z starting D2O in runs/d2o_x_dsigma: --d_sigma_mean -1.2 --d_sigma_std 1.2
+2026-10-07T19:22:00Z D2O in runs/d2o_x_dsigma exited with status 0
+2026-10-07T19:22:00Z starting D2O in runs/d2o_x_dbackbone: --d_backbone_lr_mult 0.5 --kimg 100
+2026-10-07T20:09:14Z D2O in runs/d2o_x_dbackbone exited with status 0
+2026-10-07T20:09:14Z starting D2O in runs/d2o_x_dsigma_low: --d_sigma_mean -3.0 --d_sigma_std 1.0 --kimg 100
+2026-10-07T20:41:17Z D2O in runs/d2o_x_dsigma_low exited with status 0
+2026-10-07T20:41:17Z starting D2O in runs/d2o_x_lr_g_only: --lr 5e-5 --dlr 4e-5 --kimg 100
+2026-10-07T21:22:57Z D2O in runs/d2o_x_lr_g_only exited with status 0
+2026-10-07T21:22:57Z starting D2O in runs/d2o_x_lr2.5: --lr 5e-5 --dlr 1e-4 --resume runs/d2o_x_lr2.5/d2o-state-latest.pt --kimg 300
+2026-10-07T22:25:07Z D2O in runs/d2o_x_lr2.5 exited with status 0
+2026-10-07T22:25:07Z queue empty; resuming EDM pre-training to 5000 kimg
+2026-10-08T06:45:02Z EDM exited with status 0
+2026-10-08T06:45:16Z multi-step FID of runs/edm_c96/edm-004500.pt
+runs/edm_c96/edm-004500.pt: 35 NFE Heun, FID vs train reference 26.037
+2026-10-08T06:47:42Z multi-step FID of runs/edm_c96/edm-005000.pt
+runs/edm_c96/edm-005000.pt: 35 NFE Heun, FID vs train reference 24.523
+2026-10-08T06:50:07Z D2O initialisation: runs/edm_c96/edm-005000.pt
+2026-10-08T06:50:07Z starting D2O in runs/d2o_one_final: --kimg 1000
+2026-10-08T11:21:18Z D2O in runs/d2o_one_final exited with status 0
+2026-10-08T11:21:18Z starting D2O in runs/d2o_one_f1: --freeze 1 --kimg 300
+2026-10-08T12:10:36Z D2O in runs/d2o_one_f1 exited with status 0
+2026-10-08T12:10:36Z starting D2O in runs/d2o_one_final: --resume runs/d2o_one_final/d2o-state-latest.pt --kimg 1150
+2026-10-08T12:53:37Z D2O in runs/d2o_one_final exited with status 0
+2026-10-08T12:53:37Z starting D2O in runs/d2o_one_dn25: --resume runs/d2o_one_dn25/d2o-state-latest.pt --d_sigma_mean -2.5 --kimg 1150
+2026-10-08T13:29:18Z D2O in runs/d2o_one_dn25 exited with status 0
+2026-10-08T13:29:18Z starting D2O in runs/d2o_one_dn30: --resume runs/d2o_one_dn30/d2o-state-latest.pt --d_sigma_mean -3.0 --kimg 1150
+2026-10-08T14:01:03Z D2O in runs/d2o_one_dn30 exited with status 0
+2026-10-08T14:01:03Z starting D2O in runs/d2o_one_dn30: --resume runs/d2o_one_dn30/d2o-state-latest.pt --d_sigma_mean -3.0 --kimg 1300
+2026-10-08T14:34:40Z D2O in runs/d2o_one_dn30 exited with status 0
+2026-10-08T14:34:40Z starting D2O in runs/d2o_one_dn35: --resume runs/d2o_one_dn35/d2o-state-latest.pt --d_sigma_mean -3.5 --kimg 1300
+2026-10-08T15:06:19Z D2O in runs/d2o_one_dn35 exited with status 0
+2026-10-08T15:06:19Z starting D2O in runs/d2o_one_dn40: --resume runs/d2o_one_dn40/d2o-state-latest.pt --d_sigma_mean -4.0 --kimg 1300
+2026-10-08T15:40:28Z D2O in runs/d2o_one_dn40 exited with status 0
+2026-10-08T15:40:28Z starting D2O in runs/d2o_one_dn30: --resume runs/d2o_one_dn30/d2o-state-latest.pt --d_sigma_mean -3.0 --kimg 2000
+2026-10-08T15:43:13Z D2O in runs/d2o_one_dn30 exited with status 0
+2026-10-08T15:43:13Z starting D2O in runs/d2o_one_ada35: --resume runs/d2o_one_ada35/d2o-state-latest.pt --d_sigma_mean -3.0 --ada_target 0.35 --ada_kimg 100 --kimg 1450
+2026-10-08T16:20:33Z D2O in runs/d2o_one_ada35 exited with status 0
+2026-10-08T16:20:33Z starting D2O in runs/d2o_one_b128: --resume runs/d2o_one_b128/d2o-state-latest.pt --d_sigma_mean -3.0 --batch 128 --kimg 1450
+2026-10-08T16:58:04Z D2O in runs/d2o_one_b128 exited with status 0
+2026-10-08T16:58:04Z starting D2O in runs/d2o_one_dn30: --resume runs/d2o_one_dn30/d2o-state-latest.pt --d_sigma_mean -3.0 --kimg 1450
+2026-10-08T17:34:07Z D2O in runs/d2o_one_dn30 exited with status 0
+2026-10-08T17:34:07Z starting D2O in runs/d2o_one_aug20: --resume runs/d2o_one_aug20/d2o-state-latest.pt --d_sigma_mean -3.0 --ada_target 0 --augment_p 0.2 --kimg 1450
+2026-10-08T18:25:18Z D2O in runs/d2o_one_aug20 exited with status 0
+2026-10-08T18:25:18Z starting D2O in runs/d2o_one_aug40: --resume runs/d2o_one_aug40/d2o-state-latest.pt --d_sigma_mean -3.0 --ada_target 0 --augment_p 0.4 --kimg 1450
+2026-10-08T19:33:20Z D2O in runs/d2o_one_aug40 exited with status 0
+2026-10-08T19:33:20Z starting D2O in runs/d2o_one_aug20: --resume runs/d2o_one_aug20/d2o-state-latest.pt --d_sigma_mean -3.0 --ada_target 0 --augment_p 0.2 --kimg 1700
+2026-10-08T21:20:42Z D2O in runs/d2o_one_aug20 exited with status 0
+2026-10-08T21:20:42Z starting D2O in runs/d2o_one_dn30: --resume runs/d2o_one_dn30/d2o-state-latest.pt --d_sigma_mean -3.0 --kimg 1700
+2026-10-08T23:02:19Z D2O in runs/d2o_one_dn30 exited with status 0
+2026-10-08T23:02:19Z starting D2O in runs/d2o_one_aug20: --resume runs/d2o_one_aug20/d2o-state-latest.pt --d_sigma_mean -3.0 --ada_target 0 --augment_p 0.2 --kimg 1950
+2026-10-09T00:47:51Z D2O in runs/d2o_one_aug20 exited with status 0
+2026-10-09T00:47:51Z starting D2O in runs/d2o_one_dn30: --resume runs/d2o_one_dn30/d2o-state-latest.pt --d_sigma_mean -3.0 --kimg 1950
+2026-10-09T02:29:44Z D2O in runs/d2o_one_dn30 exited with status 0
+2026-10-09T02:29:44Z starting D2O in runs/d2o_one_aug20: --resume runs/d2o_one_aug20/d2o-state-latest.pt --d_sigma_mean -3.0 --ada_target 0 --augment_p 0.2 --kimg 2200
+2026-10-09T04:16:27Z D2O in runs/d2o_one_aug20 exited with status 0
+2026-10-09T04:16:27Z starting D2O in runs/d2o_one_dn30: --resume runs/d2o_one_dn30/d2o-state-latest.pt --d_sigma_mean -3.0 --kimg 2200
+2026-10-09T06:00:45Z D2O in runs/d2o_one_dn30 exited with status 0
+2026-10-09T06:00:45Z starting D2O in runs/d2o_one_aug20: --resume runs/d2o_one_aug20/d2o-state-latest.pt --d_sigma_mean -3.0 --ada_target 0 --augment_p 0.2 --kimg 2450
+2026-10-09T07:50:35Z D2O in runs/d2o_one_aug20 exited with status 0
+2026-10-09T07:50:35Z starting D2O in runs/d2o_one_dn30: --resume runs/d2o_one_dn30/d2o-state-latest.pt --d_sigma_mean -3.0 --kimg 2450
+2026-10-09T10:01:06Z D2O in runs/d2o_one_dn30 exited with status 0
+2026-10-09T10:01:06Z starting D2O in runs/d2o_one_dn30_tmix: --resume runs/d2o_one_dn30_tmix/d2o-state-latest.pt --d_sigma_mean -3.0 --extra_real data/cache/teacher_edm2 --extra_real_p 0.5 --kimg 2450
+2026-10-09T11:49:24Z D2O in runs/d2o_one_dn30_tmix exited with status 0
+2026-10-09T11:49:24Z starting D2O in runs/d2o_one_dn30_tdisc: --resume runs/d2o_one_dn30_tdisc/d2o-state-latest.pt --d_sigma_mean -3.0 --d_teacher checkpoints/edm/ema-0020971520-0.100.pt --d_warmup_kimg 50 --kimg 2700
+2026-10-09T13:31:04Z D2O in runs/d2o_one_dn30_tdisc exited with status 0
+2026-10-09T13:31:04Z starting D2O in runs/d2o_one_dn30_tdisc8: --resume runs/d2o_one_dn30_tdisc8/d2o-state-latest.pt --d_sigma_mean -3.0 --d_teacher checkpoints/edm/ema-0020971520-0.100.pt --d_teacher_min_res 8 --d_warmup_kimg 50 --kimg 2700
+2026-10-09T15:23:50Z D2O in runs/d2o_one_dn30_tdisc8 exited with status 0
+2026-10-09T15:23:50Z starting D2O in runs/d2o_one_dn30_tdisc: --resume runs/d2o_one_dn30_tdisc/d2o-state-latest.pt --d_sigma_mean -3.0 --d_teacher checkpoints/edm/ema-0020971520-0.100.pt --d_warmup_kimg 50 --kimg 2950
+2026-10-09T17:01:45Z D2O in runs/d2o_one_dn30_tdisc exited with status 0
+2026-10-09T17:01:45Z starting D2O in runs/e112_full: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --d_teacher checkpoints/edm/ema-0020971520-0.100.pt --d_teacher_min_res 8 --lr 1e-3 --batch_gpu 16 --snap_kimg 10 --kimg 50
+2026-10-09T17:36:11Z D2O in runs/e112_full exited with status 0
+2026-10-09T17:36:11Z starting D2O in runs/e112_fit: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --lr 1e-3 --batch_gpu 16 --snap_kimg 10 --kimg 50
+2026-10-09T18:05:54Z D2O in runs/e112_fit exited with status 0
+2026-10-09T18:05:54Z starting D2O in runs/e112_w56: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --d_teacher checkpoints/edm/ema-0020971520-0.100.pt --d_teacher_min_res 8 --lr 1e-3 --batch_gpu 16 --d_width 0.5625 --snap_kimg 10 --kimg 50
+2026-10-09T18:37:43Z D2O in runs/e112_w56 exited with status 0
+2026-10-09T18:37:43Z starting D2O in runs/e112_live: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --d_shared 2 --d_width 0.5625 --lr 1e-3 --batch_gpu 16 --snap_kimg 10 --kimg 50
+2026-10-09T19:09:09Z D2O in runs/e112_live exited with status 0
+2026-10-09T19:09:09Z starting D2O in runs/e112_live: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --d_shared 2 --d_width 0.5625 --lr 1e-3 --batch_gpu 16 --kimg 150
+2026-10-09T19:09:13Z D2O in runs/e112_live exited with status 1
+2026-10-09T19:09:13Z starting D2O in runs/e112_full: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --d_teacher checkpoints/edm/ema-0020971520-0.100.pt --d_teacher_min_res 8 --lr 1e-3 --batch_gpu 16 --kimg 150
+2026-10-09T19:09:16Z D2O in runs/e112_full exited with status 1
+2026-10-09T19:09:16Z starting D2O in runs/e112_live: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --d_shared 2 --d_width 0.5625 --lr 1e-3 --batch_gpu 16 --kimg 250
+2026-10-09T19:09:20Z D2O in runs/e112_live exited with status 1
+2026-10-09T19:09:20Z starting D2O in runs/e112_full: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --d_teacher checkpoints/edm/ema-0020971520-0.100.pt --d_teacher_min_res 8 --lr 1e-3 --batch_gpu 16 --kimg 250
+2026-10-09T19:09:22Z D2O in runs/e112_full exited with status 1
+2026-10-09T19:09:22Z starting D2O in runs/e112_live: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --d_shared 2 --d_width 0.5625 --lr 1e-3 --batch_gpu 16 --kimg 500
+2026-10-09T19:09:26Z D2O in runs/e112_live exited with status 1
+2026-10-09T19:09:26Z starting D2O in runs/d2o_one_dn30: --resume runs/d2o_one_dn30/d2o-state-latest.pt --d_sigma_mean -3.0 --kimg 2700
+runs/chain_final.sh: line 41: 208210 Killed                  $PY -W ignore train_d2o.py $BASE --outdir "$out" "$@" >> "$out/train.log" 2>&1
+2026-10-09T19:10:37Z D2O in runs/d2o_one_dn30 exited with status 137
+2026-10-09T19:10:37Z starting D2O in runs/e112_live: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --d_shared 2 --d_width 0.5625 --lr 1e-3 --batch_gpu 16 --resume runs/e112_live/d2o-state-latest.pt --kimg 150
+2026-10-09T20:09:20Z D2O in runs/e112_live exited with status 0
+2026-10-09T20:09:20Z starting D2O in runs/e112_fit: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --lr 1e-3 --batch_gpu 16 --resume runs/e112_fit/d2o-state-latest.pt --kimg 150
+2026-10-09T21:02:35Z D2O in runs/e112_fit exited with status 0
+2026-10-09T21:02:35Z starting D2O in runs/e112_full: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --d_teacher checkpoints/edm/ema-0020971520-0.100.pt --d_teacher_min_res 8 --lr 1e-3 --batch_gpu 16 --resume runs/e112_full/d2o-state-latest.pt --kimg 150
+2026-10-09T22:03:24Z D2O in runs/e112_full exited with status 0
+2026-10-09T22:03:24Z starting D2O in runs/e112_fit: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --lr 1e-3 --batch_gpu 16 --resume runs/e112_fit/d2o-state-latest.pt --kimg 250
+2026-10-09T22:54:15Z D2O in runs/e112_fit exited with status 0
+2026-10-09T22:54:15Z starting D2O in runs/e112_fit: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --lr 1e-3 --batch_gpu 16 --resume runs/e112_fit/d2o-state-latest.pt --kimg 500
+2026-10-10T01:00:11Z D2O in runs/e112_fit exited with status 0
+2026-10-10T01:00:11Z starting D2O in runs/e112_fit: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --lr 1e-3 --batch_gpu 16 --resume runs/e112_fit/d2o-state-latest.pt --kimg 750
+2026-10-10T03:05:16Z D2O in runs/e112_fit exited with status 0
+2026-10-10T03:05:16Z starting D2O in runs/e112_fit: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --lr 1e-3 --batch_gpu 16 --resume runs/e112_fit/d2o-state-latest.pt --kimg 1000
+2026-10-10T05:10:51Z D2O in runs/e112_fit exited with status 0
+2026-10-10T05:10:51Z starting D2O in runs/e112_full: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --d_teacher checkpoints/edm/ema-0020971520-0.100.pt --d_teacher_min_res 8 --lr 1e-3 --batch_gpu 16 --resume runs/e112_full/d2o-state-latest.pt --kimg 250
+2026-10-10T06:13:52Z D2O in runs/e112_full exited with status 0
+2026-10-10T06:13:52Z starting D2O in runs/e112_fit: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --lr 1e-3 --batch_gpu 16 --resume runs/e112_fit/d2o-state-latest.pt --kimg 1250
+2026-10-10T08:17:44Z D2O in runs/e112_fit exited with status 0
+2026-10-10T08:17:44Z starting D2O in runs/e112_imle30: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --lr 1e-3 --batch_gpu 16 --resume runs/e112_fit/d2o-state-latest.pt --imle_ratio 0.3 --kimg 1325
+2026-10-10T08:51:35Z D2O in runs/e112_imle30 exited with status 0
+2026-10-10T08:51:35Z starting D2O in runs/e112_dn30: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --lr 1e-3 --batch_gpu 16 --resume runs/e112_fit/d2o-state-latest.pt --d_sigma_mean -3.0 --kimg 1350
+2026-10-10T09:41:59Z D2O in runs/e112_dn30 exited with status 0
+2026-10-10T09:41:59Z starting D2O in runs/e112_ect50: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --lr 1e-3 --batch_gpu 16 --resume runs/e112_fit/d2o-state-latest.pt --ect_ratio 0.5 --ect_rounds 2 --kimg 1350
+2026-10-10T10:48:29Z D2O in runs/e112_ect50 exited with status 0
+2026-10-10T10:48:29Z starting D2O in runs/e112_fit: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --lr 1e-3 --batch_gpu 16 --resume runs/e112_fit/d2o-state-latest.pt --kimg 1500
+2026-10-10T12:53:33Z D2O in runs/e112_fit exited with status 0
+2026-10-10T12:53:33Z starting D2O in runs/e112_kd: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --lr 1e-3 --batch_gpu 16 --kd_ratio 1.0 --kd_pairs data/cache/teacher_edm2 --kimg 150
+2026-10-10T14:19:38Z D2O in runs/e112_kd exited with status 0
+2026-10-10T14:19:38Z starting D2O in runs/e112_rp: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --lr 1e-3 --batch_gpu 16 --resume runs/e112_fit/d2o-state-latest.pt --loss_type rp --r2_gamma 0.02 --kimg 1600
+2026-10-10T15:18:29Z D2O in runs/e112_rp exited with status 0
+2026-10-10T15:18:29Z starting D2O in runs/e112_s25: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --lr 1e-3 --batch_gpu 16 --sigma_g 2.5 --kimg 150
+2026-10-10T16:35:32Z D2O in runs/e112_s25 exited with status 0
+2026-10-10T16:35:32Z starting D2O in runs/e112_fit: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --lr 1e-3 --batch_gpu 16 --resume runs/e112_fit/d2o-state-latest.pt --kimg 1750
+2026-10-10T18:38:17Z D2O in runs/e112_fit exited with status 0
+2026-10-10T18:38:17Z starting D2O in runs/e112_dmd: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --lr 1e-3 --batch_gpu 16 --resume runs/e112_fit/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_from_kimg 1765 --dmd_fake_steps 2 --kimg 1850
+2026-10-10T20:45:22Z D2O in runs/e112_dmd exited with status 0
+2026-10-10T20:45:22Z starting D2O in runs/e112_fit: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --lr 1e-3 --batch_gpu 16 --resume runs/e112_fit/d2o-state-latest.pt --kimg 1850
+2026-10-10T21:37:51Z D2O in runs/e112_fit exited with status 0
+2026-10-10T21:37:51Z starting D2O in runs/e112_dmd: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --lr 1e-3 --batch_gpu 16 --resume runs/e112_dmd/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_from_kimg 1765 --dmd_fake_steps 2 --kimg 2000
+2026-10-11T00:52:16Z D2O in runs/e112_dmd exited with status 0
+2026-10-11T00:52:16Z starting D2O in runs/e112_fit: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --lr 1e-3 --batch_gpu 16 --resume runs/e112_fit/d2o-state-latest.pt --kimg 1950
+2026-10-11T01:45:13Z D2O in runs/e112_fit exited with status 0
+2026-10-11T01:45:13Z starting D2O in runs/dn30_dmd: --resume runs/d2o_one_dn30/d2o-state-latest.pt --d_sigma_mean -3.0 --batch_gpu 16 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_edm runs/edm_c96/edm-005000.pt --dmd_fake_lr 5e-5 --dmd_from_kimg 2465 --dmd_fake_steps 2 --kimg 2550
+2026-10-11T03:37:15Z D2O in runs/dn30_dmd exited with status 0
+2026-10-11T03:37:15Z starting D2O in runs/e112_fit: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --lr 1e-3 --batch_gpu 16 --resume runs/e112_fit/d2o-state-latest.pt --kimg 2050
+2026-10-11T03:50:38Z D2O in runs/e112_fit exited with status 1
+2026-10-11T03:50:38Z starting D2O in runs/e112_dmd: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --lr 1e-3 --batch_gpu 16 --resume runs/e112_dmd/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_from_kimg 1765 --dmd_fake_steps 2 --kimg 2150
+2026-10-11T04:23:08Z D2O in runs/e112_dmd exited with status 1
+2026-10-11T04:23:08Z starting D2O in runs/e112_fit: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --lr 1e-3 --batch_gpu 16 --resume runs/e112_fit/d2o-state-latest.pt --kimg 2150
+2026-10-11T04:35:03Z D2O in runs/e112_fit exited with status 1
+2026-10-11T04:35:03Z starting D2O in runs/d2o_one_dn30: --resume runs/d2o_one_dn30/d2o-state-latest.pt --d_sigma_mean -3.0 --kimg 2700
+2026-10-11T04:35:07Z D2O in runs/d2o_one_dn30 exited with status 120
+2026-10-11T04:35:07Z starting D2O in runs/d2o_one_dn30_lr2e5: --resume runs/d2o_one_dn30_lr2e5/d2o-state-latest.pt --d_sigma_mean -3.0 --lr 2e-5 --dlr 4e-5 --kimg 2450
+runs/chain_final.sh: line 40: echo: write error: No space left on device
+2026-10-11T04:35:10Z D2O in runs/d2o_one_dn30_lr2e5 exited with status 120
+2026-10-11T04:35:10Z starting D2O in runs/d2o_one_dn30: --resume runs/d2o_one_dn30/d2o-state-latest.pt --d_sigma_mean -3.0 --kimg 2950
+2026-10-11T04:35:14Z D2O in runs/d2o_one_dn30 exited with status 120
+2026-10-11T04:35:14Z starting D2O in runs/d2o_one_dn30: --resume runs/d2o_one_dn30/d2o-state-latest.pt --d_sigma_mean -3.0 --kimg 3200
+2026-10-11T04:35:16Z D2O in runs/d2o_one_dn30 exited with status 120
+2026-10-11T04:35:16Z queue empty
+2026-10-11T06:21:33Z D2O initialisation: runs/edm_c96/edm-005000.pt
+2026-10-11T06:21:33Z running: bash runs/watch_e112.sh old_point dn30_dmd 2550
+2026-10-11T06:28:55Z command exited with status 0
+2026-10-11T06:28:55Z running: bash runs/watch_e112.sh report_official e112_fit 1950 runs/e112_fit/calib-001950.ckpt 14.029
+2026-10-11T06:31:13Z command exited with status 0
+2026-10-11T06:31:13Z starting D2O in runs/dn30_dmd: --resume runs/dn30_dmd/d2o-state-latest.pt --d_sigma_mean -3.0 --batch_gpu 16 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_edm runs/edm_c96/edm-005000.pt --dmd_fake_lr 5e-5 --dmd_from_kimg 2465 --dmd_fake_steps 2 --kimg 2650
+2026-10-11T08:28:11Z D2O in runs/dn30_dmd exited with status 0
+2026-10-11T08:28:11Z running: bash runs/watch_e112.sh old_point dn30_dmd 2650
+2026-10-11T08:35:44Z command exited with status 0
+2026-10-11T08:35:44Z starting D2O in runs/e112_lora: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.46875 --lr 1e-3 --batch_gpu 16 --resume runs/e112_fit/d2o-state-latest.pt --d_warmup_kimg 50 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 4 --dmd_fake_lr 2e-4 --dmd_from_kimg 1975 --dmd_fake_steps 2 --kimg 2050
+2026-10-11T09:19:50Z D2O in runs/e112_lora exited with status 0
+2026-10-11T09:19:50Z starting D2O in runs/e112_lora2: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_fit/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 4 --dmd_fake_lr 2e-4 --dmd_from_kimg 1975 --dmd_fake_steps 2 --kimg 2050
+2026-10-11T11:21:39Z D2O in runs/e112_lora2 exited with status 0
+2026-10-11T11:21:39Z running: bash runs/watch_e112.sh score e112_lora2 2050 keep
+2026-10-11T11:29:36Z command exited with status 0
+2026-10-11T11:29:36Z starting D2O in runs/e112_lorag: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_fit/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 3 --kimg 2000
+2026-10-11T12:26:34Z D2O in runs/e112_lorag exited with status 0
+2026-10-11T12:26:34Z running: python3 runs/director.py
+2026-10-11T12:26:34Z command exited with status 0
+2026-10-11T12:26:34Z starting D2O in runs/e112_lorag: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 3 --kimg 2075
+2026-10-11T14:11:23Z D2O in runs/e112_lorag exited with status 0
+2026-10-11T14:11:23Z running: bash runs/watch_e112.sh score e112_lorag 2075 keep
+2026-10-11T14:19:18Z command exited with status 0
+2026-10-11T14:19:18Z running: python3 runs/director.py
+2026-10-11T14:19:19Z command exited with status 0
+2026-10-11T14:19:19Z starting D2O in runs/e112_lorag: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 3 --kimg 2175
+2026-10-11T16:37:44Z D2O in runs/e112_lorag exited with status 0
+2026-10-11T16:37:44Z running: bash runs/watch_e112.sh score e112_lorag 2175 keep
+2026-10-11T16:45:44Z command exited with status 0
+2026-10-11T16:45:44Z running: python3 runs/director.py
+2026-10-11T16:45:44Z command exited with status 0
+2026-10-11T16:45:44Z starting D2O in runs/e112_lorag: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 3 --kimg 2275
+2026-10-11T19:22:09Z D2O in runs/e112_lorag exited with status 0
+2026-10-11T19:22:09Z running: bash runs/watch_e112.sh score e112_lorag 2275 keep
+2026-10-11T19:30:14Z command exited with status 0
+2026-10-11T19:30:14Z running: python3 runs/director.py
+2026-10-11T19:30:14Z command exited with status 0
+2026-10-11T19:30:14Z starting D2O in runs/e112_lorag: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 3 --kimg 2375
+2026-10-11T21:41:29Z D2O in runs/e112_lorag exited with status 0
+2026-10-11T21:41:29Z running: bash runs/watch_e112.sh score e112_lorag 2375 keep
+2026-10-11T21:49:42Z command exited with status 0
+2026-10-11T21:49:42Z running: python3 runs/director.py
+2026-10-11T21:49:42Z command exited with status 0
+2026-10-11T21:49:42Z starting D2O in runs/e112_lorag: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 3 --kimg 2475
+2026-10-12T00:08:37Z D2O in runs/e112_lorag exited with status 0
+2026-10-12T00:08:37Z running: bash runs/watch_e112.sh score e112_lorag 2475 keep
+2026-10-12T00:16:50Z command exited with status 0
+2026-10-12T00:16:50Z running: python3 runs/director.py
+2026-10-12T00:16:50Z command exited with status 0
+2026-10-12T00:16:51Z starting D2O in runs/e112_lorag: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 3 --kimg 2575
+2026-10-12T02:35:54Z D2O in runs/e112_lorag exited with status 0
+2026-10-12T02:35:54Z running: bash runs/watch_e112.sh score e112_lorag 2575 keep
+2026-10-12T02:43:55Z command exited with status 0
+2026-10-12T02:43:55Z running: python3 runs/director.py
+2026-10-12T02:43:55Z command exited with status 0
+2026-10-12T02:43:55Z starting D2O in runs/e112_lorag: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 3 --kimg 2675
+2026-10-12T05:03:51Z D2O in runs/e112_lorag exited with status 0
+2026-10-12T05:03:51Z running: bash runs/watch_e112.sh score e112_lorag 2675 keep
+2026-10-12T05:11:48Z command exited with status 0
+2026-10-12T05:11:48Z running: python3 runs/director.py
+2026-10-12T05:11:49Z command exited with status 0
+2026-10-12T05:11:49Z starting D2O in runs/e112_lorag: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 3 --kimg 2775
+2026-10-12T07:31:12Z D2O in runs/e112_lorag exited with status 0
+2026-10-12T07:31:12Z running: bash runs/watch_e112.sh score e112_lorag 2775 keep
+2026-10-12T07:37:05Z command exited with status 0
+2026-10-12T07:37:05Z running: python3 runs/director.py
+2026-10-12T07:37:06Z command exited with status 0
+2026-10-12T07:37:06Z starting D2O in runs/e112_lorag: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 3 --kimg 2875
+2026-10-12T09:54:30Z D2O in runs/e112_lorag exited with status 0
+2026-10-12T09:54:30Z running: bash runs/watch_e112.sh score e112_lorag 2875 keep
+2026-10-12T10:02:33Z command exited with status 0
+2026-10-12T10:02:33Z running: python3 runs/director.py
+2026-10-12T10:02:33Z command exited with status 0
+2026-10-12T10:02:33Z starting D2O in runs/e112_lorag: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 3 --kimg 2975
+runs/chain_final.sh: line 57: 347333 Killed                  $PY -W ignore train_d2o.py $BASE --outdir "$out" "$@" >> "$out/train.log" 2>&1
+2026-10-12T10:07:56Z D2O in runs/e112_lorag exited with status 137
+2026-10-12T10:07:56Z running: bash runs/watch_e112.sh score e112_lorag 2975 keep
+2026-10-12T10:07:56Z command exited with status 0
+2026-10-12T10:07:56Z running: python3 runs/director.py
+2026-10-12T10:07:56Z command exited with status 0
+2026-10-12T10:07:56Z starting D2O in runs/e112_lorag_f5: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --kimg 2925
+2026-10-12T11:41:16Z D2O in runs/e112_lorag_f5 exited with status 0
+2026-10-12T11:41:16Z running: bash runs/watch_e112.sh score e112_lorag_f5 2925 keep
+2026-10-12T11:49:18Z command exited with status 0
+2026-10-12T11:49:18Z running: python3 runs/director.py
+2026-10-12T11:49:18Z command exited with status 0
+2026-10-12T11:49:18Z starting D2O in runs/e112_lorag_f5: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --kimg 2975
+2026-10-12T13:22:14Z D2O in runs/e112_lorag_f5 exited with status 0
+2026-10-12T13:22:14Z running: bash runs/watch_e112.sh score e112_lorag_f5 2975 keep
+2026-10-12T13:30:20Z command exited with status 0
+2026-10-12T13:30:20Z running: python3 runs/director.py
+2026-10-12T13:30:20Z command exited with status 0
+2026-10-12T13:30:20Z starting D2O in runs/e112_lorag_f5: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --kimg 3025
+2026-10-12T15:04:16Z D2O in runs/e112_lorag_f5 exited with status 0
+2026-10-12T15:04:16Z running: bash runs/watch_e112.sh score e112_lorag_f5 3025 keep
+2026-10-12T15:12:14Z command exited with status 0
+2026-10-12T15:12:14Z running: python3 runs/director.py
+2026-10-12T15:12:14Z command exited with status 0
+2026-10-12T15:12:14Z starting D2O in runs/e112_lorag_f5: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --kimg 3075
+2026-10-12T16:46:20Z D2O in runs/e112_lorag_f5 exited with status 0
+2026-10-12T16:46:20Z running: bash runs/watch_e112.sh score e112_lorag_f5 3075 keep
+2026-10-12T16:54:44Z command exited with status 0
+2026-10-12T16:54:44Z running: python3 runs/director.py
+2026-10-12T16:54:44Z command exited with status 0
+2026-10-12T16:54:44Z starting D2O in runs/e112_lorag_f5: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --kimg 3125
+2026-10-12T18:29:03Z D2O in runs/e112_lorag_f5 exited with status 0
+2026-10-12T18:29:03Z running: bash runs/watch_e112.sh score e112_lorag_f5 3125 keep
+2026-10-12T18:37:07Z command exited with status 0
+2026-10-12T18:37:07Z running: python3 runs/director.py
+2026-10-12T18:37:07Z command exited with status 0
+2026-10-12T18:37:07Z starting D2O in runs/e112_lorag_f5: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --kimg 3175
+2026-10-12T20:10:15Z D2O in runs/e112_lorag_f5 exited with status 0
+2026-10-12T20:10:15Z running: bash runs/watch_e112.sh score e112_lorag_f5 3175 keep
+2026-10-12T20:18:15Z command exited with status 0
+2026-10-12T20:18:15Z running: python3 runs/director.py
+2026-10-12T20:18:15Z command exited with status 0
+2026-10-12T20:18:15Z starting D2O in runs/e112_lorag_f5: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --kimg 3225
+2026-10-12T21:50:59Z D2O in runs/e112_lorag_f5 exited with status 0
+2026-10-12T21:50:59Z running: bash runs/watch_e112.sh score e112_lorag_f5 3225 keep
+2026-10-12T21:58:53Z command exited with status 0
+2026-10-12T21:58:53Z running: python3 runs/director.py
+2026-10-12T21:58:53Z command exited with status 0
+2026-10-12T21:58:53Z starting D2O in runs/e112_lorag_f5: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --kimg 3275
+2026-10-12T23:30:56Z D2O in runs/e112_lorag_f5 exited with status 0
+2026-10-12T23:30:56Z running: bash runs/watch_e112.sh score e112_lorag_f5 3275 keep
+2026-10-12T23:38:49Z command exited with status 0
+2026-10-12T23:38:49Z running: python3 runs/director.py
+2026-10-12T23:38:49Z command exited with status 0
+2026-10-12T23:38:49Z starting D2O in runs/e112_lorag_f5: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --kimg 3325
+2026-10-13T00:57:49Z D2O in runs/e112_lorag_f5 exited with status 0
+2026-10-13T00:57:49Z running: bash runs/watch_e112.sh score e112_lorag_f5 3325 keep
+2026-10-13T01:03:32Z command exited with status 0
+2026-10-13T01:03:32Z running: python3 runs/director.py
+2026-10-13T01:03:32Z command exited with status 0
+2026-10-13T01:03:32Z starting D2O in runs/e112_lorag_f5: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --kimg 3375
+2026-10-13T02:09:56Z D2O in runs/e112_lorag_f5 exited with status 0
+2026-10-13T02:09:57Z running: bash runs/watch_e112.sh score e112_lorag_f5 3375 keep
+2026-10-13T02:15:38Z command exited with status 0
+2026-10-13T02:15:38Z running: python3 runs/director.py
+2026-10-13T02:15:38Z command exited with status 0
+2026-10-13T02:15:38Z starting D2O in runs/e112_lorag_f5: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --kimg 3425
+2026-10-13T03:26:27Z D2O in runs/e112_lorag_f5 exited with status 0
+2026-10-13T03:26:27Z running: bash runs/watch_e112.sh score e112_lorag_f5 3425 keep
+2026-10-13T03:30:25Z command exited with status 0
+2026-10-13T03:30:25Z running: python3 runs/director.py
+2026-10-13T03:30:25Z command exited with status 0
+2026-10-13T03:30:25Z starting D2O in runs/e112_lorag_f5_g13: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --kimg 3475
+2026-10-13T04:37:38Z D2O in runs/e112_lorag_f5_g13 exited with status 0
+2026-10-13T04:37:38Z running: bash runs/watch_e112.sh score e112_lorag_f5_g13 3475 keep
+2026-10-13T04:43:26Z command exited with status 0
+2026-10-13T04:43:26Z running: python3 runs/director.py
+2026-10-13T04:43:27Z command exited with status 0
+2026-10-13T04:43:27Z starting D2O in runs/e112_lorag_f5_g13: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --kimg 3525
+2026-10-13T05:54:26Z D2O in runs/e112_lorag_f5_g13 exited with status 0
+2026-10-13T05:54:26Z running: bash runs/watch_e112.sh score e112_lorag_f5_g13 3525 keep
+2026-10-13T06:00:27Z command exited with status 0
+2026-10-13T06:00:27Z running: python3 runs/director.py
+2026-10-13T06:00:27Z command exited with status 0
+2026-10-13T06:00:27Z starting D2O in runs/e112_lorag_f5_g13: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --kimg 3575
+2026-10-13T07:13:04Z D2O in runs/e112_lorag_f5_g13 exited with status 0
+2026-10-13T07:13:04Z running: bash runs/watch_e112.sh score e112_lorag_f5_g13 3575 keep
+2026-10-13T07:19:04Z command exited with status 0
+2026-10-13T07:19:04Z running: python3 runs/director.py
+2026-10-13T07:19:04Z command exited with status 0
+2026-10-13T07:19:04Z starting D2O in runs/e112_lorag_f5_g13: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --kimg 3625
+2026-10-13T08:40:59Z D2O in runs/e112_lorag_f5_g13 exited with status 0
+2026-10-13T08:40:59Z running: bash runs/watch_e112.sh score e112_lorag_f5_g13 3625 keep
+2026-10-13T08:44:59Z command exited with status 0
+2026-10-13T08:44:59Z running: python3 runs/director.py
+2026-10-13T08:44:59Z command exited with status 0
+2026-10-13T08:45:00Z starting D2O in runs/e112_lorag_f5_g13: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --kimg 3675
+2026-10-13T09:55:49Z D2O in runs/e112_lorag_f5_g13 exited with status 0
+2026-10-13T09:55:49Z running: bash runs/watch_e112.sh score e112_lorag_f5_g13 3675 keep
+2026-10-13T09:59:53Z command exited with status 0
+2026-10-13T09:59:53Z running: python3 runs/director.py
+2026-10-13T09:59:53Z command exited with status 0
+2026-10-13T09:59:53Z starting D2O in runs/e112_lorag_f5_g13_lr3: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 3725
+2026-10-13T11:18:57Z D2O in runs/e112_lorag_f5_g13_lr3 exited with status 0
+2026-10-13T11:18:57Z running: bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3 3725 keep
+2026-10-13T11:27:52Z command exited with status 1
+2026-10-13T11:27:52Z running: python3 runs/director.py
+2026-10-13T11:27:52Z command exited with status 0
+2026-10-13T11:27:52Z starting D2O in runs/e112_lorag_f5_g13_t58: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --dmd_teacher checkpoints/edm/teacher_unguided-0058720256-0.130.pt --lr 1e-3 --dlr 1e-4 --kimg 3725
+2026-10-13T12:42:08Z D2O in runs/e112_lorag_f5_g13_t58 exited with status 0
+2026-10-13T12:42:08Z running: bash runs/watch_e112.sh score e112_lorag_f5_g13_t58 3725 keep
+2026-10-13T12:46:08Z command exited with status 1
+2026-10-13T12:46:08Z running: python3 runs/director.py
+2026-10-13T12:46:08Z command exited with status 0
+2026-10-13T12:46:08Z starting D2O in runs/e112_lorag_f5_g13_t58: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_t58/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --dmd_teacher checkpoints/edm/teacher_unguided-0058720256-0.130.pt --lr 1e-3 --dlr 1e-4 --kimg 3775
+2026-10-13T13:52:38Z D2O in runs/e112_lorag_f5_g13_t58 exited with status 0
+2026-10-13T13:52:38Z running: bash runs/watch_e112.sh score e112_lorag_f5_g13_t58 3775 keep
+2026-10-13T13:56:41Z command exited with status 0
+2026-10-13T13:56:41Z running: bash runs/nearest_check.sh e112_lorag_f5_g13_t58 3775
+2026-10-13T13:57:31Z command exited with status 0
+2026-10-13T13:57:31Z running: python3 runs/director.py
+2026-10-13T13:57:31Z command exited with status 0
+2026-10-13T13:57:31Z starting D2O in runs/e112_lorag_f5_g13_t58: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_t58/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --dmd_teacher checkpoints/edm/teacher_unguided-0058720256-0.130.pt --lr 1e-3 --dlr 1e-4 --kimg 3825
+2026-10-13T15:05:34Z D2O in runs/e112_lorag_f5_g13_t58 exited with status 0
+2026-10-13T15:05:34Z running: bash runs/watch_e112.sh score e112_lorag_f5_g13_t58 3825 keep
+2026-10-13T15:09:35Z command exited with status 0
+2026-10-13T15:09:35Z running: bash runs/nearest_check.sh e112_lorag_f5_g13_t58 3825
+2026-10-13T15:10:24Z command exited with status 0
+2026-10-13T15:10:24Z running: python3 runs/director.py
+2026-10-13T15:10:25Z command exited with status 0
+2026-10-13T15:10:25Z starting D2O in runs/e112_lorag_f5_g13_t58: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_t58/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --dmd_teacher checkpoints/edm/teacher_unguided-0058720256-0.130.pt --lr 1e-3 --dlr 1e-4 --kimg 3875
+2026-10-13T16:21:10Z D2O in runs/e112_lorag_f5_g13_t58 exited with status 0
+2026-10-13T16:21:10Z running: bash runs/watch_e112.sh score e112_lorag_f5_g13_t58 3875 keep
+2026-10-13T16:25:12Z command exited with status 0
+2026-10-13T16:25:12Z running: bash runs/nearest_check.sh e112_lorag_f5_g13_t58 3875
+2026-10-13T16:26:03Z command exited with status 0
+2026-10-13T16:26:03Z running: python3 runs/director.py
+2026-10-13T16:26:03Z command exited with status 0
+2026-10-13T16:26:03Z starting D2O in runs/e112_lorag_f5_g13_t58: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_t58/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --dmd_teacher checkpoints/edm/teacher_unguided-0058720256-0.130.pt --lr 1e-3 --dlr 1e-4 --kimg 3925
+2026-10-13T17:34:01Z D2O in runs/e112_lorag_f5_g13_t58 exited with status 0
+2026-10-13T17:34:01Z running: bash runs/watch_e112.sh score e112_lorag_f5_g13_t58 3925 keep
+2026-10-13T17:38:01Z command exited with status 0
+2026-10-13T17:38:01Z running: bash runs/nearest_check.sh e112_lorag_f5_g13_t58 3925
+2026-10-13T17:38:50Z command exited with status 0
+2026-10-13T17:38:50Z running: python3 runs/director.py
+2026-10-13T17:38:50Z command exited with status 0
+2026-10-13T17:38:50Z starting D2O in runs/e112_lorag_f5_g13_t58: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_t58/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --dmd_teacher checkpoints/edm/teacher_unguided-0058720256-0.130.pt --lr 1e-3 --dlr 1e-4 --kimg 3975
+2026-10-13T18:54:16Z D2O in runs/e112_lorag_f5_g13_t58 exited with status 0
+2026-10-13T18:54:16Z running: bash runs/watch_e112.sh score e112_lorag_f5_g13_t58 3975 keep
+2026-10-13T18:58:21Z command exited with status 0
+2026-10-13T18:58:21Z running: bash runs/nearest_check.sh e112_lorag_f5_g13_t58 3975
+2026-10-13T18:59:13Z command exited with status 0
+2026-10-13T18:59:13Z running: python3 runs/director.py
+2026-10-13T18:59:13Z command exited with status 0
+2026-10-13T18:59:13Z starting D2O in runs/e112_lorag_f5_g13_lr3b: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 3725
+2026-10-13T20:21:34Z D2O in runs/e112_lorag_f5_g13_lr3b exited with status 0
+2026-10-13T20:21:34Z running: bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 3725 keep
+2026-10-13T20:25:32Z command exited with status 1
+2026-10-13T20:25:32Z running: bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 3725
+2026-10-13T20:26:22Z command exited with status 0
+2026-10-13T20:26:22Z running: python3 runs/director.py
+2026-10-13T20:26:22Z command exited with status 0
+2026-10-13T20:26:22Z starting D2O in runs/e112_lorag_f5_g13_lr3b: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 3775
+2026-10-13T21:45:21Z D2O in runs/e112_lorag_f5_g13_lr3b exited with status 0
+2026-10-13T21:45:21Z running: bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 3775 keep
+2026-10-13T21:53:21Z command exited with status 0
+2026-10-13T21:53:21Z running: bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 3775
+2026-10-13T21:54:21Z command exited with status 0
+2026-10-13T21:54:21Z running: python3 runs/director.py
+2026-10-13T21:54:21Z command exited with status 0
+2026-10-13T21:54:21Z starting D2O in runs/e112_lorag_f5_g13_lr3b: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 3825
+2026-10-13T23:25:48Z D2O in runs/e112_lorag_f5_g13_lr3b exited with status 0
+2026-10-13T23:25:48Z running: bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 3825 keep
+2026-10-13T23:33:48Z command exited with status 0
+2026-10-13T23:33:48Z running: bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 3825
+2026-10-13T23:34:49Z command exited with status 0
+2026-10-13T23:34:49Z running: python3 runs/director.py
+2026-10-13T23:34:49Z command exited with status 0
+2026-10-13T23:34:49Z starting D2O in runs/e112_lorag_f5_g13_lr3b: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 3875
+2026-10-14T01:07:27Z D2O in runs/e112_lorag_f5_g13_lr3b exited with status 0
+2026-10-14T01:07:27Z running: bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 3875 keep
+2026-10-14T01:15:26Z command exited with status 0
+2026-10-14T01:15:26Z running: bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 3875
+2026-10-14T01:16:27Z command exited with status 0
+2026-10-14T01:16:27Z running: python3 runs/director.py
+2026-10-14T01:16:27Z command exited with status 0
+2026-10-14T01:16:27Z starting D2O in runs/e112_lorag_f5_g13_lr3b: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 3925
+2026-10-14T02:46:27Z D2O in runs/e112_lorag_f5_g13_lr3b exited with status 0
+2026-10-14T02:46:27Z running: bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 3925 keep
+2026-10-14T02:54:04Z command exited with status 0
+2026-10-14T02:54:04Z running: bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 3925
+2026-10-14T02:54:56Z command exited with status 0
+2026-10-14T02:54:56Z running: python3 runs/director.py
+2026-10-14T02:54:57Z command exited with status 0
+2026-10-14T02:54:57Z starting D2O in runs/e112_lorag_f5_g13_lr3b: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 3975
+2026-10-14T04:26:15Z D2O in runs/e112_lorag_f5_g13_lr3b exited with status 0
+2026-10-14T04:26:16Z running: bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 3975 keep
+2026-10-14T04:31:53Z command exited with status 0
+2026-10-14T04:31:53Z running: bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 3975
+2026-10-14T04:32:45Z command exited with status 0
+2026-10-14T04:32:45Z running: python3 runs/director.py
+2026-10-14T04:32:45Z command exited with status 0
+2026-10-14T04:32:45Z starting D2O in runs/e112_lorag_f5_g13_lr3b: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 4025
+2026-10-14T06:04:26Z D2O in runs/e112_lorag_f5_g13_lr3b exited with status 0
+2026-10-14T06:04:26Z running: bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 4025 keep
+2026-10-14T06:10:04Z command exited with status 0
+2026-10-14T06:10:04Z running: bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 4025
+2026-10-14T06:11:05Z command exited with status 0
+2026-10-14T06:11:05Z running: python3 runs/director.py
+2026-10-14T06:11:05Z command exited with status 0
+2026-10-14T06:11:05Z starting D2O in runs/e112_lorag_f5_g13_lr3b: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 4125
+2026-10-14T09:07:24Z D2O in runs/e112_lorag_f5_g13_lr3b exited with status 0
+2026-10-14T09:07:24Z running: bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 4125 keep
+2026-10-14T09:12:46Z command exited with status 0
+2026-10-14T09:12:46Z running: bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 4125
+2026-10-14T09:13:45Z command exited with status 0
+2026-10-14T09:13:46Z running: python3 runs/director.py
+2026-10-14T09:13:46Z command exited with status 0
+2026-10-14T09:13:46Z starting D2O in runs/e112_lorag_f5_g13_lr3b: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 4225
+2026-10-14T12:17:32Z D2O in runs/e112_lorag_f5_g13_lr3b exited with status 0
+2026-10-14T12:17:32Z running: bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 4225 keep
+2026-10-14T12:22:48Z command exited with status 0
+2026-10-14T12:22:48Z running: bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 4225
+2026-10-14T12:23:38Z command exited with status 0
+2026-10-14T12:23:38Z running: python3 runs/director.py
+2026-10-14T12:23:38Z command exited with status 0
+2026-10-14T12:23:38Z starting D2O in runs/e112_lorag_f5_g13_lr3b: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 4325
+2026-10-14T15:22:33Z D2O in runs/e112_lorag_f5_g13_lr3b exited with status 0
+2026-10-14T15:22:33Z running: bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 4325 keep
+2026-10-14T15:28:09Z command exited with status 0
+2026-10-14T15:28:09Z running: bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 4325
+2026-10-14T15:29:08Z command exited with status 0
+2026-10-14T15:29:08Z running: python3 runs/director.py
+2026-10-14T15:29:08Z command exited with status 0
+2026-10-14T15:29:08Z starting D2O in runs/e112_lorag_f5_g13_lr3b: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 4425
+2026-10-14T18:30:46Z D2O in runs/e112_lorag_f5_g13_lr3b exited with status 0
+2026-10-14T18:30:46Z running: bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 4425 keep
+2026-10-14T18:38:28Z command exited with status 0
+2026-10-14T18:38:28Z running: bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 4425
+2026-10-14T18:39:20Z command exited with status 0
+2026-10-14T18:39:20Z running: python3 runs/director.py
+2026-10-14T18:39:20Z command exited with status 0
+2026-10-14T18:39:20Z starting D2O in runs/e112_lorag_f5_g13_lr3b: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 4525
+2026-10-14T21:16:59Z D2O in runs/e112_lorag_f5_g13_lr3b exited with status 0
+2026-10-14T21:16:59Z running: bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 4525 keep
+2026-10-14T21:22:39Z command exited with status 0
+2026-10-14T21:22:39Z running: bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 4525
+2026-10-14T21:23:27Z command exited with status 0
+2026-10-14T21:23:27Z running: python3 runs/director.py
+2026-10-14T21:23:27Z command exited with status 0
+2026-10-14T21:23:27Z starting D2O in runs/e112_lorag_f5_g13_lr3b: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 4625
+2026-10-14T23:37:46Z D2O in runs/e112_lorag_f5_g13_lr3b exited with status 0
+2026-10-14T23:37:46Z running: bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 4625 keep
+2026-10-14T23:43:27Z command exited with status 0
+2026-10-14T23:43:27Z running: bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 4625
+2026-10-14T23:44:14Z command exited with status 0
+2026-10-14T23:44:14Z running: python3 runs/director.py
+2026-10-14T23:44:14Z command exited with status 0
+2026-10-14T23:44:14Z starting D2O in runs/e112_lorag_f5_g13_lr3b: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 4725
+2026-10-15T01:57:14Z D2O in runs/e112_lorag_f5_g13_lr3b exited with status 0
+2026-10-15T01:57:14Z running: bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 4725 keep
+2026-10-15T02:02:53Z command exited with status 0
+2026-10-15T02:02:53Z running: bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 4725
+2026-10-15T02:03:42Z command exited with status 0
+2026-10-15T02:03:42Z running: python3 runs/director.py
+2026-10-15T02:03:42Z command exited with status 0
+2026-10-15T02:03:42Z starting D2O in runs/e112_lorag_f5_g13_lr3b: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 4825
+2026-10-15T04:13:07Z D2O in runs/e112_lorag_f5_g13_lr3b exited with status 0
+2026-10-15T04:13:07Z running: bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 4825 keep
+2026-10-15T04:18:43Z command exited with status 0
+2026-10-15T04:18:43Z running: bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 4825
+2026-10-15T04:19:31Z command exited with status 0
+2026-10-15T04:19:31Z running: python3 runs/director.py
+2026-10-15T04:19:31Z command exited with status 0
+2026-10-15T04:19:31Z starting D2O in runs/e112_lorag_f5_g13_lr3b: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 4925
+2026-10-15T06:32:47Z D2O in runs/e112_lorag_f5_g13_lr3b exited with status 0
+2026-10-15T06:32:47Z running: bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 4925 keep
+2026-10-15T06:38:28Z command exited with status 0
+2026-10-15T06:38:28Z running: bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 4925
+2026-10-15T06:39:15Z command exited with status 0
+2026-10-15T06:39:15Z running: python3 runs/director.py
+2026-10-15T06:39:15Z command exited with status 0
+2026-10-15T06:39:15Z starting D2O in runs/e112_lorag_f5_g13_lr3b: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 5025
+2026-10-15T08:50:26Z D2O in runs/e112_lorag_f5_g13_lr3b exited with status 0
+2026-10-15T08:50:26Z running: bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 5025 keep
+2026-10-15T08:54:20Z command exited with status 0
+2026-10-15T08:54:20Z running: bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 5025
+2026-10-15T08:55:08Z command exited with status 0
+2026-10-15T08:55:08Z running: python3 runs/director.py
+2026-10-15T08:55:08Z command exited with status 0
+2026-10-15T08:55:08Z starting D2O in runs/e112_lorag_f5_g13_lr3b: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 5125
+2026-10-15T11:10:07Z D2O in runs/e112_lorag_f5_g13_lr3b exited with status 0
+2026-10-15T11:10:07Z running: bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 5125 keep
+2026-10-15T11:15:55Z command exited with status 0
+2026-10-15T11:15:55Z running: bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 5125
+2026-10-15T11:16:42Z command exited with status 0
+2026-10-15T11:16:42Z running: python3 runs/director.py
+2026-10-15T11:16:42Z command exited with status 0
+2026-10-15T11:16:42Z starting D2O in runs/e112_h20: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --holdout results/holdout_h20.json --balanced 1 --fid_reference results/reference_holdout_h20 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 100 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --kimg 100
+2026-10-15T13:45:51Z D2O in runs/e112_h20 exited with status 0
+2026-10-15T13:45:52Z running: bash runs/h20_score.sh e112_h20 100
+2026-10-15T13:55:20Z command exited with status 0
+2026-10-15T13:55:20Z running: python3 runs/director.py
+2026-10-15T13:55:20Z command exited with status 0
+2026-10-15T13:55:20Z starting D2O in runs/e112_h20: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --holdout results/holdout_h20.json --balanced 1 --fid_reference results/reference_holdout_h20 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 100 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --kimg 150 --resume runs/e112_h20/d2o-state-latest.pt
+2026-10-15T15:06:49Z D2O in runs/e112_h20 exited with status 0
+2026-10-15T15:06:49Z running: bash runs/h20_score.sh e112_h20 150
+2026-10-15T15:13:59Z command exited with status 0
+2026-10-15T15:13:59Z running: python3 runs/director.py
+2026-10-15T15:13:59Z command exited with status 0
+2026-10-15T15:13:59Z starting D2O in runs/e112_treal: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/teacher_unguided-0058720256-0.130.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.0 --extra_real data/cache/teacher58_real --extra_real_p 1.0 --dlr 1e-4 --fid_reference results/reference_teacher58 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --kimg 5175
+2026-10-15T16:19:26Z D2O in runs/e112_treal exited with status 0
+2026-10-15T16:19:26Z running: bash runs/tref_score.sh e112_treal 5175
+2026-10-15T16:26:39Z command exited with status 0
+2026-10-15T16:26:39Z running: python3 runs/director.py
+2026-10-15T16:26:39Z command exited with status 0
+2026-10-15T16:26:39Z starting D2O in runs/e112_treal: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/teacher_unguided-0058720256-0.130.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.0 --extra_real data/cache/teacher58_real --extra_real_p 1.0 --dlr 1e-4 --fid_reference results/reference_teacher58 --kimg 5225 --resume runs/e112_treal/d2o-state-latest.pt
+2026-10-15T17:35:01Z D2O in runs/e112_treal exited with status 0
+2026-10-15T17:35:01Z running: bash runs/tref_score.sh e112_treal 5225
+2026-10-15T17:42:10Z command exited with status 0
+2026-10-15T17:42:10Z running: python3 runs/director.py
+2026-10-15T17:42:11Z command exited with status 0
+2026-10-15T17:42:11Z starting D2O in runs/e112_treal: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/teacher_unguided-0058720256-0.130.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.0 --extra_real data/cache/teacher58_real --extra_real_p 1.0 --dlr 1e-4 --fid_reference results/reference_teacher58 --kimg 5275 --resume runs/e112_treal/d2o-state-latest.pt
+2026-10-15T18:51:59Z D2O in runs/e112_treal exited with status 0
+2026-10-15T18:51:59Z running: bash runs/tref_score.sh e112_treal 5275
+2026-10-15T18:59:12Z command exited with status 0
+2026-10-15T18:59:12Z running: python3 runs/director.py
+2026-10-15T18:59:12Z command exited with status 0
+2026-10-15T18:59:12Z starting D2O in runs/e112_treal: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/teacher_unguided-0058720256-0.130.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.0 --extra_real data/cache/teacher58_real --extra_real_p 1.0 --dlr 1e-4 --fid_reference results/reference_teacher58 --kimg 5325 --resume runs/e112_treal/d2o-state-latest.pt
+2026-10-15T20:06:09Z D2O in runs/e112_treal exited with status 0
+2026-10-15T20:06:09Z running: bash runs/tref_score.sh e112_treal 5325
+2026-10-15T20:13:25Z command exited with status 0
+2026-10-15T20:13:25Z running: python3 runs/director.py
+2026-10-15T20:13:25Z command exited with status 0
+2026-10-15T20:13:25Z starting D2O in runs/e112_treal: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/teacher_unguided-0058720256-0.130.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.0 --extra_real data/cache/teacher58_real --extra_real_p 1.0 --dlr 1e-4 --fid_reference results/reference_teacher58 --kimg 5375 --resume runs/e112_treal/d2o-state-latest.pt
+2026-10-15T21:22:04Z D2O in runs/e112_treal exited with status 0
+2026-10-15T21:22:04Z running: bash runs/tref_score.sh e112_treal 5375
+2026-10-15T21:29:14Z command exited with status 0
+2026-10-15T21:29:14Z running: python3 runs/director.py
+2026-10-15T21:29:14Z command exited with status 0
+2026-10-15T21:29:14Z starting D2O in runs/e112_treal: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/teacher_unguided-0058720256-0.130.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.0 --extra_real data/cache/teacher58_real --extra_real_p 1.0 --dlr 1e-4 --fid_reference results/reference_teacher58 --kimg 5425 --resume runs/e112_treal/d2o-state-latest.pt
+2026-10-15T22:35:01Z D2O in runs/e112_treal exited with status 0
+2026-10-15T22:35:01Z running: bash runs/tref_score.sh e112_treal 5425
+2026-10-15T22:42:08Z command exited with status 0
+2026-10-15T22:42:08Z running: python3 runs/director.py
+2026-10-15T22:42:09Z command exited with status 0
+2026-10-15T22:42:09Z starting D2O in runs/e112_treal: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/teacher_unguided-0058720256-0.130.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.0 --extra_real data/cache/teacher58_real --extra_real_p 1.0 --dlr 1e-4 --fid_reference results/reference_teacher58 --kimg 5475 --resume runs/e112_treal/d2o-state-latest.pt
+2026-10-15T23:47:45Z D2O in runs/e112_treal exited with status 0
+2026-10-15T23:47:45Z running: bash runs/tref_score.sh e112_treal 5475
+2026-10-15T23:54:59Z command exited with status 0
+2026-10-15T23:54:59Z running: python3 runs/director.py
+2026-10-15T23:54:59Z command exited with status 0
+2026-10-15T23:54:59Z starting D2O in runs/e112_treal: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/teacher_unguided-0058720256-0.130.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.0 --extra_real data/cache/teacher58_real --extra_real_p 1.0 --dlr 1e-4 --fid_reference results/reference_teacher58 --kimg 5525 --resume runs/e112_treal/d2o-state-latest.pt
+2026-10-16T01:01:06Z D2O in runs/e112_treal exited with status 0
+2026-10-16T01:01:06Z running: bash runs/tref_score.sh e112_treal 5525
+2026-10-16T01:08:21Z command exited with status 0
+2026-10-16T01:08:21Z running: python3 runs/director.py
+2026-10-16T01:08:21Z command exited with status 0
+2026-10-16T01:08:21Z starting D2O in runs/e112_h20: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --holdout results/holdout_h20.json --balanced 1 --fid_reference results/reference_holdout_h20 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 100 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --kimg 250 --resume runs/e112_h20/d2o-state-latest.pt
+2026-10-16T03:21:44Z D2O in runs/e112_h20 exited with status 0
+2026-10-16T03:21:44Z running: bash runs/h20_score.sh e112_h20 250
+2026-10-16T03:28:47Z command exited with status 0
+2026-10-16T03:28:48Z running: python3 runs/director.py
+2026-10-16T03:28:48Z command exited with status 0
+2026-10-16T03:28:48Z starting D2O in runs/e112_h20: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --holdout results/holdout_h20.json --balanced 1 --fid_reference results/reference_holdout_h20 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 100 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --kimg 350 --resume runs/e112_h20/d2o-state-latest.pt
+2026-10-16T05:40:48Z D2O in runs/e112_h20 exited with status 0
+2026-10-16T05:40:48Z running: bash runs/h20_score.sh e112_h20 350
+2026-10-16T05:47:54Z command exited with status 0
+2026-10-16T05:47:54Z running: python3 runs/director.py
+2026-10-16T05:47:54Z command exited with status 0
+2026-10-16T05:47:54Z starting D2O in runs/e112_h20: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --holdout results/holdout_h20.json --balanced 1 --fid_reference results/reference_holdout_h20 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 100 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --kimg 450 --resume runs/e112_h20/d2o-state-latest.pt
+2026-10-16T07:56:17Z D2O in runs/e112_h20 exited with status 0
+2026-10-16T07:56:17Z running: bash runs/h20_score.sh e112_h20 450
+2026-10-16T08:03:30Z command exited with status 0
+2026-10-16T08:03:30Z running: python3 runs/director.py
+2026-10-16T08:03:30Z command exited with status 0
+2026-10-16T08:03:30Z starting D2O in runs/e112_h20: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --holdout results/holdout_h20.json --balanced 1 --fid_reference results/reference_holdout_h20 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 100 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --kimg 550 --resume runs/e112_h20/d2o-state-latest.pt
+2026-10-16T10:50:31Z D2O in runs/e112_h20 exited with status 0
+2026-10-16T10:50:31Z running: bash runs/h20_score.sh e112_h20 550
+2026-10-16T10:59:54Z command exited with status 0
+2026-10-16T10:59:54Z running: python3 runs/director.py
+2026-10-16T10:59:54Z command exited with status 0
+2026-10-16T10:59:54Z starting D2O in runs/e112_h20: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --holdout results/holdout_h20.json --balanced 1 --fid_reference results/reference_holdout_h20 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 100 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --kimg 650 --resume runs/e112_h20/d2o-state-latest.pt
+2026-10-16T14:06:31Z D2O in runs/e112_h20 exited with status 0
+2026-10-16T14:06:31Z running: bash runs/h20_score.sh e112_h20 650
+2026-10-16T14:13:37Z command exited with status 0
+2026-10-16T14:13:37Z running: python3 runs/director.py
+2026-10-16T14:13:37Z command exited with status 0
+2026-10-16T14:13:37Z starting D2O in runs/e112_h20: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --holdout results/holdout_h20.json --balanced 1 --fid_reference results/reference_holdout_h20 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 100 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --kimg 750 --resume runs/e112_h20/d2o-state-latest.pt
+2026-10-16T17:23:00Z D2O in runs/e112_h20 exited with status 0
+2026-10-16T17:23:00Z running: bash runs/h20_score.sh e112_h20 750
+2026-10-16T17:32:35Z command exited with status 0
+2026-10-16T17:32:35Z running: python3 runs/director.py
+2026-10-16T17:32:35Z command exited with status 0
+2026-10-16T17:32:35Z starting D2O in runs/e112_h20: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --holdout results/holdout_h20.json --balanced 1 --fid_reference results/reference_holdout_h20 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 100 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --kimg 850 --resume runs/e112_h20/d2o-state-latest.pt
+2026-10-16T20:44:28Z D2O in runs/e112_h20 exited with status 0
+2026-10-16T20:44:28Z running: bash runs/h20_score.sh e112_h20 850
+2026-10-16T20:51:33Z command exited with status 0
+2026-10-16T20:51:33Z running: python3 runs/director.py
+2026-10-16T20:51:33Z command exited with status 0
+2026-10-16T20:51:33Z starting D2O in runs/e112_h20: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --holdout results/holdout_h20.json --balanced 1 --fid_reference results/reference_holdout_h20 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 100 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --kimg 950 --resume runs/e112_h20/d2o-state-latest.pt
+2026-10-17T00:02:17Z D2O in runs/e112_h20 exited with status 0
+2026-10-17T00:02:17Z running: bash runs/h20_score.sh e112_h20 950
+2026-10-17T00:11:46Z command exited with status 0
+2026-10-17T00:11:46Z running: python3 runs/director.py
+2026-10-17T00:11:46Z command exited with status 0
+2026-10-17T00:11:46Z starting D2O in runs/e112_h20: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --holdout results/holdout_h20.json --balanced 1 --fid_reference results/reference_holdout_h20 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 100 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --kimg 1050 --resume runs/e112_h20/d2o-state-latest.pt
+2026-10-17T03:24:33Z D2O in runs/e112_h20 exited with status 0
+2026-10-17T03:24:33Z running: bash runs/h20_score.sh e112_h20 1050
+2026-10-17T03:31:42Z command exited with status 0
+2026-10-17T03:31:42Z running: python3 runs/director.py
+2026-10-17T03:31:42Z command exited with status 0
+2026-10-17T03:31:42Z starting D2O in runs/e112_h20: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --holdout results/holdout_h20.json --balanced 1 --fid_reference results/reference_holdout_h20 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 100 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --kimg 1150 --resume runs/e112_h20/d2o-state-latest.pt
+2026-10-17T06:41:41Z D2O in runs/e112_h20 exited with status 0
+2026-10-17T06:41:41Z running: bash runs/h20_score.sh e112_h20 1150
+2026-10-17T06:48:50Z command exited with status 0
+2026-10-17T06:48:50Z running: python3 runs/director.py
+2026-10-17T06:48:51Z command exited with status 0
+2026-10-17T06:48:51Z starting D2O in runs/e112_h20: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --holdout results/holdout_h20.json --balanced 1 --fid_reference results/reference_holdout_h20 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 100 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --kimg 1250 --resume runs/e112_h20/d2o-state-latest.pt
+2026-10-17T10:00:59Z D2O in runs/e112_h20 exited with status 0
+2026-10-17T10:00:59Z running: bash runs/h20_score.sh e112_h20 1250
+2026-10-17T10:10:46Z command exited with status 0
+2026-10-17T10:10:46Z running: python3 runs/director.py
+2026-10-17T10:10:46Z command exited with status 0
+2026-10-17T10:10:46Z starting D2O in runs/e112_h20: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --holdout results/holdout_h20.json --balanced 1 --fid_reference results/reference_holdout_h20 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 100 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --kimg 1350 --resume runs/e112_h20/d2o-state-latest.pt
+2026-10-17T12:49:27Z D2O in runs/e112_h20 exited with status 0
+2026-10-17T12:49:27Z running: bash runs/h20_score.sh e112_h20 1350
+2026-10-17T12:56:36Z command exited with status 0
+2026-10-17T12:56:36Z running: python3 runs/director.py
+2026-10-17T12:56:36Z command exited with status 0
+2026-10-17T12:56:36Z starting D2O in runs/e112_h20: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --holdout results/holdout_h20.json --balanced 1 --fid_reference results/reference_holdout_h20 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 100 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --kimg 1450 --resume runs/e112_h20/d2o-state-latest.pt
+2026-10-17T15:08:48Z D2O in runs/e112_h20 exited with status 0
+2026-10-17T15:08:48Z running: bash runs/h20_score.sh e112_h20 1450
+2026-10-17T15:15:51Z command exited with status 0
+2026-10-17T15:15:51Z running: python3 runs/director.py
+2026-10-17T15:15:51Z command exited with status 0
+2026-10-17T15:15:51Z starting D2O in runs/e112_h20: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --holdout results/holdout_h20.json --balanced 1 --fid_reference results/reference_holdout_h20 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 100 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --kimg 1550 --resume runs/e112_h20/d2o-state-latest.pt
+2026-10-17T17:28:12Z D2O in runs/e112_h20 exited with status 0
+2026-10-17T17:28:12Z running: bash runs/h20_score.sh e112_h20 1550
+2026-10-17T17:35:23Z command exited with status 0
+2026-10-17T17:35:23Z running: python3 runs/director.py
+2026-10-17T17:35:23Z command exited with status 0
+2026-10-17T17:35:23Z starting D2O in runs/e112_h20: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --holdout results/holdout_h20.json --balanced 1 --fid_reference results/reference_holdout_h20 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 100 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --kimg 1650 --resume runs/e112_h20/d2o-state-latest.pt
+2026-10-17T19:46:46Z D2O in runs/e112_h20 exited with status 0
+2026-10-17T19:46:46Z running: bash runs/h20_score.sh e112_h20 1650
+2026-10-17T19:52:11Z command exited with status 0
+2026-10-17T19:52:11Z running: python3 runs/director.py
+2026-10-17T19:52:11Z command exited with status 0
+2026-10-17T19:52:11Z starting D2O in runs/e112_h20: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --holdout results/holdout_h20.json --balanced 1 --fid_reference results/reference_holdout_h20 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 100 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --kimg 1750 --resume runs/e112_h20/d2o-state-latest.pt
+2026-10-17T22:01:37Z D2O in runs/e112_h20 exited with status 0
+2026-10-17T22:01:37Z running: bash runs/h20_score.sh e112_h20 1750
+2026-10-17T22:06:58Z command exited with status 0
+2026-10-17T22:06:58Z running: python3 runs/director.py
+2026-10-17T22:06:58Z command exited with status 0
+2026-10-17T22:06:58Z starting D2O in runs/e112_h20: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --holdout results/holdout_h20.json --balanced 1 --fid_reference results/reference_holdout_h20 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 100 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --kimg 1850 --resume runs/e112_h20/d2o-state-latest.pt
+2026-10-18T00:24:28Z D2O in runs/e112_h20 exited with status 0
+2026-10-18T00:24:28Z running: bash runs/h20_score.sh e112_h20 1850
+2026-10-18T00:31:38Z command exited with status 0
+2026-10-18T00:31:38Z running: python3 runs/director.py
+2026-10-18T00:31:38Z command exited with status 0
+2026-10-18T00:31:38Z starting D2O in runs/e112_h20: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --holdout results/holdout_h20.json --balanced 1 --fid_reference results/reference_holdout_h20 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 100 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --kimg 1950 --resume runs/e112_h20/d2o-state-latest.pt
+2026-10-18T03:40:07Z D2O in runs/e112_h20 exited with status 0
+2026-10-18T03:40:07Z running: bash runs/h20_score.sh e112_h20 1950
+2026-10-18T03:49:43Z command exited with status 0
+2026-10-18T03:49:43Z running: python3 runs/director.py
+2026-10-18T03:49:43Z command exited with status 0
+2026-10-18T03:49:43Z starting D2O in runs/e112_h20: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --holdout results/holdout_h20.json --balanced 1 --fid_reference results/reference_holdout_h20 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 100 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --kimg 2050 --resume runs/e112_h20/d2o-state-latest.pt
+2026-10-18T06:59:57Z D2O in runs/e112_h20 exited with status 0
+2026-10-18T06:59:57Z running: bash runs/h20_score.sh e112_h20 2050
+2026-10-18T07:09:19Z command exited with status 0
+2026-10-18T07:09:19Z running: python3 runs/director.py
+2026-10-18T07:09:19Z command exited with status 0
+2026-10-18T07:09:19Z starting D2O in runs/e112_h20: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --holdout results/holdout_h20.json --balanced 1 --fid_reference results/reference_holdout_h20 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 100 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --kimg 2150 --resume runs/e112_h20/d2o-state-latest.pt
+2026-10-18T10:12:51Z D2O in runs/e112_h20 exited with status 0
+2026-10-18T10:12:51Z running: bash runs/h20_score.sh e112_h20 2150
+2026-10-18T10:19:51Z command exited with status 0
+2026-10-18T10:19:51Z running: python3 runs/director.py
+2026-10-18T10:19:51Z command exited with status 0
+2026-10-18T10:19:51Z starting D2O in runs/e112_h20: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --holdout results/holdout_h20.json --balanced 1 --fid_reference results/reference_holdout_h20 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 100 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --kimg 2250 --resume runs/e112_h20/d2o-state-latest.pt
+2026-10-18T13:30:26Z D2O in runs/e112_h20 exited with status 0
+2026-10-18T13:30:26Z running: bash runs/h20_score.sh e112_h20 2250
+2026-10-18T13:37:26Z command exited with status 0
+2026-10-18T13:37:26Z running: python3 runs/director.py
+2026-10-18T13:37:26Z command exited with status 0
+2026-10-18T13:37:26Z starting D2O in runs/e112_h20: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --holdout results/holdout_h20.json --balanced 1 --fid_reference results/reference_holdout_h20 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 100 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --kimg 2350 --resume runs/e112_h20/d2o-state-latest.pt
+2026-10-18T16:46:56Z D2O in runs/e112_h20 exited with status 0
+2026-10-18T16:46:56Z running: bash runs/h20_score.sh e112_h20 2350
+2026-10-18T16:52:32Z command exited with status 0
+2026-10-18T16:52:32Z running: python3 runs/director.py
+2026-10-18T16:52:32Z command exited with status 0
+2026-10-18T16:52:32Z starting D2O in runs/e112_h20: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --holdout results/holdout_h20.json --balanced 1 --fid_reference results/reference_holdout_h20 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 100 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --kimg 2450 --resume runs/e112_h20/d2o-state-latest.pt
+2026-10-18T19:05:03Z D2O in runs/e112_h20 exited with status 0
+2026-10-18T19:05:03Z running: bash runs/h20_score.sh e112_h20 2450
+2026-10-18T19:10:24Z command exited with status 0
+2026-10-18T19:10:25Z running: python3 runs/director.py
+2026-10-18T19:10:25Z command exited with status 0
+2026-10-18T19:10:25Z starting D2O in runs/e112_h20: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --holdout results/holdout_h20.json --balanced 1 --fid_reference results/reference_holdout_h20 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 100 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --kimg 2550 --resume runs/e112_h20/d2o-state-latest.pt
+2026-10-18T21:21:09Z D2O in runs/e112_h20 exited with status 0
+2026-10-18T21:21:09Z running: bash runs/h20_score.sh e112_h20 2550
+2026-10-18T21:28:13Z command exited with status 0
+2026-10-18T21:28:13Z running: python3 runs/director.py
+2026-10-18T21:28:13Z command exited with status 0
+2026-10-18T21:28:13Z starting D2O in runs/e112_h20: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --holdout results/holdout_h20.json --balanced 1 --fid_reference results/reference_holdout_h20 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 100 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --kimg 2650 --resume runs/e112_h20/d2o-state-latest.pt
+2026-10-18T23:41:09Z D2O in runs/e112_h20 exited with status 0
+2026-10-18T23:41:09Z running: bash runs/h20_score.sh e112_h20 2650
+2026-10-18T23:46:30Z command exited with status 0
+2026-10-18T23:46:30Z running: python3 runs/director.py
+2026-10-18T23:46:30Z command exited with status 0
+2026-10-18T23:46:30Z starting D2O in runs/e112_h20: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --holdout results/holdout_h20.json --balanced 1 --fid_reference results/reference_holdout_h20 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 100 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --kimg 2750 --resume runs/e112_h20/d2o-state-latest.pt
+2026-10-19T01:59:02Z D2O in runs/e112_h20 exited with status 0
+2026-10-19T01:59:02Z running: bash runs/h20_score.sh e112_h20 2750
+2026-10-19T02:04:24Z command exited with status 0
+2026-10-19T02:04:24Z running: python3 runs/director.py
+2026-10-19T02:04:24Z command exited with status 0
+2026-10-19T02:04:25Z starting D2O in runs/e112_h20: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --holdout results/holdout_h20.json --balanced 1 --fid_reference results/reference_holdout_h20 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 100 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --kimg 2850 --resume runs/e112_h20/d2o-state-latest.pt
+2026-10-19T04:19:28Z D2O in runs/e112_h20 exited with status 0
+2026-10-19T04:19:28Z running: bash runs/h20_score.sh e112_h20 2850
+2026-10-19T04:25:03Z command exited with status 0
+2026-10-19T04:25:03Z running: python3 runs/director.py
+2026-10-19T04:25:03Z command exited with status 0
+2026-10-19T04:25:03Z starting D2O in runs/e112_h20: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --holdout results/holdout_h20.json --balanced 1 --fid_reference results/reference_holdout_h20 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 100 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --kimg 2950 --resume runs/e112_h20/d2o-state-latest.pt
+2026-10-19T06:48:22Z D2O in runs/e112_h20 exited with status 0
+2026-10-19T06:48:22Z running: bash runs/h20_score.sh e112_h20 2950
+2026-10-19T06:53:58Z command exited with status 0
+2026-10-19T06:53:58Z running: python3 runs/director.py
+2026-10-19T06:53:58Z command exited with status 0
+2026-10-19T06:53:58Z starting D2O in runs/e112_h20: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --holdout results/holdout_h20.json --balanced 1 --fid_reference results/reference_holdout_h20 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 100 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --kimg 3050 --resume runs/e112_h20/d2o-state-latest.pt
+2026-10-19T09:14:29Z D2O in runs/e112_h20 exited with status 0
+2026-10-19T09:14:29Z running: bash runs/h20_score.sh e112_h20 3050
+2026-10-19T09:21:51Z command exited with status 0
+2026-10-19T09:21:51Z running: python3 runs/director.py
+2026-10-19T09:21:51Z command exited with status 0
+2026-10-19T09:21:51Z starting D2O in runs/e112_h20: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --holdout results/holdout_h20.json --balanced 1 --fid_reference results/reference_holdout_h20 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 100 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --kimg 3150 --resume runs/e112_h20/d2o-state-latest.pt
+2026-10-19T11:35:56Z D2O in runs/e112_h20 exited with status 0
+2026-10-19T11:35:56Z running: bash runs/h20_score.sh e112_h20 3150
+2026-10-19T11:43:08Z command exited with status 0
+2026-10-19T11:43:08Z running: python3 runs/director.py
+2026-10-19T11:43:08Z command exited with status 0
+2026-10-19T11:43:08Z starting D2O in runs/e112_h20: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --holdout results/holdout_h20.json --balanced 1 --fid_reference results/reference_holdout_h20 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 100 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --kimg 3250 --resume runs/e112_h20/d2o-state-latest.pt
+2026-10-19T13:52:21Z D2O in runs/e112_h20 exited with status 0
+2026-10-19T13:52:21Z running: bash runs/h20_score.sh e112_h20 3250
+2026-10-19T13:57:44Z command exited with status 0
+2026-10-19T13:57:44Z running: python3 runs/director.py
+2026-10-19T13:57:44Z command exited with status 0
+2026-10-19T13:57:44Z starting D2O in runs/e112_h20: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --holdout results/holdout_h20.json --balanced 1 --fid_reference results/reference_holdout_h20 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 100 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --kimg 3350 --resume runs/e112_h20/d2o-state-latest.pt
+2026-10-19T16:10:31Z D2O in runs/e112_h20 exited with status 0
+2026-10-19T16:10:31Z running: bash runs/h20_score.sh e112_h20 3350
+2026-10-19T16:15:53Z command exited with status 0
+2026-10-19T16:15:53Z running: python3 runs/director.py
+2026-10-19T16:15:53Z command exited with status 0
+2026-10-19T16:15:53Z starting D2O in runs/e112_h20: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --holdout results/holdout_h20.json --balanced 1 --fid_reference results/reference_holdout_h20 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 100 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --kimg 3450 --resume runs/e112_h20/d2o-state-latest.pt
+2026-10-19T18:28:55Z D2O in runs/e112_h20 exited with status 0
+2026-10-19T18:28:55Z running: bash runs/h20_score.sh e112_h20 3450
+2026-10-19T18:34:24Z command exited with status 0
+2026-10-19T18:34:24Z running: python3 runs/director.py
+2026-10-19T18:34:25Z command exited with status 0
+2026-10-19T18:34:25Z starting D2O in runs/e112_h20: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --holdout results/holdout_h20.json --balanced 1 --fid_reference results/reference_holdout_h20 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 100 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --kimg 3550 --resume runs/e112_h20/d2o-state-latest.pt
+2026-10-19T20:56:28Z D2O in runs/e112_h20 exited with status 0
+2026-10-19T20:56:28Z running: bash runs/h20_score.sh e112_h20 3550
+2026-10-19T21:01:56Z command exited with status 0
+2026-10-19T21:01:56Z running: python3 runs/director.py
+2026-10-19T21:01:56Z command exited with status 0
+2026-10-19T21:01:56Z starting D2O in runs/e112_h20: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --holdout results/holdout_h20.json --balanced 1 --fid_reference results/reference_holdout_h20 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 100 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --kimg 3650 --resume runs/e112_h20/d2o-state-latest.pt
+2026-10-19T23:12:36Z D2O in runs/e112_h20 exited with status 0
+2026-10-19T23:12:36Z running: bash runs/h20_score.sh e112_h20 3650
+2026-10-19T23:18:08Z command exited with status 0
+2026-10-19T23:18:08Z running: python3 runs/director.py
+2026-10-19T23:18:08Z command exited with status 0
+2026-10-19T23:18:08Z starting D2O in runs/e112_h20: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --holdout results/holdout_h20.json --balanced 1 --fid_reference results/reference_holdout_h20 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 100 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --kimg 3750 --resume runs/e112_h20/d2o-state-latest.pt
+2026-10-20T01:46:12Z D2O in runs/e112_h20 exited with status 0
+2026-10-20T01:46:12Z running: bash runs/h20_score.sh e112_h20 3750
+2026-10-20T01:51:48Z command exited with status 0
+2026-10-20T01:51:48Z running: python3 runs/director.py
+2026-10-20T01:51:48Z command exited with status 0
+2026-10-20T01:51:48Z starting D2O in runs/e112_h20: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --holdout results/holdout_h20.json --balanced 1 --fid_reference results/reference_holdout_h20 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 100 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --kimg 3850 --resume runs/e112_h20/d2o-state-latest.pt
+2026-10-20T04:07:26Z D2O in runs/e112_h20 exited with status 0
+2026-10-20T04:07:26Z running: bash runs/h20_score.sh e112_h20 3850
+2026-10-20T04:12:49Z command exited with status 0
+2026-10-20T04:12:49Z running: python3 runs/director.py
+2026-10-20T04:12:49Z command exited with status 0
+2026-10-20T04:12:49Z starting D2O in runs/e112_h20: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --holdout results/holdout_h20.json --balanced 1 --fid_reference results/reference_holdout_h20 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 100 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --kimg 3950 --resume runs/e112_h20/d2o-state-latest.pt
+2026-10-20T06:31:42Z D2O in runs/e112_h20 exited with status 0
+2026-10-20T06:31:42Z running: bash runs/h20_score.sh e112_h20 3950
+2026-10-20T06:37:02Z command exited with status 0
+2026-10-20T06:37:02Z running: python3 runs/director.py
+2026-10-20T06:37:02Z command exited with status 0
+2026-10-20T06:37:02Z starting D2O in runs/e112_h20: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --holdout results/holdout_h20.json --balanced 1 --fid_reference results/reference_holdout_h20 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 100 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --kimg 4000 --resume runs/e112_h20/d2o-state-latest.pt
+2026-10-20T07:43:18Z D2O in runs/e112_h20 exited with status 0
+2026-10-20T07:43:18Z running: bash runs/h20_score.sh e112_h20 4000
+2026-10-20T07:48:35Z command exited with status 0
+2026-10-20T07:48:35Z running: python3 runs/director.py
+2026-10-20T07:48:35Z command exited with status 0
+2026-10-20T07:48:35Z starting D2O in runs/e112_lorag_f5_g13_lr3b: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 5225
+2026-10-20T09:55:19Z D2O in runs/e112_lorag_f5_g13_lr3b exited with status 0
+2026-10-20T09:55:19Z running: bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 5225 keep
+2026-10-20T10:00:58Z command exited with status 0
+2026-10-20T10:00:58Z running: bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 5225
+2026-10-20T10:01:46Z command exited with status 0
+2026-10-20T10:01:46Z running: python3 runs/director.py
+2026-10-20T10:01:46Z command exited with status 0
+2026-10-20T10:01:46Z starting D2O in runs/e112_lorag_f5_g13_lr3b: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 5325
+2026-10-20T12:08:14Z D2O in runs/e112_lorag_f5_g13_lr3b exited with status 0
+2026-10-20T12:08:14Z running: bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 5325 keep
+2026-10-20T12:12:10Z command exited with status 0
+2026-10-20T12:12:10Z running: bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 5325
+2026-10-20T12:13:00Z command exited with status 0
+2026-10-20T12:13:00Z running: python3 runs/director.py
+2026-10-20T12:13:00Z command exited with status 0
+2026-10-20T12:13:00Z starting D2O in runs/e112_lorag_f5_g13_lr3b: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 5425
+2026-10-20T14:19:10Z D2O in runs/e112_lorag_f5_g13_lr3b exited with status 0
+2026-10-20T14:19:10Z running: bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 5425 keep
+2026-10-20T14:23:08Z command exited with status 0
+2026-10-20T14:23:08Z running: bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 5425
+2026-10-20T14:23:58Z command exited with status 0
+2026-10-20T14:23:58Z running: python3 runs/director.py
+2026-10-20T14:23:59Z command exited with status 0
+2026-10-20T14:23:59Z starting D2O in runs/e112_lorag_f5_g13_lr3b: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 5525
+2026-10-20T16:42:05Z D2O in runs/e112_lorag_f5_g13_lr3b exited with status 0
+2026-10-20T16:42:05Z running: bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 5525 keep
+2026-10-20T16:46:15Z command exited with status 0
+2026-10-20T16:46:15Z running: bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 5525
+2026-10-20T16:47:11Z command exited with status 0
+2026-10-20T16:47:11Z running: python3 runs/director.py
+2026-10-20T16:47:11Z command exited with status 0
+2026-10-20T16:47:11Z starting D2O in runs/e112_lorag_f5_g13_lr3b: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 5625
+2026-10-20T19:01:42Z D2O in runs/e112_lorag_f5_g13_lr3b exited with status 0
+2026-10-20T19:01:42Z running: bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 5625 keep
+2026-10-20T19:07:29Z command exited with status 0
+2026-10-20T19:07:29Z running: bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 5625
+2026-10-20T19:08:21Z command exited with status 0
+2026-10-20T19:08:21Z running: python3 runs/director.py
+2026-10-20T19:08:21Z command exited with status 0
+2026-10-20T19:08:21Z starting D2O in runs/e112_lorag_f5_g13_lr3b: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 5725
+2026-10-20T21:26:43Z D2O in runs/e112_lorag_f5_g13_lr3b exited with status 0
+2026-10-20T21:26:43Z running: bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 5725 keep
+2026-10-20T21:32:28Z command exited with status 0
+2026-10-20T21:32:28Z running: bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 5725
+2026-10-20T21:33:17Z command exited with status 0
+2026-10-20T21:33:17Z running: python3 runs/director.py
+2026-10-20T21:33:17Z command exited with status 0
+2026-10-20T21:33:17Z starting D2O in runs/e112_lorag_f5_g13_lr3b: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 5825
+2026-10-20T23:51:52Z D2O in runs/e112_lorag_f5_g13_lr3b exited with status 0
+2026-10-20T23:51:52Z running: bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 5825 keep
+2026-10-20T23:55:58Z command exited with status 0
+2026-10-20T23:55:59Z running: bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 5825
+2026-10-20T23:56:50Z command exited with status 0
+2026-10-20T23:56:50Z running: python3 runs/director.py
+2026-10-20T23:56:50Z command exited with status 0
+2026-10-20T23:56:50Z starting D2O in runs/e112_lorag_f5_g13_lr3b: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 5925
+2026-10-21T02:13:48Z D2O in runs/e112_lorag_f5_g13_lr3b exited with status 0
+2026-10-21T02:13:48Z running: bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 5925 keep
+2026-10-21T02:19:44Z command exited with status 0
+2026-10-21T02:19:44Z running: bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 5925
+2026-10-21T02:20:37Z command exited with status 0
+2026-10-21T02:20:37Z running: python3 runs/director.py
+2026-10-21T02:20:37Z command exited with status 0
+2026-10-21T02:20:38Z starting D2O in runs/e112_lorag_f5_g13_lr3b: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 6025
+2026-10-21T04:39:50Z D2O in runs/e112_lorag_f5_g13_lr3b exited with status 0
+2026-10-21T04:39:50Z running: bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 6025 keep
+2026-10-21T04:43:45Z command exited with status 0
+2026-10-21T04:43:46Z running: bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 6025
+2026-10-21T04:44:34Z command exited with status 0
+2026-10-21T04:44:34Z running: python3 runs/director.py
+2026-10-21T04:44:34Z command exited with status 0
+2026-10-21T04:44:34Z starting D2O in runs/e112_lorag_f5_g13_lr3b: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 6125
+2026-10-21T06:51:51Z D2O in runs/e112_lorag_f5_g13_lr3b exited with status 0
+2026-10-21T06:51:51Z running: bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 6125 keep
+2026-10-21T06:55:56Z command exited with status 0
+2026-10-21T06:55:56Z running: bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 6125
+2026-10-21T06:56:45Z command exited with status 0
+2026-10-21T06:56:45Z running: python3 runs/director.py
+2026-10-21T06:56:45Z command exited with status 0
+2026-10-21T06:56:45Z starting D2O in runs/e112_lorag_f5_g13_lr3b: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 6225
+2026-10-21T09:05:13Z D2O in runs/e112_lorag_f5_g13_lr3b exited with status 0
+2026-10-21T09:05:13Z running: bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 6225 keep
+2026-10-21T09:09:09Z command exited with status 0
+2026-10-21T09:09:09Z running: bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 6225
+2026-10-21T09:09:58Z command exited with status 0
+2026-10-21T09:09:58Z running: python3 runs/director.py
+2026-10-21T09:09:58Z command exited with status 0
+2026-10-21T09:09:58Z starting D2O in runs/e112_lorag_f5_g13_lr3b: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 6325
+2026-10-21T11:21:31Z D2O in runs/e112_lorag_f5_g13_lr3b exited with status 0
+2026-10-21T11:21:31Z running: bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 6325 keep
+2026-10-21T11:25:27Z command exited with status 0
+2026-10-21T11:25:27Z running: bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 6325
+2026-10-21T11:26:13Z command exited with status 0
+2026-10-21T11:26:13Z running: python3 runs/director.py
+2026-10-21T11:26:14Z command exited with status 0
+2026-10-21T11:26:14Z starting D2O in runs/e112_lorag_f5_g13_lr3b: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 6425
+2026-10-21T13:39:23Z D2O in runs/e112_lorag_f5_g13_lr3b exited with status 0
+2026-10-21T13:39:23Z running: bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 6425 keep
+2026-10-21T13:43:20Z command exited with status 0
+2026-10-21T13:43:20Z running: bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 6425
+2026-10-21T13:44:09Z command exited with status 0
+2026-10-21T13:44:09Z running: python3 runs/director.py
+2026-10-21T13:44:09Z command exited with status 0
+2026-10-21T13:44:09Z starting D2O in runs/e112_lorag_f5_g13_lr3b: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 6525
+2026-10-21T15:58:52Z D2O in runs/e112_lorag_f5_g13_lr3b exited with status 0
+2026-10-21T15:58:52Z running: bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 6525 keep
+2026-10-21T16:02:54Z command exited with status 0
+2026-10-21T16:02:54Z running: bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 6525
+2026-10-21T16:03:41Z command exited with status 0
+2026-10-21T16:03:42Z running: python3 runs/director.py
+2026-10-21T16:03:42Z command exited with status 0
+2026-10-21T16:03:42Z starting D2O in runs/e112_lorag_f5_g13_lr3b: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 6625
+2026-10-21T18:15:38Z D2O in runs/e112_lorag_f5_g13_lr3b exited with status 0
+2026-10-21T18:15:38Z running: bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 6625 keep
+2026-10-21T18:19:31Z command exited with status 0
+2026-10-21T18:19:31Z running: bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 6625
+2026-10-21T18:20:18Z command exited with status 0
+2026-10-21T18:20:18Z running: python3 runs/director.py
+2026-10-21T18:20:18Z command exited with status 0
+2026-10-21T18:20:18Z starting D2O in runs/e112_lorag_f5_g13_lr3b: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 6725
+2026-10-21T20:35:33Z D2O in runs/e112_lorag_f5_g13_lr3b exited with status 0
+2026-10-21T20:35:33Z running: bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 6725 keep
+2026-10-21T20:41:15Z command exited with status 0
+2026-10-21T20:41:15Z running: bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 6725
+2026-10-21T20:42:02Z command exited with status 0
+2026-10-21T20:42:02Z running: python3 runs/director.py
+2026-10-21T20:42:02Z command exited with status 0
+2026-10-21T20:42:02Z starting D2O in runs/e112_lorag_f5_g13_lr3b: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 6825
+2026-10-21T23:02:51Z D2O in runs/e112_lorag_f5_g13_lr3b exited with status 0
+2026-10-21T23:02:51Z running: bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 6825 keep
+2026-10-21T23:08:28Z command exited with status 0
+2026-10-21T23:08:28Z running: bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 6825
+2026-10-21T23:09:16Z command exited with status 0
+2026-10-21T23:09:16Z running: python3 runs/director.py
+2026-10-21T23:09:17Z command exited with status 0
+2026-10-21T23:09:17Z starting D2O in runs/e112_lorag_f5_g13_lr3b: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 6925
+2026-10-22T01:28:58Z D2O in runs/e112_lorag_f5_g13_lr3b exited with status 0
+2026-10-22T01:28:58Z running: bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 6925 keep
+2026-10-22T01:32:54Z command exited with status 0
+2026-10-22T01:32:54Z running: bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 6925
+2026-10-22T01:33:44Z command exited with status 0
+2026-10-22T01:33:44Z running: python3 runs/director.py
+2026-10-22T01:33:44Z command exited with status 0
+2026-10-22T01:33:44Z starting D2O in runs/e112_lorag_f5_g13_lr3b: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 7025
+2026-10-22T03:45:58Z D2O in runs/e112_lorag_f5_g13_lr3b exited with status 0
+2026-10-22T03:45:58Z running: bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 7025 keep
+2026-10-22T03:49:52Z command exited with status 0
+2026-10-22T03:49:52Z running: bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 7025
+2026-10-22T03:50:41Z command exited with status 0
+2026-10-22T03:50:41Z running: python3 runs/director.py
+2026-10-22T03:50:41Z command exited with status 0
+2026-10-22T03:50:41Z starting D2O in runs/e112_lorag_f5_g13_lr3b: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 7125
+2026-10-22T06:20:49Z D2O in runs/e112_lorag_f5_g13_lr3b exited with status 0
+2026-10-22T06:20:49Z running: bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 7125 keep
+2026-10-22T06:24:42Z command exited with status 0
+2026-10-22T06:24:42Z running: bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 7125
+2026-10-22T06:25:32Z command exited with status 0
+2026-10-22T06:25:32Z running: python3 runs/director.py
+2026-10-22T06:25:32Z command exited with status 0
+2026-10-22T06:25:32Z starting D2O in runs/e112_lorag_f5_g13_lr3b: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 7225
+2026-10-22T08:51:44Z D2O in runs/e112_lorag_f5_g13_lr3b exited with status 0
+2026-10-22T08:51:44Z running: bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 7225 keep
+2026-10-22T08:55:47Z command exited with status 0
+2026-10-22T08:55:47Z running: bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 7225
+2026-10-22T08:56:36Z command exited with status 0
+2026-10-22T08:56:36Z running: python3 runs/director.py
+2026-10-22T08:56:36Z command exited with status 0
+2026-10-22T08:56:36Z starting D2O in runs/e112_treal_lr3: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 3e-4 --batch_gpu 16 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/teacher_unguided-0058720256-0.130.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.0 --extra_real data/cache/teacher58_real --extra_real_p 1.0 --dlr 3e-5 --fid_reference results/reference_teacher58 --resume runs/e112_treal/d2o-state-latest.pt --kimg 5575
+2026-10-22T10:07:33Z D2O in runs/e112_treal_lr3 exited with status 0
+2026-10-22T10:07:33Z running: bash runs/tref_score.sh e112_treal_lr3 5575
+2026-10-22T10:14:44Z command exited with status 0
+2026-10-22T10:14:44Z running: python3 runs/director.py
+2026-10-22T10:14:44Z command exited with status 0
+2026-10-22T10:14:44Z starting D2O in runs/e112_treal_lr3: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 3e-4 --batch_gpu 16 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/teacher_unguided-0058720256-0.130.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.0 --extra_real data/cache/teacher58_real --extra_real_p 1.0 --dlr 3e-5 --fid_reference results/reference_teacher58 --kimg 5625 --resume runs/e112_treal_lr3/d2o-state-latest.pt
+2026-10-22T11:23:01Z D2O in runs/e112_treal_lr3 exited with status 0
+2026-10-22T11:23:01Z running: bash runs/tref_score.sh e112_treal_lr3 5625
+2026-10-22T11:30:15Z command exited with status 0
+2026-10-22T11:30:15Z running: python3 runs/director.py
+2026-10-22T11:30:15Z command exited with status 0
+2026-10-22T11:30:15Z starting D2O in runs/e112_treal_lr3: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 3e-4 --batch_gpu 16 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/teacher_unguided-0058720256-0.130.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.0 --extra_real data/cache/teacher58_real --extra_real_p 1.0 --dlr 3e-5 --fid_reference results/reference_teacher58 --kimg 5675 --resume runs/e112_treal_lr3/d2o-state-latest.pt
+2026-10-22T12:36:45Z D2O in runs/e112_treal_lr3 exited with status 0
+2026-10-22T12:36:45Z running: bash runs/tref_score.sh e112_treal_lr3 5675
+2026-10-22T12:43:57Z command exited with status 0
+2026-10-22T12:43:57Z running: python3 runs/director.py
+2026-10-22T12:43:57Z command exited with status 0
+2026-10-22T12:43:57Z starting D2O in runs/e112_treal_lr3: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 3e-4 --batch_gpu 16 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/teacher_unguided-0058720256-0.130.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.0 --extra_real data/cache/teacher58_real --extra_real_p 1.0 --dlr 3e-5 --fid_reference results/reference_teacher58 --kimg 5725 --resume runs/e112_treal_lr3/d2o-state-latest.pt
+2026-10-22T13:50:04Z D2O in runs/e112_treal_lr3 exited with status 0
+2026-10-22T13:50:04Z running: bash runs/tref_score.sh e112_treal_lr3 5725
+2026-10-22T13:57:11Z command exited with status 0
+2026-10-22T13:57:11Z running: python3 runs/director.py
+2026-10-22T13:57:11Z command exited with status 0
+2026-10-22T13:57:11Z starting D2O in runs/e112_treal_lr3: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 3e-4 --batch_gpu 16 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/teacher_unguided-0058720256-0.130.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.0 --extra_real data/cache/teacher58_real --extra_real_p 1.0 --dlr 3e-5 --fid_reference results/reference_teacher58 --kimg 5775 --resume runs/e112_treal_lr3/d2o-state-latest.pt
+2026-10-22T15:07:13Z D2O in runs/e112_treal_lr3 exited with status 0
+2026-10-22T15:07:13Z running: bash runs/tref_score.sh e112_treal_lr3 5775
+2026-10-22T15:12:28Z command exited with status 0
+2026-10-22T15:12:28Z running: python3 runs/director.py
+2026-10-22T15:12:28Z command exited with status 0
+2026-10-22T15:12:28Z starting D2O in runs/e112_treal_lr3: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 3e-4 --batch_gpu 16 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/teacher_unguided-0058720256-0.130.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.0 --extra_real data/cache/teacher58_real --extra_real_p 1.0 --dlr 3e-5 --fid_reference results/reference_teacher58 --kimg 5825 --resume runs/e112_treal_lr3/d2o-state-latest.pt
+2026-10-22T16:18:47Z D2O in runs/e112_treal_lr3 exited with status 0
+2026-10-22T16:18:47Z running: bash runs/tref_score.sh e112_treal_lr3 5825
+2026-10-22T16:25:55Z command exited with status 0
+2026-10-22T16:25:55Z running: python3 runs/director.py
+2026-10-22T16:25:56Z command exited with status 0
+2026-10-22T16:25:56Z starting D2O in runs/e112_treal: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/teacher_unguided-0058720256-0.130.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.0 --extra_real data/cache/teacher58_real --extra_real_p 1.0 --dlr 1e-4 --fid_reference results/reference_teacher58 --kimg 5575 --resume runs/e112_treal/d2o-state-latest.pt
+2026-10-22T17:35:20Z D2O in runs/e112_treal exited with status 0
+2026-10-22T17:35:20Z running: bash runs/tref_score.sh e112_treal 5575
+2026-10-22T17:40:53Z command exited with status 0
+2026-10-22T17:40:53Z running: python3 runs/director.py
+2026-10-22T17:40:53Z command exited with status 0
+2026-10-22T17:40:53Z starting D2O in runs/e112_treal: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/teacher_unguided-0058720256-0.130.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.0 --extra_real data/cache/teacher58_real --extra_real_p 1.0 --dlr 1e-4 --fid_reference results/reference_teacher58 --kimg 5625 --resume runs/e112_treal/d2o-state-latest.pt
+2026-10-22T18:49:27Z D2O in runs/e112_treal exited with status 0
+2026-10-22T18:49:27Z running: bash runs/tref_score.sh e112_treal 5625
+2026-10-22T18:54:56Z command exited with status 0
+2026-10-22T18:54:56Z running: python3 runs/director.py
+2026-10-22T18:54:56Z command exited with status 0
+2026-10-22T18:54:56Z starting D2O in runs/e112_treal: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/teacher_unguided-0058720256-0.130.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.0 --extra_real data/cache/teacher58_real --extra_real_p 1.0 --dlr 1e-4 --fid_reference results/reference_teacher58 --kimg 5675 --resume runs/e112_treal/d2o-state-latest.pt
+2026-10-22T20:05:55Z D2O in runs/e112_treal exited with status 0
+2026-10-22T20:05:55Z running: bash runs/tref_score.sh e112_treal 5675
+2026-10-22T20:11:22Z command exited with status 0
+2026-10-22T20:11:22Z running: python3 runs/director.py
+2026-10-22T20:11:22Z command exited with status 0
+2026-10-22T20:11:22Z starting D2O in runs/e112_treal: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/teacher_unguided-0058720256-0.130.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.0 --extra_real data/cache/teacher58_real --extra_real_p 1.0 --dlr 1e-4 --fid_reference results/reference_teacher58 --kimg 5725 --resume runs/e112_treal/d2o-state-latest.pt
+2026-10-22T21:20:13Z D2O in runs/e112_treal exited with status 0
+2026-10-22T21:20:13Z running: bash runs/tref_score.sh e112_treal 5725
+2026-10-22T21:25:39Z command exited with status 0
+2026-10-22T21:25:39Z running: python3 runs/director.py
+2026-10-22T21:25:39Z command exited with status 0
+2026-10-22T21:25:39Z starting D2O in runs/e112_lorag_f5_g13_lr3b: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 7325
+2026-10-22T23:45:36Z D2O in runs/e112_lorag_f5_g13_lr3b exited with status 0
+2026-10-22T23:45:36Z running: bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 7325 keep
+2026-10-22T23:49:39Z command exited with status 0
+2026-10-22T23:49:39Z running: bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 7325
+2026-10-22T23:50:31Z command exited with status 0
+2026-10-22T23:50:31Z running: python3 runs/director.py
+2026-10-22T23:50:31Z command exited with status 0
+2026-10-22T23:50:31Z starting D2O in runs/e112_lorag_f5_g13_lr3b: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 7425
+2026-10-23T02:07:06Z D2O in runs/e112_lorag_f5_g13_lr3b exited with status 0
+2026-10-23T02:07:06Z running: bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 7425 keep
+2026-10-23T02:11:05Z command exited with status 0
+2026-10-23T02:11:05Z running: bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 7425
+2026-10-23T02:11:55Z command exited with status 0
+2026-10-23T02:11:55Z running: python3 runs/director.py
+2026-10-23T02:11:55Z command exited with status 0
+2026-10-23T02:11:55Z starting D2O in runs/e112_lorag_f5_g13_lr3b: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 7525
+2026-10-23T04:30:59Z D2O in runs/e112_lorag_f5_g13_lr3b exited with status 0
+2026-10-23T04:30:59Z running: bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 7525 keep
+2026-10-23T04:35:00Z command exited with status 0
+2026-10-23T04:35:00Z running: bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 7525
+2026-10-23T04:35:50Z command exited with status 0
+2026-10-23T04:35:50Z running: python3 runs/director.py
+2026-10-23T04:35:50Z command exited with status 0
+2026-10-23T04:35:50Z starting D2O in runs/e112_lorag_f5_g13_lr3b: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 7625
+2026-10-23T06:48:42Z D2O in runs/e112_lorag_f5_g13_lr3b exited with status 0
+2026-10-23T06:48:42Z running: bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 7625 keep
+2026-10-23T06:52:42Z command exited with status 0
+2026-10-23T06:52:42Z running: bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 7625
+2026-10-23T06:53:33Z command exited with status 0
+2026-10-23T06:53:33Z running: python3 runs/director.py
+2026-10-23T06:53:33Z command exited with status 0
+2026-10-23T06:53:33Z starting D2O in runs/e112_lorag_f5_g13_lr3b: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 7725
+2026-10-23T09:08:08Z D2O in runs/e112_lorag_f5_g13_lr3b exited with status 0
+2026-10-23T09:08:08Z running: bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 7725 keep
+2026-10-23T09:12:11Z command exited with status 0
+2026-10-23T09:12:11Z running: bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 7725
+2026-10-23T09:13:01Z command exited with status 0
+2026-10-23T09:13:01Z running: python3 runs/director.py
+2026-10-23T09:13:01Z command exited with status 0
+2026-10-23T09:13:01Z starting D2O in runs/e112_lorag_f5_g13_lr3b: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 7825
+2026-10-23T11:32:20Z D2O in runs/e112_lorag_f5_g13_lr3b exited with status 0
+2026-10-23T11:32:20Z running: bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 7825 keep
+2026-10-23T11:36:24Z command exited with status 0
+2026-10-23T11:36:24Z running: bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 7825
+2026-10-23T11:37:16Z command exited with status 0
+2026-10-23T11:37:16Z running: python3 runs/director.py
+2026-10-23T11:37:16Z command exited with status 0
+2026-10-23T11:37:16Z starting D2O in runs/e112_lorag_f5_g13_lr3b: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 7925
+2026-10-23T13:56:21Z D2O in runs/e112_lorag_f5_g13_lr3b exited with status 0
+2026-10-23T13:56:21Z running: bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 7925 keep
+2026-10-23T14:00:16Z command exited with status 0
+2026-10-23T14:00:16Z running: bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 7925
+2026-10-23T14:01:05Z command exited with status 0
+2026-10-23T14:01:05Z running: python3 runs/director.py
+2026-10-23T14:01:05Z command exited with status 0
+2026-10-23T14:01:05Z starting D2O in runs/e112_lorag_f5_g13_lr3b: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 8025
+2026-10-23T16:14:54Z D2O in runs/e112_lorag_f5_g13_lr3b exited with status 0
+2026-10-23T16:14:54Z running: bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 8025 keep
+2026-10-23T16:18:48Z command exited with status 0
+2026-10-23T16:18:48Z running: bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 8025
+2026-10-23T16:19:36Z command exited with status 0
+2026-10-23T16:19:36Z running: python3 runs/director.py
+2026-10-23T16:19:36Z command exited with status 0
+2026-10-23T16:19:36Z starting D2O in runs/e112_lorag_f5_g13_lr3b: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 8125
+2026-10-23T18:34:11Z D2O in runs/e112_lorag_f5_g13_lr3b exited with status 0
+2026-10-23T18:34:11Z running: bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 8125 keep
+2026-10-23T18:38:09Z command exited with status 0
+2026-10-23T18:38:09Z running: bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 8125
+2026-10-23T18:39:02Z command exited with status 0
+2026-10-23T18:39:02Z running: python3 runs/director.py
+2026-10-23T18:39:02Z command exited with status 0
+2026-10-23T18:39:02Z starting D2O in runs/e112_lorag_f5_g13_lr3b: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 8225
+2026-10-23T20:51:42Z D2O in runs/e112_lorag_f5_g13_lr3b exited with status 0
+2026-10-23T20:51:42Z running: bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 8225 keep
+2026-10-23T20:55:39Z command exited with status 0
+2026-10-23T20:55:39Z running: bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 8225
+2026-10-23T20:56:30Z command exited with status 0
+2026-10-23T20:56:30Z running: python3 runs/director.py
+2026-10-23T20:56:30Z command exited with status 0
+2026-10-23T20:56:30Z starting D2O in runs/e112_lorag_f5_g13_lr3b: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 8325
+2026-10-23T23:08:52Z D2O in runs/e112_lorag_f5_g13_lr3b exited with status 0
+2026-10-23T23:08:52Z running: bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 8325 keep
+2026-10-23T23:12:53Z command exited with status 0
+2026-10-23T23:12:53Z running: bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 8325
+2026-10-23T23:13:45Z command exited with status 0
+2026-10-23T23:13:45Z running: python3 runs/director.py
+2026-10-23T23:13:45Z command exited with status 0
+2026-10-23T23:13:45Z starting D2O in runs/e112_lorag_f5_g13_lr3b: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 8425
+2026-10-24T01:27:45Z D2O in runs/e112_lorag_f5_g13_lr3b exited with status 0
+2026-10-24T01:27:45Z running: bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 8425 keep
+2026-10-24T01:31:38Z command exited with status 0
+2026-10-24T01:31:38Z running: bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 8425
+2026-10-24T01:32:27Z command exited with status 0
+2026-10-24T01:32:27Z running: python3 runs/director.py
+2026-10-24T01:32:27Z command exited with status 0
+2026-10-24T01:32:27Z starting D2O in runs/e112_lorag_f5_g13_lr3b: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 8525
+2026-10-24T03:46:26Z D2O in runs/e112_lorag_f5_g13_lr3b exited with status 0
+2026-10-24T03:46:26Z running: bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 8525 keep
+2026-10-24T03:50:23Z command exited with status 0
+2026-10-24T03:50:23Z running: bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 8525
+2026-10-24T03:51:10Z command exited with status 0
+2026-10-24T03:51:10Z running: python3 runs/director.py
+2026-10-24T03:51:10Z command exited with status 0
+2026-10-24T03:51:10Z starting D2O in runs/e112_lorag_f5_g13_lr3b: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 8625
+2026-10-24T06:12:29Z D2O in runs/e112_lorag_f5_g13_lr3b exited with status 0
+2026-10-24T06:12:29Z running: bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 8625 keep
+2026-10-24T06:16:42Z command exited with status 0
+2026-10-24T06:16:42Z running: bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 8625
+2026-10-24T06:17:32Z command exited with status 0
+2026-10-24T06:17:32Z running: python3 runs/director.py
+2026-10-24T06:17:33Z command exited with status 0
+2026-10-24T06:17:33Z starting D2O in runs/e112_lorag_f5_g13_lr3b: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 8725
+2026-10-24T08:32:04Z D2O in runs/e112_lorag_f5_g13_lr3b exited with status 0
+2026-10-24T08:32:04Z running: bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 8725 keep
+2026-10-24T08:36:02Z command exited with status 0
+2026-10-24T08:36:03Z running: bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 8725
+2026-10-24T08:36:54Z command exited with status 0
+2026-10-24T08:36:54Z running: python3 runs/director.py
+2026-10-24T08:36:54Z command exited with status 0
+2026-10-24T08:36:54Z starting D2O in runs/e112_lorag_f5_g13_lr3b: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 8825
+2026-10-24T10:53:04Z D2O in runs/e112_lorag_f5_g13_lr3b exited with status 0
+2026-10-24T10:53:04Z running: bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 8825 keep
+2026-10-24T10:57:00Z command exited with status 0
+2026-10-24T10:57:00Z running: bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 8825
+2026-10-24T10:57:49Z command exited with status 0
+2026-10-24T10:57:49Z running: python3 runs/director.py
+2026-10-24T10:57:49Z command exited with status 0
+2026-10-24T10:57:49Z starting D2O in runs/e112_lorag_f5_g13_lr3b: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 8925
+2026-10-24T13:09:08Z D2O in runs/e112_lorag_f5_g13_lr3b exited with status 0
+2026-10-24T13:09:08Z running: bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 8925 keep
+2026-10-24T13:13:06Z command exited with status 0
+2026-10-24T13:13:06Z running: bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 8925
+2026-10-24T13:13:52Z command exited with status 0
+2026-10-24T13:13:52Z running: python3 runs/director.py
+2026-10-24T13:13:52Z command exited with status 0
+2026-10-24T13:13:53Z starting D2O in runs/e112_lorag_f5_g13_lr3b: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 9025
+2026-10-24T15:27:32Z D2O in runs/e112_lorag_f5_g13_lr3b exited with status 0
+2026-10-24T15:27:32Z running: bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 9025 keep
+2026-10-24T15:31:30Z command exited with status 0
+2026-10-24T15:31:30Z running: bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 9025
+2026-10-24T15:32:19Z command exited with status 0
+2026-10-24T15:32:19Z running: python3 runs/director.py
+2026-10-24T15:32:19Z command exited with status 0
+2026-10-24T15:32:19Z starting D2O in runs/e112_lorag_f5_g13_lr3b: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 9125
+2026-10-24T17:44:34Z D2O in runs/e112_lorag_f5_g13_lr3b exited with status 0
+2026-10-24T17:44:34Z running: bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 9125 keep
+2026-10-24T17:48:30Z command exited with status 0
+2026-10-24T17:48:30Z running: bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 9125
+2026-10-24T17:49:16Z command exited with status 0
+2026-10-24T17:49:16Z running: python3 runs/director.py
+2026-10-24T17:49:17Z command exited with status 0
+2026-10-24T17:49:17Z starting D2O in runs/e112_lorag_f5_g13_lr3b: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 9225
+2026-10-24T20:01:13Z D2O in runs/e112_lorag_f5_g13_lr3b exited with status 0
+2026-10-24T20:01:13Z running: bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 9225 keep
+2026-10-24T20:05:12Z command exited with status 0
+2026-10-24T20:05:12Z running: bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 9225
+2026-10-24T20:06:02Z command exited with status 0
+2026-10-24T20:06:02Z running: python3 runs/director.py
+2026-10-24T20:06:02Z command exited with status 0
+2026-10-24T20:06:02Z starting D2O in runs/e112_lorag_f5_g13_lr3b: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 9325
+2026-10-24T22:25:58Z D2O in runs/e112_lorag_f5_g13_lr3b exited with status 0
+2026-10-24T22:25:58Z running: bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 9325 keep
+2026-10-24T22:29:56Z command exited with status 0
+2026-10-24T22:29:56Z running: bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 9325
+2026-10-24T22:30:44Z command exited with status 0
+2026-10-24T22:30:44Z running: python3 runs/director.py
+2026-10-24T22:30:44Z command exited with status 0
+2026-10-24T22:30:44Z starting D2O in runs/e112_lorag_f5_g13_lr3b: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 9425
+2026-10-25T00:50:13Z D2O in runs/e112_lorag_f5_g13_lr3b exited with status 0
+2026-10-25T00:50:13Z running: bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 9425 keep
+2026-10-25T00:54:12Z command exited with status 0
+2026-10-25T00:54:12Z running: bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 9425
+2026-10-25T00:55:02Z command exited with status 0
+2026-10-25T00:55:02Z running: python3 runs/director.py
+2026-10-25T00:55:02Z command exited with status 0
+2026-10-25T00:55:02Z starting D2O in runs/e112_lorag_f5_g13_lr3b: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 9525
+2026-10-25T03:13:29Z D2O in runs/e112_lorag_f5_g13_lr3b exited with status 0
+2026-10-25T03:13:29Z running: bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 9525 keep
+2026-10-25T03:17:27Z command exited with status 0
+2026-10-25T03:17:27Z running: bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 9525
+2026-10-25T03:18:15Z command exited with status 0
+2026-10-25T03:18:15Z running: python3 runs/director.py
+2026-10-25T03:18:15Z command exited with status 0
+2026-10-25T03:18:15Z starting D2O in runs/e112_lorag_f5_g13_lr3b: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 9625
+2026-10-25T05:34:59Z D2O in runs/e112_lorag_f5_g13_lr3b exited with status 0
+2026-10-25T05:34:59Z running: bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 9625 keep
+2026-10-25T05:39:00Z command exited with status 0
+2026-10-25T05:39:00Z running: bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 9625
+2026-10-25T05:39:52Z command exited with status 0
+2026-10-25T05:39:52Z running: python3 runs/director.py
+2026-10-25T05:39:52Z command exited with status 0
+2026-10-25T05:39:52Z starting D2O in runs/e112_lorag_f5_g13_lr3b: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 9725
+2026-10-25T07:53:06Z D2O in runs/e112_lorag_f5_g13_lr3b exited with status 0
+2026-10-25T07:53:06Z running: bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 9725 keep
+2026-10-25T07:57:04Z command exited with status 0
+2026-10-25T07:57:04Z running: bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 9725
+2026-10-25T07:57:51Z command exited with status 0
+2026-10-25T07:57:51Z running: python3 runs/director.py
+2026-10-25T07:57:52Z command exited with status 0
+2026-10-25T07:57:52Z starting D2O in runs/e112_lorag_f5_g13_lr3b: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 9825
+2026-10-25T10:12:54Z D2O in runs/e112_lorag_f5_g13_lr3b exited with status 0
+2026-10-25T10:12:54Z running: bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 9825 keep
+2026-10-25T10:16:55Z command exited with status 0
+2026-10-25T10:16:55Z running: bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 9825
+2026-10-25T10:17:48Z command exited with status 0
+2026-10-25T10:17:48Z running: python3 runs/director.py
+2026-10-25T10:17:48Z command exited with status 0
+2026-10-25T10:17:48Z starting D2O in runs/e112_lorag_f5_g13_lr3b: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 9925
+2026-10-25T12:44:39Z D2O in runs/e112_lorag_f5_g13_lr3b exited with status 0
+2026-10-25T12:44:39Z running: bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 9925 keep
+2026-10-25T12:48:46Z command exited with status 0
+2026-10-25T12:48:46Z running: bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 9925
+2026-10-25T12:49:36Z command exited with status 0
+2026-10-25T12:49:36Z running: python3 runs/director.py
+2026-10-25T12:49:36Z command exited with status 0
+2026-10-25T12:49:36Z starting D2O in runs/e112_lorag_f5_g13_lr3b: --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 10025
+2026-10-25T14:40:27Z D2O in runs/e112_lorag_f5_g13_lr3b exited with status 0
+2026-10-25T14:40:27Z running: bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 10025 keep
+2026-10-25T14:44:34Z command exited with status 0
+2026-10-25T14:44:34Z running: bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 10025
+2026-10-25T14:45:23Z command exited with status 0
+2026-10-25T14:45:23Z running: python3 runs/director.py
+2026-10-25T14:45:23Z command exited with status 0
+2026-10-25T14:45:23Z queue empty

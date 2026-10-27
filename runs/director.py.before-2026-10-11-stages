@@ -1,0 +1,313 @@
+#!/usr/bin/env python3
+"""Chooses the next GPU job when no Claude session is there to do it (written 2026-10-11 for a day without one).
+
+runs/chain_final.sh runs the lines of runs/queue_final.txt one after another. The line "! python3 runs/director.py"
+makes this script read the logs, decide what is worth training next and append the lines for it to the end of the
+queue, the last of them a call of itself. It only appends: the chain counts the lines it has finished, so nothing above
+may move. Every decision goes to runs/director.log (and to runs/measure.out, the chain's output of "! " lines).
+
+The two branches add the DMD2 distribution-matching term to the GAN loss of the E112 one-step generator, with a fake
+score small enough for the 100M limit (low-rank branches, d2o/lora.py):
+  e112_lorag  branches on the generator itself: every weight the fake score uses is already counted (99,992,471).
+  e112_lora2  branches on the frozen teacher (99,970,881 without the teacher). Inside the limit if a teacher that the
+              fake score shares without a copy is counted once, as the teacher: the user's working assumption of
+              2026-10-11, until the TA can be asked. Read strictly, the TA's answer ("the generator and the fake score
+              network should fit within the 100M parameter limit in total", "the parameter count includes frozen
+              parameters") says otherwise, so e112_lorag is the safer of the two.
+Rules, all on the train-reference FID after calibration (results/e112_calibration.log, written by "watch_e112.sh score"):
+  - e112_lorag gets the term only if its fake score has learnt the generator's distribution in the 50 kimg before it
+    (loss_fake at most GATE_LOSS_FAKE; a bad fake score would push the generator the wrong way).
+  - A branch goes on in pieces of PIECE_KIMG, each scored, while one of its last two points is a new best.
+  - While both improve, e112_lorag is the one that trains as long as it is within CLOSE of e112_lora2; if e112_lora2
+    is clearly ahead they take turns (the better one keeps moving, and so does the one that is safe with the TA).
+  - When neither improves any more, the better one (e112_lorag if within CLOSE) is continued once with 5 fake-score
+    steps per generator step (the DMD2 setting; ours is 2 or 3) under a new name, in pieces of F5_PIECE_KIMG, by the
+    same rule. Then the queue ends.
+  - A piece that fails is repeated once; a second failure ends its branch.
+Stop it by hand: touch runs/director.stop (the next call appends nothing, the chain ends with "queue empty").
+Try it without touching anything: python3 runs/director.py --dry-run
+"""
+import json
+import os
+import re
+import shutil
+import sys
+import time
+import traceback
+
+ROOT = os.environ.get("DIRECTOR_ROOT", "/home/jiin/AIC313-D2O")
+QUEUE, CHAIN_LOG, CALIB_LOG = "runs/queue_final.txt", "runs/chain.log", "results/e112_calibration.log"
+STATE, LOG, STOP = "runs/director_state.json", "runs/director.log", "runs/director.stop"
+DEADLINE = "2026-10-13T12:00:00Z"  # nobody has looked for two days by then
+MAX_CALLS = 40
+START_FID = 14.029  # e112_fit at 1950 kimg after calibration: the state both branches start from
+PIECE_KIMG, F5_PIECE_KIMG = 100, 50
+GATE_LOSS_FAKE = 0.50  # the teacher-based fake score sits at 0.30 to 0.35, the generator's own network starts near 0.6
+CLOSE = 0.15  # FID by which e112_lora2 has to lead before it gets GPU time next to the safer e112_lorag
+MARGIN = 0.02  # a new best counts from this much (three seeds agree to a few hundredths)
+WORSE = 0.5  # a branch this far above its start is being damaged by the term
+MIN_FREE_GB = 3.0
+
+COMMON = ("--g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 "
+          "--lr 1e-3 --batch_gpu 16 --resume {resume} --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt "
+          "{fake} --kimg {kimg}")
+SAFE, OTHER = "e112_lorag", "e112_lora2"
+BRANCHES = {
+    OTHER: dict(fake="--dmd_fake_lora 4 --dmd_fake_lr 2e-4 --dmd_from_kimg 1975 --dmd_fake_steps 2", dm_from=1975, start_fid=START_FID),
+    # Its first piece (to 2000 kimg, the queue line before the first call) only prepares the fake score.
+    SAFE: dict(fake="--dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 3",
+               dm_from=2000, start_fid=START_FID, init="runs/e112_fit/d2o-state-latest.pt", gate=2000, first=2075),
+}
+# Resume states of branches that were given up, removed one by one when the disk runs short (the user, 2026-10-11:
+# what is neither a result nor a possible candidate may go without asking). Logs and scored checkpoints stay.
+REMOVABLE = [
+    "runs/d2o_one_aug20/d2o-state-latest.pt", "runs/d2o_one_dn30_tdisc/d2o-state-latest.pt", "runs/d2o_one_dn30_tdisc8/d2o-state-latest.pt",
+    "runs/e112_lora/fid_samples", "runs/d2o_one_dn25/best.ckpt", "runs/d2o_one_dn35/best.ckpt", "runs/d2o_one_dn40/best.ckpt",
+    "runs/d2o_one_b128/best.ckpt", "runs/d2o_one_aug40/best.ckpt",
+]
+SELF = "! python3 runs/director.py"
+
+
+def path(name):
+    return os.path.join(ROOT, name)
+
+
+def read(name):
+    try:
+        with open(path(name), errors="replace") as file:
+            return file.read().splitlines()
+    except FileNotFoundError:
+        return []
+
+
+def now():
+    return time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
+
+
+def pieces(run):
+    """[target kimg, exit status or None] of every piece of the run that the chain has started."""
+    found = []
+    for line in read(CHAIN_LOG):
+        if f"starting D2O in runs/{run}: " in line:
+            match = re.search(r"--kimg ([0-9.]+)\s*$", line)
+            found.append([float(match.group(1)) if match else None, None])
+        elif f"D2O in runs/{run} exited with status " in line and found:
+            found[-1][1] = int(line.rsplit(" ", 1)[1])
+    return found
+
+
+def records(run):
+    for line in reversed(read(f"runs/{run}/log.jsonl")):
+        try:
+            yield json.loads(line)
+        except ValueError:
+            continue
+
+
+def reached(run):
+    """kimg of the run's last log record. A piece stopped by a signal exits with status 0 short of its target."""
+    return next((float(row["kimg"]) for row in records(run) if "kimg" in row), None)
+
+
+def loss_fake(run, count=10):
+    values = [row["loss_fake"] for row in records(run) if "loss_fake" in row][:count]
+    return sum(values) / len(values) if values else None
+
+
+def scores(run):
+    """{kimg: lowest train-reference FID over the gains} of the run's scored points."""
+    found = {}
+    for line in read(CALIB_LOG):
+        match = re.match(rf"{re.escape(run)} (\d+) .*train-reference FID +([0-9.]+)", line)
+        if match:
+            kimg = int(match.group(1))
+            found[kimg] = min(found.get(kimg, float("inf")), float(match.group(2)))
+    return found
+
+
+def branch(run, state):
+    if run in BRANCHES:
+        return BRANCHES[run]
+    f5 = state["f5"]  # the only other run: the better branch continued with 5 fake-score steps
+    base = BRANCHES[f5["base"]]
+    return dict(fake=re.sub(r"--dmd_fake_steps \d+", "--dmd_fake_steps 5", base["fake"]), dm_from=f5["from_kimg"],
+                start_fid=f5["from_fid"], init=f"runs/{f5['base']}/d2o-state-latest.pt")
+
+
+def train_line(run, kimg, state):
+    config = branch(run, state)
+    own = f"runs/{run}/d2o-state-latest.pt"
+    resume = own if os.path.exists(path(own)) else config["init"]
+    return f"runs/{run} " + COMMON.format(resume=resume, fake=config["fake"], kimg=kimg)
+
+
+def score_line(run, kimg):
+    return f"! bash runs/watch_e112.sh score {run} {kimg} keep"
+
+
+def piece(run, kimg, state):
+    """A training piece, its score if the term has acted by then, and the next call of this script."""
+    scored = [score_line(run, kimg)] if kimg > branch(run, state)["dm_from"] else []
+    return [train_line(run, kimg, state)] + scored + [SELF]
+
+
+def drop(run, reason, state):
+    state["dropped"][run] = reason
+    return "dropped", reason
+
+
+def inspect(run, state):
+    """Where the run stands: ("retry", kimg), ("score", kimg), ("first", kimg), ("dropped", reason),
+    ("done", (best FID, kimg)) once it has stopped improving, or ("alive", (best FID, kimg))."""
+    if run in state["dropped"]:
+        return "dropped", state["dropped"][run]
+    config, started, tries = branch(run, state), pieces(run), state["retries"]
+    if not started:
+        return drop(run, "the chain never started it", state)
+    target, status = started[-1]
+    position = reached(run)
+    if target is None:
+        return drop(run, "its last line in runs/chain.log has no --kimg", state)
+    if status != 0 or position is None or position < target - 0.5:
+        tries[run] = tries.get(run, 0) + 1
+        if tries[run] > 1:
+            return drop(run, f"its piece to {target} kimg failed twice (exit status {status}, log at {position} kimg)", state)
+        return "retry", int(target)
+    kimg, measured = int(round(position)), scores(run)
+    if kimg == config.get("gate"):
+        tries[run] = 0
+        level = loss_fake(run)
+        if level is None or level > GATE_LOSS_FAKE:
+            return drop(run, f"loss_fake {level} after the preparation piece, above {GATE_LOSS_FAKE}: the term stays off", state)
+        return "first", config["first"]
+    if kimg > config["dm_from"] and kimg not in measured:
+        tries[run + " score"] = tries.get(run + " score", 0) + 1
+        if tries[run + " score"] > 1:
+            return drop(run, f"its state at {kimg} kimg could not be scored", state)
+        return "score", kimg
+    tries[run], tries[run + " score"] = 0, 0
+    points = [config["start_fid"]] + [measured[key] for key in sorted(measured) if key > config["dm_from"]]
+    if len(points) == 1:
+        return drop(run, f"at {kimg} kimg without a scored point", state)
+    if points[-1] > config["start_fid"] + WORSE:
+        return drop(run, f"{points[-1]} at {kimg} kimg, more than {WORSE} above its start ({config['start_fid']})", state)
+    best = min(points[1:])
+    if len(points) >= 3 and min(points[-2:]) > min(points[:-2]) - MARGIN:
+        return "done", (best, kimg)
+    return "alive", (best, kimg)
+
+
+def make_room(note):
+    for name in REMOVABLE:
+        if shutil.disk_usage(path("runs")).free >= MIN_FREE_GB * 2**30:
+            return
+        target = path(name)
+        if os.path.isdir(target):
+            shutil.rmtree(target)
+        elif os.path.exists(target):
+            os.remove(target)
+        else:
+            continue
+        note(f"disk below {MIN_FREE_GB} GB free: removed {name}")
+
+
+def plan(state, note):
+    """The queue lines to append and the reason, from the logs alone."""
+    info = {run: inspect(run, state) for run in BRANCHES}
+    for run, (kind, value) in info.items():
+        note(f"{run}: {kind} {value}")
+    for run, (kind, value) in info.items():
+        if kind == "retry":
+            return piece(run, value, state), f"{run}: its piece to {value} kimg did not end normally, once more"
+        if kind == "score":
+            return [score_line(run, value), SELF], f"{run}: its state at {value} kimg has no score yet"
+        if kind == "first":
+            return piece(run, value, state), f"{run}: loss_fake {loss_fake(run):.3f} after the preparation, the term goes on"
+    alive = {run: value for run, (kind, value) in info.items() if kind == "alive"}
+    if len(alive) == 2:
+        if alive[SAFE][0] <= alive[OTHER][0] + CLOSE:
+            run, why = SAFE, f"{SAFE} ({alive[SAFE][0]}) is within {CLOSE} of {OTHER} ({alive[OTHER][0]}) and the safer one with the TA"
+        else:
+            run = min(alive, key=lambda name: (alive[name][1] - BRANCHES[name]["dm_from"], name != OTHER))  # a tie goes to the leader
+            why = f"{OTHER} ({alive[OTHER][0]}) leads {SAFE} ({alive[SAFE][0]}) by more than {CLOSE}: they take turns, now {run}"
+        return piece(run, alive[run][1] + PIECE_KIMG, state), why
+    if alive:
+        run = next(iter(alive))
+        return piece(run, alive[run][1] + PIECE_KIMG, state), f"{run} ({alive[run][0]}) is the branch that still improves"
+    if state["f5"] is None:
+        done = {run: value for run, (kind, value) in info.items() if kind == "done"}
+        if not done:
+            return [], "no branch is left to continue: the queue ends here"
+        base = SAFE if SAFE in done and (OTHER not in done or done[SAFE][0] <= done[OTHER][0] + CLOSE) else OTHER
+        return five_steps(base, done[base], state)
+    return continued(state, note) or ([], "nothing is left to continue: the queue ends here")
+
+
+def five_steps(base, value, state):
+    """The branch has stopped improving: once more from its state, with 5 fake-score steps per generator step."""
+    best, kimg = value
+    state["f5"] = dict(run=base + "_f5", base=base, from_kimg=kimg, from_fid=scores(base)[kimg])
+    return (piece(base + "_f5", kimg + F5_PIECE_KIMG, state),
+            f"{base} (best {best}) no longer improves; it goes on as {base}_f5 with 5 fake-score steps")
+
+
+def continued(state, note):
+    """The next lines for the 5-step continuation, or None once it is over."""
+    run = state["f5"]["run"]
+    kind, value = inspect(run, state)
+    note(f"{run}: {kind} {value}")
+    if kind == "retry":
+        return piece(run, value, state), f"{run}: its piece to {value} kimg did not end normally, once more"
+    if kind == "score":
+        return [score_line(run, value), SELF], f"{run}: its state at {value} kimg has no score yet"
+    if kind == "alive":
+        return piece(run, value[1] + F5_PIECE_KIMG, state), f"{run} ({value[0]}) still improves"
+    return None
+
+
+def main():
+    dry = "--dry-run" in sys.argv
+    notes = []
+
+    def note(text):
+        notes.append(f"{now()} {text}")
+        print(notes[-1], flush=True)
+
+    try:
+        with open(path(STATE)) as file:
+            state = json.load(file)
+    except FileNotFoundError:
+        state = dict(calls=0, dropped={}, retries={}, f5=None)
+    state["calls"] += 1
+    note(f"call {state['calls']}" + (" (dry run: nothing is written)" if dry else ""))
+    try:
+        if os.path.exists(path(STOP)):
+            lines, why = [], f"{STOP} exists"
+        elif now() > DEADLINE:
+            lines, why = [], f"past {DEADLINE}"
+        elif state["calls"] > MAX_CALLS:
+            lines, why = [], f"more than {MAX_CALLS} calls"
+        else:
+            lines, why = plan(state, note)
+            if lines and not dry:
+                make_room(note)
+    except Exception:
+        lines, why = [], "the director failed, nothing appended:\n" + traceback.format_exc()
+    note(why)
+    for line in lines:
+        note(f"  + {line}")
+    if dry:
+        return
+    with open(path(LOG), "a") as file:
+        file.write("\n".join(notes) + "\n")
+    with open(path(STATE), "w") as file:
+        json.dump(state, file, indent=1)
+    if lines:
+        with open(path(QUEUE), "rb") as file:
+            ends_clean = file.read()[-1:] in (b"\n", b"")
+        with open(path(QUEUE), "a") as file:
+            file.write(("" if ends_clean else "\n") + f"# director, {now()}: {why}\n" + "\n".join(lines) + "\n")
+
+
+if __name__ == "__main__":
+    main()

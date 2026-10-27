@@ -1,0 +1,48 @@
+d2o_one_aug20 2200 2026-10-09T04:51:31Z runs/d2o_one_aug20/d2o-state-latest.pt: 2200 kimg
+d2o_one_aug20 2200 2026-10-09T04:51:31Z alpha +0.00 gain 1.20 smooth 0.20 label 1.00 chroma 1.00  train-reference FID 18.082  (18.181, 17.842, 18.222; seeds [0, 1, 2])
+d2o_one_aug20 2200 2026-10-09T04:51:31Z alpha +0.00 gain 1.30 smooth 0.20 label 1.00 chroma 1.00  train-reference FID 18.013  (18.072, 17.785, 18.184; seeds [0, 1, 2])
+d2o_one_aug20 2200 2026-10-09T04:51:31Z wrote runs/d2o_one_aug20/calib-002200.ckpt with alpha +0.00 gain 1.30 smooth 0.20 label 1.00 chroma 1.00
+d2o_one_dn30 2200 2026-10-09T06:00:55Z runs/d2o_one_dn30/d2o-state-latest.pt: 2200 kimg
+d2o_one_dn30 2200 2026-10-09T06:00:55Z alpha +0.00 gain 1.20 smooth 0.20 label 1.00 chroma 1.00  train-reference FID 17.530  (17.732, 17.545, 17.312; seeds [0, 1, 2])
+d2o_one_dn30 2200 2026-10-09T06:00:55Z alpha +0.00 gain 1.30 smooth 0.20 label 1.00 chroma 1.00  train-reference FID 17.570  (17.771, 17.587, 17.352; seeds [0, 1, 2])
+d2o_one_dn30 2200 2026-10-09T06:00:55Z wrote runs/d2o_one_dn30/calib-002200.ckpt with alpha +0.00 gain 1.20 smooth 0.20 label 1.00 chroma 1.00
+d2o_one_aug20 2450 2026-10-09T07:50:37Z runs/d2o_one_aug20/d2o-state-latest.pt: 2450 kimg
+d2o_one_aug20 2450 2026-10-09T07:50:37Z alpha +0.00 gain 1.20 smooth 0.20 label 1.00 chroma 1.00  train-reference FID 17.984  (17.921, 17.879, 18.152; seeds [0, 1, 2])
+d2o_one_aug20 2450 2026-10-09T07:50:37Z alpha +0.00 gain 1.30 smooth 0.20 label 1.00 chroma 1.00  train-reference FID 17.942  (17.946, 17.846, 18.036; seeds [0, 1, 2])
+d2o_one_aug20 2450 2026-10-09T07:50:37Z wrote runs/d2o_one_aug20/calib-002450.ckpt with alpha +0.00 gain 1.30 smooth 0.20 label 1.00 chroma 1.00
+d2o_one_dn30 2450 2026-10-09T10:01:29Z runs/d2o_one_dn30/d2o-state-latest.pt: 2450 kimg
+d2o_one_dn30 2450 2026-10-09T10:01:29Z alpha +0.00 gain 1.20 smooth 0.20 label 1.00 chroma 1.00  train-reference FID 17.373  (17.544, 17.331, 17.242; seeds [0, 1, 2])
+d2o_one_dn30 2450 2026-10-09T10:01:29Z alpha +0.00 gain 1.30 smooth 0.20 label 1.00 chroma 1.00  train-reference FID 17.409  (17.611, 17.325, 17.292; seeds [0, 1, 2])
+d2o_one_dn30 2450 2026-10-09T10:01:29Z wrote runs/d2o_one_dn30/calib-002450.ckpt with alpha +0.00 gain 1.20 smooth 0.20 label 1.00 chroma 1.00
+d2o_one_dn30_tmix 2450 2026-10-09T11:49:30Z runs/d2o_one_dn30_tmix/d2o-state-latest.pt: 2450 kimg
+d2o_one_dn30_tmix 2450 2026-10-09T11:49:30Z alpha +0.00 gain 1.20 smooth 0.20 label 1.00 chroma 1.00  train-reference FID 17.556  (17.711, 17.669, 17.289; seeds [0, 1, 2])
+d2o_one_dn30_tmix 2450 2026-10-09T11:49:30Z alpha +0.00 gain 1.30 smooth 0.20 label 1.00 chroma 1.00  train-reference FID 17.619  (17.754, 17.766, 17.336; seeds [0, 1, 2])
+d2o_one_dn30_tmix 2450 2026-10-09T11:49:30Z wrote runs/d2o_one_dn30_tmix/calib-002450.ckpt with alpha +0.00 gain 1.20 smooth 0.20 label 1.00 chroma 1.00
+d2o_one_dn30_tdisc 2700 2026-10-09T13:31:14Z runs/d2o_one_dn30_tdisc/d2o-state-latest.pt: 2700 kimg
+d2o_one_dn30_tdisc 2700 2026-10-09T13:31:14Z alpha +0.00 gain 1.20 smooth 0.20 label 1.00 chroma 1.00  train-reference FID 17.424  (17.205, 17.513, 17.555; seeds [0, 1, 2])
+d2o_one_dn30_tdisc 2700 2026-10-09T13:31:14Z alpha +0.00 gain 1.30 smooth 0.20 label 1.00 chroma 1.00  train-reference FID 17.540  (17.346, 17.621, 17.653; seeds [0, 1, 2])
+d2o_one_dn30_tdisc 2700 2026-10-09T13:31:14Z wrote runs/d2o_one_dn30_tdisc/calib-002700.ckpt with alpha +0.00 gain 1.20 smooth 0.20 label 1.00 chroma 1.00
+d2o_one_dn30_tdisc8 2700 2026-10-09T15:23:50Z runs/d2o_one_dn30_tdisc8/d2o-state-latest.pt: 2700 kimg
+d2o_one_dn30_tdisc8 2700 2026-10-09T15:23:50Z alpha +0.00 gain 1.10 smooth 0.20 label 1.00 chroma 1.00  train-reference FID 17.730  (17.756, 17.723, 17.712; seeds [0, 1, 2])
+d2o_one_dn30_tdisc8 2700 2026-10-09T15:23:50Z alpha +0.00 gain 1.15 smooth 0.20 label 1.00 chroma 1.00  train-reference FID 17.666  (17.721, 17.659, 17.618; seeds [0, 1, 2])
+d2o_one_dn30_tdisc8 2700 2026-10-09T15:23:50Z alpha +0.00 gain 1.20 smooth 0.20 label 1.00 chroma 1.00  train-reference FID 17.708  (17.764, 17.708, 17.653; seeds [0, 1, 2])
+d2o_one_dn30_tdisc8 2700 2026-10-09T15:23:50Z alpha +0.00 gain 1.30 smooth 0.20 label 1.00 chroma 1.00  train-reference FID 17.914  (18.028, 17.920, 17.795; seeds [0, 1, 2])
+d2o_one_dn30_tdisc8 2700 2026-10-09T15:23:50Z wrote runs/d2o_one_dn30_tdisc8/calib-002700.ckpt with alpha +0.00 gain 1.15 smooth 0.20 label 1.00 chroma 1.00
+d2o_one_dn30_tdisc 2950 2026-10-09T17:04:12Z runs/d2o_one_dn30_tdisc/d2o-state-latest.pt: 2950 kimg
+d2o_one_dn30_tdisc 2950 2026-10-09T17:04:12Z alpha +0.00 gain 1.10 smooth 0.20 label 1.00 chroma 1.00  train-reference FID 17.653  (17.545, 17.563, 17.849; seeds [0, 1, 2])
+d2o_one_dn30_tdisc 2950 2026-10-09T17:04:12Z alpha +0.00 gain 1.15 smooth 0.20 label 1.00 chroma 1.00  train-reference FID 17.537  (17.461, 17.460, 17.688; seeds [0, 1, 2])
+d2o_one_dn30_tdisc 2950 2026-10-09T17:04:12Z alpha +0.00 gain 1.20 smooth 0.20 label 1.00 chroma 1.00  train-reference FID 17.519  (17.466, 17.451, 17.641; seeds [0, 1, 2])
+d2o_one_dn30_tdisc 2950 2026-10-09T17:04:12Z alpha +0.00 gain 1.30 smooth 0.20 label 1.00 chroma 1.00  train-reference FID 17.637  (17.577, 17.608, 17.727; seeds [0, 1, 2])
+d2o_one_dn30_tdisc 2950 2026-10-09T17:04:12Z wrote runs/d2o_one_dn30_tdisc/calib-002950.ckpt with alpha +0.00 gain 1.20 smooth 0.20 label 1.00 chroma 1.00
+dn30_dmd 2550 2026-10-11T06:21:33Z runs/dn30_dmd/d2o-state-latest.pt: 2550 kimg
+dn30_dmd 2550 2026-10-11T06:21:33Z alpha +0.00 gain 1.10 smooth 0.20 label 1.00 chroma 1.00  train-reference FID 17.081  (16.880, 17.354, 17.008; seeds [0, 1, 2])
+dn30_dmd 2550 2026-10-11T06:21:33Z alpha +0.00 gain 1.15 smooth 0.20 label 1.00 chroma 1.00  train-reference FID 16.903  (16.728, 17.168, 16.813; seeds [0, 1, 2])
+dn30_dmd 2550 2026-10-11T06:21:33Z alpha +0.00 gain 1.20 smooth 0.20 label 1.00 chroma 1.00  train-reference FID 16.844  (16.676, 17.075, 16.782; seeds [0, 1, 2])
+dn30_dmd 2550 2026-10-11T06:21:33Z alpha +0.00 gain 1.30 smooth 0.20 label 1.00 chroma 1.00  train-reference FID 16.884  (16.772, 17.020, 16.861; seeds [0, 1, 2])
+dn30_dmd 2550 2026-10-11T06:21:33Z wrote runs/dn30_dmd/calib-002550.ckpt with alpha +0.00 gain 1.20 smooth 0.20 label 1.00 chroma 1.00
+dn30_dmd 2650 2026-10-11T08:28:11Z runs/dn30_dmd/d2o-state-latest.pt: 2650 kimg
+dn30_dmd 2650 2026-10-11T08:28:11Z alpha +0.00 gain 1.10 smooth 0.20 label 1.00 chroma 1.00  train-reference FID 16.579  (16.500, 16.755, 16.480; seeds [0, 1, 2])
+dn30_dmd 2650 2026-10-11T08:28:11Z alpha +0.00 gain 1.15 smooth 0.20 label 1.00 chroma 1.00  train-reference FID 16.484  (16.399, 16.664, 16.391; seeds [0, 1, 2])
+dn30_dmd 2650 2026-10-11T08:28:11Z alpha +0.00 gain 1.20 smooth 0.20 label 1.00 chroma 1.00  train-reference FID 16.473  (16.386, 16.654, 16.380; seeds [0, 1, 2])
+dn30_dmd 2650 2026-10-11T08:28:11Z alpha +0.00 gain 1.30 smooth 0.20 label 1.00 chroma 1.00  train-reference FID 16.579  (16.492, 16.727, 16.519; seeds [0, 1, 2])
+dn30_dmd 2650 2026-10-11T08:28:11Z wrote runs/dn30_dmd/calib-002650.ckpt with alpha +0.00 gain 1.20 smooth 0.20 label 1.00 chroma 1.00

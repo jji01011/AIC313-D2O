@@ -1,0 +1,8 @@
+d2o_one_dn30_tdisc 2700 2026-10-09T15:35:14Z runs/d2o_one_dn30_tdisc/d2o-state-002700.pt: 2700 kimg
+d2o_one_dn30_tdisc 2700 2026-10-09T15:35:14Z alpha +0.00 gain 1.05 smooth 0.10 label 1.00 chroma 1.00  train-reference FID 17.900  (17.638, 18.063, 17.997; seeds [0, 1, 2])
+d2o_one_dn30_tdisc 2700 2026-10-09T15:35:14Z alpha +0.00 gain 1.05 smooth 0.20 label 1.00 chroma 1.00  train-reference FID 18.358  (18.124, 18.560, 18.389; seeds [0, 1, 2])
+d2o_one_dn30_tdisc 2700 2026-10-09T15:35:14Z alpha +0.00 gain 1.10 smooth 0.10 label 1.00 chroma 1.00  train-reference FID 17.730  (17.488, 17.841, 17.860; seeds [0, 1, 2])
+d2o_one_dn30_tdisc 2700 2026-10-09T15:35:14Z alpha +0.00 gain 1.10 smooth 0.20 label 1.00 chroma 1.00  train-reference FID 17.587  (17.402, 17.698, 17.661; seeds [0, 1, 2])
+d2o_one_dn30_tdisc 2700 2026-10-09T15:35:14Z alpha +0.00 gain 1.15 smooth 0.10 label 1.00 chroma 1.00  train-reference FID 17.660  (17.406, 17.759, 17.814; seeds [0, 1, 2])
+d2o_one_dn30_tdisc 2700 2026-10-09T15:35:14Z alpha +0.00 gain 1.15 smooth 0.20 label 1.00 chroma 1.00  train-reference FID 17.438  (17.228, 17.544, 17.541; seeds [0, 1, 2])
+d2o_one_dn30_tdisc 2700 2026-10-09T15:35:14Z wrote runs/d2o_one_dn30_tdisc/calib-002700-lowgain.ckpt with alpha +0.00 gain 1.15 smooth 0.20 label 1.00 chroma 1.00

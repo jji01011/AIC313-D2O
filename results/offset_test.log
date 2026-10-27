@@ -1,0 +1,12 @@
+runs/d2o_one_dn30/d2o-state-002450.pt: 2450 kimg
+alpha +0.00 gain 1.20 smooth 0.20 label 1.00 chroma 1.00 offset 0.00  train-reference FID 17.373  (17.544, 17.331, 17.242; seeds [0, 1, 2])
+alpha +0.00 gain 1.20 smooth 0.20 label 1.00 chroma 1.00 offset 0.50  train-reference FID 17.365  (17.542, 17.313, 17.239; seeds [0, 1, 2])
+alpha +0.00 gain 1.20 smooth 0.20 label 1.00 chroma 1.00 offset 1.00  train-reference FID 17.364  (17.534, 17.325, 17.234; seeds [0, 1, 2])
+# 2026-10-13T10:55:10Z E112 one-step candidate runs/e112_lorag_f5_g13/calib-003575.ckpt (gain 1.10 already in it): offset in grey levels added to the image; 0.5 turns evaluate.py's truncation into rounding (the teammate's +1/255)
+alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00 offset 0.00  train-reference FID 11.552  (11.518, 11.413, 11.726; seeds [0, 1, 2])
+alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00 offset 0.50  train-reference FID 11.553  (11.531, 11.403, 11.725; seeds [0, 1, 2])
+alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00 offset 1.00  train-reference FID 11.560  (11.549, 11.409, 11.722; seeds [0, 1, 2])
+wrote /tmp/claude-1001/-home-jiin-AIC313-D2O/b46c4175-c7f2-4b0c-9bfe-80eb39b135d4/scratchpad/student_offset05.ckpt with alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00 offset 0.50
+offset 0.50, official (reporting only): one_nfe FID: 22.1264
+offset 0.50, official (reporting only): one_nfe FID: 22.3739
+offset 0.50, official (reporting only): one_nfe FID: 22.5734

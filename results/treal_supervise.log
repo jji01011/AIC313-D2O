@@ -1,0 +1,3 @@
+2026-10-15T12:14:54Z shards 5 + 0 of 5 + 17, the generator is not running: starting runs/gen_teacher58.sh (start 1)
+2026-10-15T14:03:57Z all shards there (5 + 17): runs/treal_setup.py
+2026-10-15T14:05:29Z runs/treal_setup.py exited with status 0

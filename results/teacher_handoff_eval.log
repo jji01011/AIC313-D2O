@@ -1,0 +1,6 @@
+2026-10-13T10:49:51Z /home/jiin/FastGen-teammate/handoff_2026-10-13/teacher_unguided.pt: Heun 32 steps, mean start 1, +1/255 1, seed 0: train reference 10.095, official (validation reference, reporting only) 20.322
+2026-10-13T10:54:22Z /home/jiin/FastGen-teammate/handoff_2026-10-13/teacher_unguided.pt: Heun 18 steps, mean start 0, +1/255 0, seed 0: train reference 10.419, official (validation reference, reporting only) 22.654
+2026-10-13T11:06:07Z /home/jiin/FastGen-teammate/handoff_2026-10-13/teacher_unguided.pt: Heun 18 steps, mean start 0, +1/255 1, seed 0: train reference 10.421, official (validation reference, reporting only) 22.607
+2026-10-13T11:13:42Z /home/jiin/FastGen-teammate/handoff_2026-10-13/teacher_unguided.pt: Heun 32 steps, mean start 0, +1/255 0, seed 0: train reference 10.257, official (validation reference, reporting only) 22.558
+2026-10-13T11:21:06Z checkpoints/edm/ema-0020971520-0.100.pt: Heun 32 steps, mean start 1, +1/255 1, seed 0: train reference 11.113, official (validation reference, reporting only) 20.519
+2026-10-13T11:25:45Z checkpoints/edm/teacher_unguided-0058720256-0.130.pt: Heun 32 steps, mean start 1, +1/255 1, seed 0: train reference 10.095, official (validation reference, reporting only) 20.322

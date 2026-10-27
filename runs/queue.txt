@@ -1,0 +1,10 @@
+# D2O jobs for runs/chain_queue.sh, one per line: <outdir> <train_d2o.py arguments>. Lines can be appended while the chain runs.
+# Common arguments are set in the chain script; the baseline is runs/d2o_c96_edm1000 (FID 64.9 / 53.5 / 48.7 at 100 / 150 / 200 kimg).
+runs/d2o_x_lr2.5 --lr 5e-5 --dlr 1e-4
+runs/d2o_x_reuse --reuse_fake 1
+runs/d2o_x_lr5 --lr 1e-4 --dlr 2e-4
+runs/d2o_x_dsigma --d_sigma_mean -1.2 --d_sigma_std 1.2
+runs/d2o_x_dbackbone --d_backbone_lr_mult 0.5 --kimg 100
+runs/d2o_x_dsigma_low --d_sigma_mean -3.0 --d_sigma_std 1.0 --kimg 100
+runs/d2o_x_lr_g_only --lr 5e-5 --dlr 4e-5 --kimg 100
+runs/d2o_x_lr2.5 --lr 5e-5 --dlr 1e-4 --resume runs/d2o_x_lr2.5/d2o-state-latest.pt --kimg 300

@@ -1,0 +1,5 @@
+2026-10-15T14:04:40Z results/reference_teacher58: 15100 teacher samples exported, statistics written
+2026-10-15T14:04:56Z floor: data/cache/teacher58_real/shard-0000.pt (3,020 teacher samples, 20 per category) against results/reference_teacher58: 8.580
+2026-10-15T14:05:14Z floor: data/cache/teacher58_real/shard-0001.pt (3,020 teacher samples, 20 per category) against results/reference_teacher58: 8.582
+2026-10-15T14:05:28Z floor: data/cache/teacher58_real/shard-0002.pt (3,020 teacher samples, 20 per category) against results/reference_teacher58: 8.624
+2026-10-15T14:05:28Z director (runs/director_state.json): manual entry is now e112_treal (from runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt at 5125 kimg to 5425); after it: ['e112_h20']

@@ -1,0 +1,5 @@
+e112_fit 1500 alpha-probe 2026-10-10T15:46:05Z runs/e112_fit/d2o-state-latest.pt: 1500 kimg
+e112_fit 1500 alpha-probe 2026-10-10T15:46:05Z alpha -0.50 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 14.946  (15.061, 14.613, 15.165; seeds [0, 1, 2])
+e112_fit 1500 alpha-probe 2026-10-10T15:46:05Z alpha -0.25 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 14.352  (14.463, 14.113, 14.481; seeds [0, 1, 2])
+e112_fit 1500 alpha-probe 2026-10-10T15:46:05Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 14.072  (14.156, 13.977, 14.083; seeds [0, 1, 2])
+e112_fit 1500 alpha-probe 2026-10-10T15:46:05Z alpha +0.25 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 14.284  (14.352, 14.227, 14.273; seeds [0, 1, 2])

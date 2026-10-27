@@ -1,0 +1,9 @@
+runs/edm_c96/edm-000750.pt: 35 NFE Heun, FID vs train reference 72.271
+runs/edm_c96/edm-000500.pt: 35 NFE Heun, FID vs train reference 95.335
+runs/edm_c96/edm-000250.pt: 35 NFE Heun, FID vs train reference 147.797
+runs/edm_c96/edm-001000.pt: 35 NFE Heun, FID vs train reference 57.575
+runs/edm_c96/edm-002000.pt: 35 NFE Heun, FID vs train reference 37.122
+runs/edm_c96/edm-003000.pt: 35 NFE Heun, FID vs train reference 30.997
+runs/edm_c96/edm-004000.pt: 35 NFE Heun, FID vs train reference 25.819
+runs/edm_c96/edm-004500.pt: 35 NFE Heun, FID vs train reference 26.037
+runs/edm_c96/edm-005000.pt: 35 NFE Heun, FID vs train reference 24.523

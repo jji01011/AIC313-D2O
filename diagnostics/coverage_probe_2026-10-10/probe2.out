@@ -1,0 +1,17 @@
+check: eigh 14.495  (1s)
+  m=20 seed 0: 14.61 14.61 14.61 6.52 20.33 20.33 20.33 14.76 15.16  (10s)
+  m=20 seed 1: 14.26 14.26 14.26 6.53 19.80 19.80 19.80 14.78 15.22  (20s)
+  m=20 seed 2: 14.46 14.46 14.46 6.54 20.01 20.01 20.01 14.64 15.20  (29s)
+m =  20 | vs all train: random 14.44  matched-to-real 14.44  nearest-to-real 14.44  real 6.53 | vs disjoint 3,020 real: random 20.05  matched 20.05  nearest 20.05  real 14.73 | mean match distance 15.19
+  m=160 seed 0: 14.61 15.49 30.82 6.52 20.33 21.00 35.95 14.76 13.12  (38s)
+  m=160 seed 1: 14.26 15.16 30.82 6.53 19.80 20.18 34.94 14.78 13.20  (47s)
+  m=160 seed 2: 14.46 15.29 30.82 6.54 20.01 20.41 35.33 14.64 13.16  (57s)
+m = 160 | vs all train: random 14.44  matched-to-real 15.31  nearest-to-real 30.82  real 6.53 | vs disjoint 3,020 real: random 20.05  matched 20.53  nearest 35.40  real 14.73 | mean match distance 13.16
+  m=80 seed 0: 14.61 15.45 25.97 6.52 20.33 20.97 31.23 14.76 13.50  (66s)
+  m=80 seed 1: 14.26 15.20 25.81 6.53 19.80 20.25 30.20 14.78 13.60  (76s)
+  m=80 seed 2: 14.46 15.42 25.96 6.54 20.01 20.55 30.71 14.64 13.57  (85s)
+m =  80 | vs all train: random 14.44  matched-to-real 15.36  nearest-to-real 25.91  real 6.53 | vs disjoint 3,020 real: random 20.05  matched 20.59  nearest 30.72  real 14.73 | mean match distance 13.56
+  m=40 seed 0: 14.61 15.39 19.78 6.52 20.33 20.93 25.19 14.76 14.07  (94s)
+  m=40 seed 1: 14.26 15.20 19.49 6.53 19.80 20.34 24.25 14.78 14.13  (105s)
+  m=40 seed 2: 14.46 15.03 19.41 6.54 20.01 20.26 24.52 14.64 14.13  (115s)
+m =  40 | vs all train: random 14.44  matched-to-real 15.20  nearest-to-real 19.56  real 6.53 | vs disjoint 3,020 real: random 20.05  matched 20.51  nearest 24.66  real 14.73 | mean match distance 14.11

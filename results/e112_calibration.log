@@ -1,0 +1,821 @@
+e112_full 50 2026-10-09T17:36:19Z runs/e112_full/d2o-state-latest.pt: 50 kimg
+e112_full 50 2026-10-09T17:36:19Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 18.845  (18.900, 18.772, 18.864; seeds [0, 1, 2])
+e112_full 50 2026-10-09T17:36:19Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 17.741  (17.821, 17.552, 17.849; seeds [0, 1, 2])
+e112_full 50 2026-10-09T17:36:19Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 17.725  (17.778, 17.513, 17.885; seeds [0, 1, 2])
+e112_full 50 2026-10-09T17:36:19Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 17.830  (17.834, 17.624, 18.030; seeds [0, 1, 2])
+e112_fit 50 2026-10-09T18:07:00Z runs/e112_fit/d2o-state-latest.pt: 50 kimg
+e112_fit 50 2026-10-09T18:07:00Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 21.107  (21.265, 20.928, 21.128; seeds [0, 1, 2])
+e112_fit 50 2026-10-09T18:07:00Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 19.975  (20.140, 19.664, 20.121; seeds [0, 1, 2])
+e112_fit 50 2026-10-09T18:07:00Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 19.888  (20.035, 19.544, 20.085; seeds [0, 1, 2])
+e112_fit 50 2026-10-09T18:07:00Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 19.941  (20.060, 19.575, 20.189; seeds [0, 1, 2])
+e112_live 50 2026-10-09T19:13:14Z copy of runs/e112_live/best.ckpt: 50 kimg
+e112_live 50 2026-10-09T19:13:14Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 20.787  (20.920, 20.771, 20.669; seeds [0, 1, 2])
+e112_live 50 2026-10-09T19:13:14Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 19.058  (19.321, 18.816, 19.037; seeds [0, 1, 2])
+e112_live 50 2026-10-09T19:13:14Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 18.839  (19.100, 18.601, 18.817; seeds [0, 1, 2])
+e112_live 50 2026-10-09T19:13:14Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 18.893  (19.148, 18.615, 18.918; seeds [0, 1, 2])
+e112_live 150 2026-10-09T20:09:34Z runs/e112_live/d2o-state-latest.pt: 150 kimg
+e112_live 150 2026-10-09T20:09:34Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 19.251  (19.232, 19.485, 19.035; seeds [0, 1, 2])
+e112_live 150 2026-10-09T20:09:34Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 17.390  (17.325, 17.498, 17.347; seeds [0, 1, 2])
+e112_live 150 2026-10-09T20:09:34Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 17.252  (17.223, 17.259, 17.274; seeds [0, 1, 2])
+e112_live 150 2026-10-09T20:09:34Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 17.276  (17.258, 17.280, 17.289; seeds [0, 1, 2])
+e112_live 150 2026-10-09T20:09:34Z wrote runs/e112_live/calib-000150.ckpt with alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00
+e112_live 125 2026-10-09T20:20:56Z runs/e112_live/best.ckpt: 125 kimg
+e112_live 125 2026-10-09T20:20:56Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 16.866  (17.030, 16.796, 16.771; seeds [0, 1, 2])
+e112_live 125 2026-10-09T20:20:56Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 16.675  (16.854, 16.620, 16.552; seeds [0, 1, 2])
+e112_live 125 2026-10-09T20:20:56Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 16.676  (16.864, 16.619, 16.545; seeds [0, 1, 2])
+e112_live 125 2026-10-09T20:20:56Z wrote runs/e112_live/calib-000125.ckpt with alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00
+e112_fit 150 2026-10-09T21:02:59Z runs/e112_fit/d2o-state-latest.pt: 150 kimg
+e112_fit 150 2026-10-09T21:02:59Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 17.379  (17.375, 17.470, 17.292; seeds [0, 1, 2])
+e112_fit 150 2026-10-09T21:02:59Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 16.187  (16.260, 16.145, 16.155; seeds [0, 1, 2])
+e112_fit 150 2026-10-09T21:02:59Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 16.185  (16.225, 16.131, 16.200; seeds [0, 1, 2])
+e112_fit 150 2026-10-09T21:02:59Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 16.375  (16.388, 16.306, 16.430; seeds [0, 1, 2])
+e112_fit 150 2026-10-09T21:02:59Z wrote runs/e112_fit/calib-000150.ckpt with alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00
+e112_full 150 2026-10-09T22:03:37Z runs/e112_full/d2o-state-latest.pt: 150 kimg
+e112_full 150 2026-10-09T22:03:37Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 17.177  (17.121, 17.223, 17.186; seeds [0, 1, 2])
+e112_full 150 2026-10-09T22:03:37Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 16.189  (16.125, 16.172, 16.269; seeds [0, 1, 2])
+e112_full 150 2026-10-09T22:03:37Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 16.253  (16.223, 16.233, 16.304; seeds [0, 1, 2])
+e112_full 150 2026-10-09T22:03:37Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 16.434  (16.386, 16.365, 16.552; seeds [0, 1, 2])
+e112_fit 250 2026-10-09T22:54:35Z runs/e112_fit/d2o-state-latest.pt: 250 kimg
+e112_fit 250 2026-10-09T22:54:35Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 16.598  (16.802, 16.429, 16.561; seeds [0, 1, 2])
+e112_fit 250 2026-10-09T22:54:35Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 15.753  (15.940, 15.499, 15.819; seeds [0, 1, 2])
+e112_fit 250 2026-10-09T22:54:35Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 15.796  (15.978, 15.522, 15.887; seeds [0, 1, 2])
+e112_fit 250 2026-10-09T22:54:35Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 16.033  (16.242, 15.699, 16.156; seeds [0, 1, 2])
+e112_fit 250 2026-10-09T22:54:35Z wrote runs/e112_fit/calib-000250.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_fit 500 2026-10-10T01:00:30Z runs/e112_fit/d2o-state-latest.pt: 500 kimg
+e112_fit 500 2026-10-10T01:00:30Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 16.314  (16.569, 16.130, 16.244; seeds [0, 1, 2])
+e112_fit 500 2026-10-10T01:00:30Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 15.218  (15.453, 15.028, 15.172; seeds [0, 1, 2])
+e112_fit 500 2026-10-10T01:00:30Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 15.225  (15.466, 15.024, 15.184; seeds [0, 1, 2])
+e112_fit 500 2026-10-10T01:00:30Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 15.415  (15.652, 15.152, 15.441; seeds [0, 1, 2])
+e112_fit 500 2026-10-10T01:00:30Z wrote runs/e112_fit/calib-000500.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_fit 750 2026-10-10T03:05:18Z runs/e112_fit/d2o-state-latest.pt: 750 kimg
+e112_fit 750 2026-10-10T03:05:18Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 15.752  (16.060, 15.764, 15.431; seeds [0, 1, 2])
+e112_fit 750 2026-10-10T03:05:18Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 14.795  (14.992, 14.734, 14.660; seeds [0, 1, 2])
+e112_fit 750 2026-10-10T03:05:18Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 14.882  (15.013, 14.852, 14.780; seeds [0, 1, 2])
+e112_fit 750 2026-10-10T03:05:18Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 15.138  (15.203, 15.116, 15.096; seeds [0, 1, 2])
+e112_fit 750 2026-10-10T03:05:18Z wrote runs/e112_fit/calib-000750.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_fit 1000 2026-10-10T05:11:13Z runs/e112_fit/d2o-state-latest.pt: 1000 kimg
+e112_fit 1000 2026-10-10T05:11:13Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 15.372  (15.633, 15.348, 15.135; seeds [0, 1, 2])
+e112_fit 1000 2026-10-10T05:11:13Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 14.410  (14.630, 14.324, 14.275; seeds [0, 1, 2])
+e112_fit 1000 2026-10-10T05:11:13Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 14.491  (14.653, 14.395, 14.426; seeds [0, 1, 2])
+e112_fit 1000 2026-10-10T05:11:13Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 14.686  (14.783, 14.524, 14.750; seeds [0, 1, 2])
+e112_fit 1000 2026-10-10T05:11:13Z wrote runs/e112_fit/calib-001000.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_full 250 2026-10-10T07:05:17Z runs/e112_full/d2o-state-latest.pt: 250 kimg
+e112_full 250 2026-10-10T07:05:17Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 16.861  (16.893, 16.817, 16.874; seeds [0, 1, 2])
+e112_full 250 2026-10-10T07:05:17Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 15.708  (15.754, 15.701, 15.668; seeds [0, 1, 2])
+e112_full 250 2026-10-10T07:05:17Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 15.684  (15.663, 15.674, 15.715; seeds [0, 1, 2])
+e112_fit 1250 2026-10-10T08:18:00Z runs/e112_fit/d2o-state-latest.pt: 1250 kimg
+e112_fit 1250 2026-10-10T08:18:00Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 15.047  (15.364, 14.870, 14.906; seeds [0, 1, 2])
+e112_fit 1250 2026-10-10T08:18:00Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 14.147  (14.321, 14.007, 14.113; seeds [0, 1, 2])
+e112_fit 1250 2026-10-10T08:18:00Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 14.222  (14.345, 14.112, 14.209; seeds [0, 1, 2])
+e112_fit 1250 2026-10-10T08:18:00Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 14.439  (14.567, 14.280, 14.469; seeds [0, 1, 2])
+e112_fit 1250 2026-10-10T08:18:00Z wrote runs/e112_fit/calib-001250.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_dn30 1350 2026-10-10T09:42:17Z runs/e112_dn30/d2o-state-latest.pt: 1350 kimg
+e112_dn30 1350 2026-10-10T09:42:17Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 14.802  (14.909, 14.674, 14.822; seeds [0, 1, 2])
+e112_dn30 1350 2026-10-10T09:42:17Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 13.995  (14.035, 13.842, 14.108; seeds [0, 1, 2])
+e112_dn30 1350 2026-10-10T09:42:17Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 14.095  (14.114, 13.926, 14.244; seeds [0, 1, 2])
+e112_dn30 1350 2026-10-10T09:42:17Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 14.346  (14.354, 14.147, 14.537; seeds [0, 1, 2])
+e112_ect50 1350 2026-10-10T10:48:50Z runs/e112_ect50/d2o-state-latest.pt: 1350 kimg
+e112_ect50 1350 2026-10-10T10:48:50Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 17.058  (17.271, 17.267, 16.636; seeds [0, 1, 2])
+e112_ect50 1350 2026-10-10T10:48:50Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 15.521  (15.683, 15.659, 15.221; seeds [0, 1, 2])
+e112_ect50 1350 2026-10-10T10:48:50Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 15.327  (15.395, 15.456, 15.129; seeds [0, 1, 2])
+e112_ect50 1350 2026-10-10T10:48:50Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 15.280  (15.331, 15.381, 15.128; seeds [0, 1, 2])
+e112_fit 1500 2026-10-10T12:53:35Z runs/e112_fit/d2o-state-latest.pt: 1500 kimg
+e112_fit 1500 2026-10-10T12:53:35Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 14.949  (15.040, 14.895, 14.911; seeds [0, 1, 2])
+e112_fit 1500 2026-10-10T12:53:35Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 14.072  (14.156, 13.977, 14.083; seeds [0, 1, 2])
+e112_fit 1500 2026-10-10T12:53:35Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 14.107  (14.164, 14.026, 14.131; seeds [0, 1, 2])
+e112_fit 1500 2026-10-10T12:53:35Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 14.291  (14.377, 14.146, 14.351; seeds [0, 1, 2])
+e112_fit 1500 2026-10-10T12:53:35Z wrote runs/e112_fit/calib-001500.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_kd 150 2026-10-10T14:20:02Z runs/e112_kd/d2o-state-latest.pt: 150 kimg
+e112_kd 150 2026-10-10T14:20:02Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 22.444  (22.659, 22.311, 22.362; seeds [0, 1, 2])
+e112_kd 150 2026-10-10T14:20:02Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 22.166  (22.379, 21.965, 22.153; seeds [0, 1, 2])
+e112_kd 150 2026-10-10T14:20:02Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 22.380  (22.617, 22.186, 22.336; seeds [0, 1, 2])
+e112_kd 150 2026-10-10T14:20:02Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 22.766  (22.965, 22.618, 22.714; seeds [0, 1, 2])
+e112_rp 1600 2026-10-10T15:18:46Z runs/e112_rp/d2o-state-latest.pt: 1600 kimg
+e112_rp 1600 2026-10-10T15:18:46Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 14.947  (15.107, 14.860, 14.873; seeds [0, 1, 2])
+e112_rp 1600 2026-10-10T15:18:46Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 14.039  (14.147, 13.905, 14.065; seeds [0, 1, 2])
+e112_rp 1600 2026-10-10T15:18:46Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 14.088  (14.198, 13.921, 14.145; seeds [0, 1, 2])
+e112_rp 1600 2026-10-10T15:18:46Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 14.244  (14.313, 14.049, 14.370; seeds [0, 1, 2])
+e112_s25 150 2026-10-10T16:35:44Z runs/e112_s25/d2o-state-latest.pt: 150 kimg
+e112_s25 150 2026-10-10T16:35:44Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 20.473  (20.665, 20.218, 20.538; seeds [0, 1, 2])
+e112_s25 150 2026-10-10T16:35:44Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 24.466  (24.574, 24.256, 24.567; seeds [0, 1, 2])
+e112_s25 150 2026-10-10T16:35:44Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 29.936  (29.953, 29.844, 30.012; seeds [0, 1, 2])
+e112_s25 150 2026-10-10T16:35:44Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 33.780  (33.789, 33.798, 33.755; seeds [0, 1, 2])
+e112_fit 1750 2026-10-10T20:45:26Z runs/e112_fit/d2o-state-latest.pt: 1750 kimg
+e112_fit 1750 2026-10-10T20:45:26Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 14.947  (15.129, 14.793, 14.918; seeds [0, 1, 2])
+e112_fit 1750 2026-10-10T20:45:26Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 14.105  (14.288, 13.910, 14.117; seeds [0, 1, 2])
+e112_fit 1750 2026-10-10T20:45:26Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 14.168  (14.338, 13.959, 14.206; seeds [0, 1, 2])
+e112_fit 1750 2026-10-10T20:45:26Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 14.413  (14.596, 14.141, 14.501; seeds [0, 1, 2])
+e112_fit 1750 2026-10-10T20:45:26Z wrote runs/e112_fit/calib-001750.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_fit 1750 2026-10-10T20:56:15Z removed runs/e112_fit/calib-001750.ckpt (train-reference FID 14.105, this run's best is 14.072)
+e112_dmd 1850 2026-10-10T20:56:15Z runs/e112_dmd/d2o-state-latest.pt: 1850 kimg
+e112_dmd 1850 2026-10-10T20:56:15Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 13.847  (13.937, 13.822, 13.783; seeds [0, 1, 2])
+e112_dmd 1850 2026-10-10T20:56:15Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 13.143  (13.233, 13.023, 13.173; seeds [0, 1, 2])
+e112_dmd 1850 2026-10-10T20:56:15Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 13.297  (13.439, 13.098, 13.353; seeds [0, 1, 2])
+e112_dmd 1850 2026-10-10T20:56:15Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 13.587  (13.736, 13.338, 13.686; seeds [0, 1, 2])
+e112_dmd 1850 2026-10-10T20:56:15Z wrote runs/e112_dmd/calib-001850.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_fit 1850 2026-10-11T00:52:24Z runs/e112_fit/d2o-state-latest.pt: 1850 kimg
+e112_fit 1850 2026-10-11T00:52:24Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 15.037  (15.196, 14.798, 15.117; seeds [0, 1, 2])
+e112_fit 1850 2026-10-11T00:52:24Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 14.065  (14.172, 13.865, 14.157; seeds [0, 1, 2])
+e112_fit 1850 2026-10-11T00:52:24Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 14.099  (14.200, 13.893, 14.205; seeds [0, 1, 2])
+e112_fit 1850 2026-10-11T00:52:24Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 14.303  (14.382, 14.063, 14.463; seeds [0, 1, 2])
+e112_fit 1850 2026-10-11T00:52:24Z wrote runs/e112_fit/calib-001850.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_dmd 2000 2026-10-11T01:07:09Z runs/e112_dmd/d2o-state-latest.pt: 2000 kimg
+e112_dmd 2000 2026-10-11T01:07:09Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 13.605  (13.772, 13.547, 13.495; seeds [0, 1, 2])
+e112_dmd 2000 2026-10-11T01:07:09Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 13.039  (13.156, 12.892, 13.070; seeds [0, 1, 2])
+e112_dmd 2000 2026-10-11T01:07:09Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 13.282  (13.357, 13.084, 13.405; seeds [0, 1, 2])
+e112_dmd 2000 2026-10-11T01:07:09Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 13.658  (13.708, 13.441, 13.826; seeds [0, 1, 2])
+e112_dmd 2000 2026-10-11T01:07:09Z wrote runs/e112_dmd/calib-002000.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_dmd 2000 2026-10-11T01:22:01Z removed runs/e112_dmd/calib-001850.ckpt (an earlier effect-test checkpoint)
+e112_fit 1950 2026-10-11T03:37:20Z runs/e112_fit/d2o-state-latest.pt: 1950 kimg
+e112_fit 1950 2026-10-11T03:37:20Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 15.075  (15.184, 15.041, 15.001; seeds [0, 1, 2])
+e112_fit 1950 2026-10-11T03:37:20Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 14.032  (14.173, 13.881, 14.042; seeds [0, 1, 2])
+e112_fit 1950 2026-10-11T03:37:20Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 14.029  (14.207, 13.860, 14.019; seeds [0, 1, 2])
+e112_fit 1950 2026-10-11T03:37:20Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 14.224  (14.446, 13.996, 14.231; seeds [0, 1, 2])
+e112_fit 1950 2026-10-11T03:37:20Z wrote runs/e112_fit/calib-001950.ckpt with alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00
+e112_lora2 2050 2026-10-11T11:21:39Z runs/e112_lora2/d2o-state-latest.pt: 2050 kimg
+e112_lora2 2050 2026-10-11T11:21:39Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 14.256  (14.389, 14.222, 14.157; seeds [0, 1, 2])
+e112_lora2 2050 2026-10-11T11:21:39Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 13.334  (13.447, 13.276, 13.279; seeds [0, 1, 2])
+e112_lora2 2050 2026-10-11T11:21:39Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 13.377  (13.412, 13.368, 13.353; seeds [0, 1, 2])
+e112_lora2 2050 2026-10-11T11:21:39Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 13.566  (13.559, 13.534, 13.604; seeds [0, 1, 2])
+e112_lora2 2050 2026-10-11T11:21:39Z wrote runs/e112_lora2/calib-002050.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_lorag 2075 2026-10-11T14:11:23Z runs/e112_lorag/d2o-state-latest.pt: 2075 kimg
+e112_lorag 2075 2026-10-11T14:11:23Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 14.317  (14.325, 14.389, 14.236; seeds [0, 1, 2])
+e112_lorag 2075 2026-10-11T14:11:23Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 13.438  (13.455, 13.427, 13.432; seeds [0, 1, 2])
+e112_lorag 2075 2026-10-11T14:11:23Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 13.435  (13.406, 13.396, 13.504; seeds [0, 1, 2])
+e112_lorag 2075 2026-10-11T14:11:23Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 13.634  (13.615, 13.533, 13.755; seeds [0, 1, 2])
+e112_lorag 2075 2026-10-11T14:11:23Z wrote runs/e112_lorag/calib-002075.ckpt with alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00
+e112_lorag 2175 2026-10-11T16:37:44Z runs/e112_lorag/d2o-state-latest.pt: 2175 kimg
+e112_lorag 2175 2026-10-11T16:37:44Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 13.681  (13.809, 13.619, 13.613; seeds [0, 1, 2])
+e112_lorag 2175 2026-10-11T16:37:44Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.886  (13.000, 12.771, 12.887; seeds [0, 1, 2])
+e112_lorag 2175 2026-10-11T16:37:44Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.959  (13.067, 12.803, 13.007; seeds [0, 1, 2])
+e112_lorag 2175 2026-10-11T16:37:44Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 13.192  (13.317, 12.968, 13.292; seeds [0, 1, 2])
+e112_lorag 2175 2026-10-11T16:37:44Z wrote runs/e112_lorag/calib-002175.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_lorag 2275 2026-10-11T19:22:09Z runs/e112_lorag/d2o-state-latest.pt: 2275 kimg
+e112_lorag 2275 2026-10-11T19:22:09Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 13.348  (13.565, 13.170, 13.310; seeds [0, 1, 2])
+e112_lorag 2275 2026-10-11T19:22:09Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.636  (12.824, 12.433, 12.650; seeds [0, 1, 2])
+e112_lorag 2275 2026-10-11T19:22:09Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.730  (12.894, 12.533, 12.762; seeds [0, 1, 2])
+e112_lorag 2275 2026-10-11T19:22:09Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.992  (13.078, 12.818, 13.079; seeds [0, 1, 2])
+e112_lorag 2275 2026-10-11T19:22:09Z wrote runs/e112_lorag/calib-002275.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_lorag 2375 2026-10-11T21:41:29Z runs/e112_lorag/d2o-state-latest.pt: 2375 kimg
+e112_lorag 2375 2026-10-11T21:41:29Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.940  (13.159, 12.716, 12.946; seeds [0, 1, 2])
+e112_lorag 2375 2026-10-11T21:41:29Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.308  (12.438, 12.123, 12.363; seeds [0, 1, 2])
+e112_lorag 2375 2026-10-11T21:41:29Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.471  (12.523, 12.317, 12.573; seeds [0, 1, 2])
+e112_lorag 2375 2026-10-11T21:41:29Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.773  (12.764, 12.616, 12.940; seeds [0, 1, 2])
+e112_lorag 2375 2026-10-11T21:41:29Z wrote runs/e112_lorag/calib-002375.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_lorag 2475 2026-10-12T00:08:37Z runs/e112_lorag/d2o-state-latest.pt: 2475 kimg
+e112_lorag 2475 2026-10-12T00:08:37Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.708  (12.896, 12.477, 12.751; seeds [0, 1, 2])
+e112_lorag 2475 2026-10-12T00:08:37Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.131  (12.246, 11.924, 12.222; seeds [0, 1, 2])
+e112_lorag 2475 2026-10-12T00:08:37Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.291  (12.401, 12.079, 12.393; seeds [0, 1, 2])
+e112_lorag 2475 2026-10-12T00:08:37Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.600  (12.664, 12.396, 12.740; seeds [0, 1, 2])
+e112_lorag 2475 2026-10-12T00:08:37Z wrote runs/e112_lorag/calib-002475.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_lorag 2575 2026-10-12T02:35:54Z runs/e112_lorag/d2o-state-latest.pt: 2575 kimg
+e112_lorag 2575 2026-10-12T02:35:54Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.487  (12.553, 12.315, 12.592; seeds [0, 1, 2])
+e112_lorag 2575 2026-10-12T02:35:54Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.010  (11.972, 11.894, 12.165; seeds [0, 1, 2])
+e112_lorag 2575 2026-10-12T02:35:54Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.199  (12.105, 12.075, 12.417; seeds [0, 1, 2])
+e112_lorag 2575 2026-10-12T02:35:54Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.529  (12.421, 12.361, 12.804; seeds [0, 1, 2])
+e112_lorag 2575 2026-10-12T02:35:54Z wrote runs/e112_lorag/calib-002575.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_lorag 2675 2026-10-12T05:03:51Z runs/e112_lorag/d2o-state-latest.pt: 2675 kimg
+e112_lorag 2675 2026-10-12T05:03:51Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.462  (12.493, 12.293, 12.600; seeds [0, 1, 2])
+e112_lorag 2675 2026-10-12T05:03:51Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.990  (11.907, 11.881, 12.182; seeds [0, 1, 2])
+e112_lorag 2675 2026-10-12T05:03:51Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.196  (12.066, 12.060, 12.462; seeds [0, 1, 2])
+e112_lorag 2675 2026-10-12T05:03:51Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.529  (12.400, 12.351, 12.837; seeds [0, 1, 2])
+e112_lorag 2675 2026-10-12T05:03:51Z wrote runs/e112_lorag/calib-002675.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_lorag 2775 2026-10-12T07:31:12Z runs/e112_lorag/d2o-state-latest.pt: 2775 kimg
+e112_lorag 2775 2026-10-12T07:31:12Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.328  (12.443, 12.177, 12.365; seeds [0, 1, 2])
+e112_lorag 2775 2026-10-12T07:31:12Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.914  (11.911, 11.836, 11.996; seeds [0, 1, 2])
+e112_lorag 2775 2026-10-12T07:31:12Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.122  (12.016, 12.085, 12.264; seeds [0, 1, 2])
+e112_lorag 2775 2026-10-12T07:31:12Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.403  (12.281, 12.308, 12.621; seeds [0, 1, 2])
+e112_lorag 2775 2026-10-12T07:31:12Z wrote runs/e112_lorag/calib-002775.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_lorag 2875 2026-10-12T09:54:30Z runs/e112_lorag/d2o-state-latest.pt: 2875 kimg
+e112_lorag 2875 2026-10-12T09:54:30Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.317  (12.456, 12.133, 12.362; seeds [0, 1, 2])
+e112_lorag 2875 2026-10-12T09:54:30Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.890  (11.882, 11.797, 11.991; seeds [0, 1, 2])
+e112_lorag 2875 2026-10-12T09:54:30Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.081  (12.052, 11.966, 12.226; seeds [0, 1, 2])
+e112_lorag 2875 2026-10-12T09:54:30Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.437  (12.438, 12.256, 12.616; seeds [0, 1, 2])
+e112_lorag 2875 2026-10-12T09:54:30Z wrote runs/e112_lorag/calib-002875.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_lorag_f5 2925 2026-10-12T11:41:16Z runs/e112_lorag_f5/d2o-state-latest.pt: 2925 kimg
+e112_lorag_f5 2925 2026-10-12T11:41:16Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.260  (12.396, 12.109, 12.277; seeds [0, 1, 2])
+e112_lorag_f5 2925 2026-10-12T11:41:16Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.862  (11.880, 11.766, 11.941; seeds [0, 1, 2])
+e112_lorag_f5 2925 2026-10-12T11:41:16Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.080  (12.087, 11.964, 12.188; seeds [0, 1, 2])
+e112_lorag_f5 2925 2026-10-12T11:41:16Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.426  (12.452, 12.201, 12.624; seeds [0, 1, 2])
+e112_lorag_f5 2925 2026-10-12T11:41:16Z wrote runs/e112_lorag_f5/calib-002925.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_lorag_f5 2975 2026-10-12T13:22:14Z runs/e112_lorag_f5/d2o-state-latest.pt: 2975 kimg
+e112_lorag_f5 2975 2026-10-12T13:22:14Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.215  (12.370, 12.074, 12.201; seeds [0, 1, 2])
+e112_lorag_f5 2975 2026-10-12T13:22:14Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.805  (11.875, 11.680, 11.859; seeds [0, 1, 2])
+e112_lorag_f5 2975 2026-10-12T13:22:14Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.006  (12.038, 11.875, 12.106; seeds [0, 1, 2])
+e112_lorag_f5 2975 2026-10-12T13:22:14Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.341  (12.344, 12.118, 12.562; seeds [0, 1, 2])
+e112_lorag_f5 2975 2026-10-12T13:22:14Z wrote runs/e112_lorag_f5/calib-002975.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_lorag_f5 2925 2026-10-12T13:31:05Z removed runs/e112_lorag_f5/calib-002925.ckpt (no longer this run's best; by hand, the rule of 2026-10-12)
+e112_lorag_f5 3025 2026-10-12T15:04:16Z runs/e112_lorag_f5/d2o-state-latest.pt: 3025 kimg
+e112_lorag_f5 3025 2026-10-12T15:04:16Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.188  (12.333, 12.018, 12.214; seeds [0, 1, 2])
+e112_lorag_f5 3025 2026-10-12T15:04:16Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.789  (11.880, 11.630, 11.855; seeds [0, 1, 2])
+e112_lorag_f5 3025 2026-10-12T15:04:16Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.990  (12.028, 11.852, 12.090; seeds [0, 1, 2])
+e112_lorag_f5 3025 2026-10-12T15:04:16Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.313  (12.342, 12.105, 12.492; seeds [0, 1, 2])
+e112_lorag_f5 3025 2026-10-12T15:04:16Z wrote runs/e112_lorag_f5/calib-003025.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_lorag_f5 3025 2026-10-12T15:09:55Z removed runs/e112_lorag_f5/calib-002975.ckpt (no longer this run's best)
+e112_lorag_f5 3075 2026-10-12T16:46:20Z runs/e112_lorag_f5/d2o-state-latest.pt: 3075 kimg
+e112_lorag_f5 3075 2026-10-12T16:46:20Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.114  (12.216, 11.916, 12.211; seeds [0, 1, 2])
+e112_lorag_f5 3075 2026-10-12T16:46:20Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.748  (11.826, 11.594, 11.823; seeds [0, 1, 2])
+e112_lorag_f5 3075 2026-10-12T16:46:20Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.947  (12.002, 11.767, 12.072; seeds [0, 1, 2])
+e112_lorag_f5 3075 2026-10-12T16:46:20Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.267  (12.309, 12.052, 12.441; seeds [0, 1, 2])
+e112_lorag_f5 3075 2026-10-12T16:46:20Z wrote runs/e112_lorag_f5/calib-003075.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_lorag_f5 3075 2026-10-12T16:52:02Z removed runs/e112_lorag_f5/calib-003025.ckpt (no longer this run's best)
+e112_lorag_f5 3125 2026-10-12T18:29:03Z runs/e112_lorag_f5/d2o-state-latest.pt: 3125 kimg
+e112_lorag_f5 3125 2026-10-12T18:29:03Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.087  (12.119, 11.923, 12.219; seeds [0, 1, 2])
+e112_lorag_f5 3125 2026-10-12T18:29:03Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.727  (11.768, 11.594, 11.819; seeds [0, 1, 2])
+e112_lorag_f5 3125 2026-10-12T18:29:03Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.901  (11.970, 11.695, 12.037; seeds [0, 1, 2])
+e112_lorag_f5 3125 2026-10-12T18:29:03Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.223  (12.320, 11.939, 12.411; seeds [0, 1, 2])
+e112_lorag_f5 3125 2026-10-12T18:29:03Z wrote runs/e112_lorag_f5/calib-003125.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_lorag_f5 3125 2026-10-12T18:34:45Z removed runs/e112_lorag_f5/calib-003075.ckpt (no longer this run's best)
+e112_lorag_f5 3175 2026-10-12T20:10:15Z runs/e112_lorag_f5/d2o-state-latest.pt: 3175 kimg
+e112_lorag_f5 3175 2026-10-12T20:10:15Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.087  (12.116, 11.959, 12.188; seeds [0, 1, 2])
+e112_lorag_f5 3175 2026-10-12T20:10:15Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.675  (11.663, 11.586, 11.776; seeds [0, 1, 2])
+e112_lorag_f5 3175 2026-10-12T20:10:15Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.873  (11.895, 11.724, 11.999; seeds [0, 1, 2])
+e112_lorag_f5 3175 2026-10-12T20:10:15Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.217  (12.203, 12.011, 12.439; seeds [0, 1, 2])
+e112_lorag_f5 3175 2026-10-12T20:10:15Z wrote runs/e112_lorag_f5/calib-003175.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_lorag_f5 3175 2026-10-12T20:15:55Z removed runs/e112_lorag_f5/calib-003125.ckpt (no longer this run's best)
+e112_lorag_f5 3225 2026-10-12T21:50:59Z runs/e112_lorag_f5/d2o-state-latest.pt: 3225 kimg
+e112_lorag_f5 3225 2026-10-12T21:50:59Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.994  (12.031, 11.882, 12.068; seeds [0, 1, 2])
+e112_lorag_f5 3225 2026-10-12T21:50:59Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.650  (11.617, 11.557, 11.776; seeds [0, 1, 2])
+e112_lorag_f5 3225 2026-10-12T21:50:59Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.880  (11.874, 11.737, 12.028; seeds [0, 1, 2])
+e112_lorag_f5 3225 2026-10-12T21:50:59Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.230  (12.222, 12.020, 12.447; seeds [0, 1, 2])
+e112_lorag_f5 3225 2026-10-12T21:50:59Z wrote runs/e112_lorag_f5/calib-003225.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_lorag_f5 3225 2026-10-12T21:56:35Z removed runs/e112_lorag_f5/calib-003175.ckpt (no longer this run's best)
+e112_lorag_f5 3275 2026-10-12T23:30:56Z runs/e112_lorag_f5/d2o-state-latest.pt: 3275 kimg
+e112_lorag_f5 3275 2026-10-12T23:30:56Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.003  (12.066, 11.905, 12.039; seeds [0, 1, 2])
+e112_lorag_f5 3275 2026-10-12T23:30:56Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.650  (11.709, 11.541, 11.700; seeds [0, 1, 2])
+e112_lorag_f5 3275 2026-10-12T23:30:56Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.860  (11.899, 11.721, 11.961; seeds [0, 1, 2])
+e112_lorag_f5 3275 2026-10-12T23:30:56Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.241  (12.265, 12.020, 12.437; seeds [0, 1, 2])
+e112_lorag_f5 3275 2026-10-12T23:30:56Z wrote runs/e112_lorag_f5/calib-003275.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_lorag_f5 3275 2026-10-12T23:36:30Z removed runs/e112_lorag_f5/calib-003225.ckpt (no longer this run's best)
+e112_lorag_f5 3325 2026-10-13T00:57:50Z runs/e112_lorag_f5/d2o-state-latest.pt: 3325 kimg
+e112_lorag_f5 3325 2026-10-13T00:57:50Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.973  (12.038, 11.848, 12.033; seeds [0, 1, 2])
+e112_lorag_f5 3325 2026-10-13T00:57:50Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.618  (11.663, 11.478, 11.712; seeds [0, 1, 2])
+e112_lorag_f5 3325 2026-10-13T00:57:50Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.838  (11.845, 11.671, 11.998; seeds [0, 1, 2])
+e112_lorag_f5 3325 2026-10-13T00:57:50Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.213  (12.194, 12.030, 12.416; seeds [0, 1, 2])
+e112_lorag_f5 3325 2026-10-13T00:57:50Z wrote runs/e112_lorag_f5/calib-003325.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_lorag_f5 3325 2026-10-13T01:01:46Z removed runs/e112_lorag_f5/calib-003275.ckpt (no longer this run's best)
+e112_lorag_f5 3375 2026-10-13T02:09:57Z runs/e112_lorag_f5/d2o-state-latest.pt: 3375 kimg
+e112_lorag_f5 3375 2026-10-13T02:09:57Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.923  (12.009, 11.791, 11.968; seeds [0, 1, 2])
+e112_lorag_f5 3375 2026-10-13T02:09:57Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.603  (11.660, 11.450, 11.698; seeds [0, 1, 2])
+e112_lorag_f5 3375 2026-10-13T02:09:57Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.844  (11.861, 11.692, 11.980; seeds [0, 1, 2])
+e112_lorag_f5 3375 2026-10-13T02:09:57Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.221  (12.197, 12.062, 12.403; seeds [0, 1, 2])
+e112_lorag_f5 3375 2026-10-13T02:09:57Z wrote runs/e112_lorag_f5/calib-003375.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_lorag_f5 3375 2026-10-13T02:13:54Z removed runs/e112_lorag_f5/calib-003325.ckpt (no longer this run's best)
+e112_lorag_f5 3425 2026-10-13T03:26:27Z runs/e112_lorag_f5/d2o-state-latest.pt: 3425 kimg
+e112_lorag_f5 3425 2026-10-13T03:26:27Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.935  (11.961, 11.841, 12.003; seeds [0, 1, 2])
+e112_lorag_f5 3425 2026-10-13T03:26:27Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.610  (11.629, 11.463, 11.739; seeds [0, 1, 2])
+e112_lorag_f5 3425 2026-10-13T03:26:27Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.840  (11.820, 11.688, 12.010; seeds [0, 1, 2])
+e112_lorag_f5 3425 2026-10-13T03:26:27Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.172  (12.108, 12.016, 12.392; seeds [0, 1, 2])
+e112_lorag_f5 3425 2026-10-13T03:26:27Z wrote runs/e112_lorag_f5/calib-003425.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_lorag_f5 3425 2026-10-13T03:30:25Z removed runs/e112_lorag_f5/calib-003425.ckpt (train-reference FID 11.610, this run's best is 11.603)
+e112_lorag_f5_g13 3475 2026-10-13T04:37:38Z runs/e112_lorag_f5_g13/d2o-state-latest.pt: 3475 kimg
+e112_lorag_f5_g13 3475 2026-10-13T04:37:38Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.919  (11.945, 11.789, 12.023; seeds [0, 1, 2])
+e112_lorag_f5_g13 3475 2026-10-13T04:37:38Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.577  (11.604, 11.420, 11.707; seeds [0, 1, 2])
+e112_lorag_f5_g13 3475 2026-10-13T04:37:38Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.794  (11.824, 11.636, 11.921; seeds [0, 1, 2])
+e112_lorag_f5_g13 3475 2026-10-13T04:37:38Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.143  (12.088, 12.005, 12.336; seeds [0, 1, 2])
+e112_lorag_f5_g13 3475 2026-10-13T04:37:38Z wrote runs/e112_lorag_f5_g13/calib-003475.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_lorag_f5_g13 3525 2026-10-13T05:54:26Z runs/e112_lorag_f5_g13/d2o-state-latest.pt: 3525 kimg
+e112_lorag_f5_g13 3525 2026-10-13T05:54:26Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.910  (11.925, 11.788, 12.016; seeds [0, 1, 2])
+e112_lorag_f5_g13 3525 2026-10-13T05:54:26Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.574  (11.597, 11.415, 11.712; seeds [0, 1, 2])
+e112_lorag_f5_g13 3525 2026-10-13T05:54:26Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.810  (11.777, 11.678, 11.975; seeds [0, 1, 2])
+e112_lorag_f5_g13 3525 2026-10-13T05:54:26Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.141  (12.097, 12.008, 12.320; seeds [0, 1, 2])
+e112_lorag_f5_g13 3525 2026-10-13T05:54:26Z wrote runs/e112_lorag_f5_g13/calib-003525.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_lorag_f5_g13 3525 2026-10-13T05:58:36Z removed runs/e112_lorag_f5_g13/calib-003475.ckpt (no longer this run's best)
+e112_lorag_f5_g13 3575 2026-10-13T07:13:04Z runs/e112_lorag_f5_g13/d2o-state-latest.pt: 3575 kimg
+e112_lorag_f5_g13 3575 2026-10-13T07:13:04Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.895  (11.901, 11.731, 12.054; seeds [0, 1, 2])
+e112_lorag_f5_g13 3575 2026-10-13T07:13:04Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.552  (11.518, 11.413, 11.726; seeds [0, 1, 2])
+e112_lorag_f5_g13 3575 2026-10-13T07:13:04Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.784  (11.762, 11.650, 11.941; seeds [0, 1, 2])
+e112_lorag_f5_g13 3575 2026-10-13T07:13:04Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.139  (12.120, 11.980, 12.317; seeds [0, 1, 2])
+e112_lorag_f5_g13 3575 2026-10-13T07:13:04Z wrote runs/e112_lorag_f5_g13/calib-003575.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_lorag_f5_g13 3575 2026-10-13T07:17:14Z removed runs/e112_lorag_f5_g13/calib-003525.ckpt (no longer this run's best)
+e112_lorag_f5_g13 3625 2026-10-13T08:40:59Z runs/e112_lorag_f5_g13/d2o-state-latest.pt: 3625 kimg
+e112_lorag_f5_g13 3625 2026-10-13T08:40:59Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.859  (11.941, 11.681, 11.955; seeds [0, 1, 2])
+e112_lorag_f5_g13 3625 2026-10-13T08:40:59Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.567  (11.597, 11.451, 11.652; seeds [0, 1, 2])
+e112_lorag_f5_g13 3625 2026-10-13T08:40:59Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.814  (11.839, 11.675, 11.927; seeds [0, 1, 2])
+e112_lorag_f5_g13 3625 2026-10-13T08:40:59Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.144  (12.126, 12.020, 12.287; seeds [0, 1, 2])
+e112_lorag_f5_g13 3625 2026-10-13T08:40:59Z wrote runs/e112_lorag_f5_g13/calib-003625.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_lorag_f5_g13 3625 2026-10-13T08:44:59Z removed runs/e112_lorag_f5_g13/calib-003625.ckpt (train-reference FID 11.567, this run's best is 11.552)
+e112_lorag_f5_g13 3675 2026-10-13T09:55:49Z runs/e112_lorag_f5_g13/d2o-state-latest.pt: 3675 kimg
+e112_lorag_f5_g13 3675 2026-10-13T09:55:49Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.863  (11.931, 11.721, 11.936; seeds [0, 1, 2])
+e112_lorag_f5_g13 3675 2026-10-13T09:55:49Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.558  (11.579, 11.445, 11.649; seeds [0, 1, 2])
+e112_lorag_f5_g13 3675 2026-10-13T09:55:49Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.830  (11.853, 11.702, 11.934; seeds [0, 1, 2])
+e112_lorag_f5_g13 3675 2026-10-13T09:55:49Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.166  (12.159, 12.017, 12.323; seeds [0, 1, 2])
+e112_lorag_f5_g13 3675 2026-10-13T09:55:49Z wrote runs/e112_lorag_f5_g13/calib-003675.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_lorag_f5_g13 3675 2026-10-13T09:59:53Z removed runs/e112_lorag_f5_g13/calib-003675.ckpt (train-reference FID 11.558, this run's best is 11.552)
+e112_lorag_f5_g13_lr3 3725 2026-10-13T11:18:57Z runs/e112_lorag_f5_g13_lr3/d2o-state-latest.pt: 3725 kimg
+e112_lorag_f5_g13_lr3 3725 2026-10-13T11:18:57Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.872  (11.901, 11.708, 12.008; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3 3725 2026-10-13T11:18:57Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.564  (11.557, 11.438, 11.698; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3 3725 2026-10-13T11:18:57Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.802  (11.800, 11.687, 11.920; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3 3725 2026-10-13T11:18:57Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.112  (12.080, 11.991, 12.265; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3 3725 2026-10-13T11:18:57Z wrote runs/e112_lorag_f5_g13_lr3/calib-003725.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_lorag_f5_g13_t58 3725 2026-10-13T12:42:08Z runs/e112_lorag_f5_g13_t58/d2o-state-latest.pt: 3725 kimg
+e112_lorag_f5_g13_t58 3725 2026-10-13T12:42:08Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.959  (11.972, 11.835, 12.070; seeds [0, 1, 2])
+e112_lorag_f5_g13_t58 3725 2026-10-13T12:42:08Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.633  (11.624, 11.544, 11.730; seeds [0, 1, 2])
+e112_lorag_f5_g13_t58 3725 2026-10-13T12:42:08Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.856  (11.825, 11.790, 11.952; seeds [0, 1, 2])
+e112_lorag_f5_g13_t58 3725 2026-10-13T12:42:08Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.207  (12.185, 12.084, 12.352; seeds [0, 1, 2])
+e112_lorag_f5_g13_t58 3725 2026-10-13T12:42:08Z wrote runs/e112_lorag_f5_g13_t58/calib-003725.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_lorag_f5_g13_t58 3775 2026-10-13T13:52:39Z runs/e112_lorag_f5_g13_t58/d2o-state-latest.pt: 3775 kimg
+e112_lorag_f5_g13_t58 3775 2026-10-13T13:52:39Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.029  (11.986, 11.942, 12.159; seeds [0, 1, 2])
+e112_lorag_f5_g13_t58 3775 2026-10-13T13:52:39Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.719  (11.663, 11.673, 11.820; seeds [0, 1, 2])
+e112_lorag_f5_g13_t58 3775 2026-10-13T13:52:39Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.963  (11.885, 11.933, 12.072; seeds [0, 1, 2])
+e112_lorag_f5_g13_t58 3775 2026-10-13T13:52:39Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.294  (12.219, 12.215, 12.447; seeds [0, 1, 2])
+e112_lorag_f5_g13_t58 3775 2026-10-13T13:52:39Z wrote runs/e112_lorag_f5_g13_t58/calib-003775.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_lorag_f5_g13_t58 3775 2026-10-13T13:56:41Z removed runs/e112_lorag_f5_g13_t58/calib-003775.ckpt (train-reference FID 11.719, this run's best is 11.633)
+e112_lorag_f5_g13_t58 3825 2026-10-13T15:05:34Z runs/e112_lorag_f5_g13_t58/d2o-state-latest.pt: 3825 kimg
+e112_lorag_f5_g13_t58 3825 2026-10-13T15:05:34Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.098  (12.014, 12.044, 12.238; seeds [0, 1, 2])
+e112_lorag_f5_g13_t58 3825 2026-10-13T15:05:34Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.815  (11.705, 11.800, 11.940; seeds [0, 1, 2])
+e112_lorag_f5_g13_t58 3825 2026-10-13T15:05:34Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.042  (11.950, 12.001, 12.176; seeds [0, 1, 2])
+e112_lorag_f5_g13_t58 3825 2026-10-13T15:05:34Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.398  (12.366, 12.291, 12.537; seeds [0, 1, 2])
+e112_lorag_f5_g13_t58 3825 2026-10-13T15:05:34Z wrote runs/e112_lorag_f5_g13_t58/calib-003825.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_lorag_f5_g13_t58 3825 2026-10-13T15:09:35Z removed runs/e112_lorag_f5_g13_t58/calib-003825.ckpt (train-reference FID 11.815, this run's best is 11.633)
+e112_lorag_f5_g13_t58 3875 2026-10-13T16:21:10Z runs/e112_lorag_f5_g13_t58/d2o-state-latest.pt: 3875 kimg
+e112_lorag_f5_g13_t58 3875 2026-10-13T16:21:10Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.197  (12.191, 12.122, 12.277; seeds [0, 1, 2])
+e112_lorag_f5_g13_t58 3875 2026-10-13T16:21:10Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.896  (11.815, 11.884, 11.988; seeds [0, 1, 2])
+e112_lorag_f5_g13_t58 3875 2026-10-13T16:21:10Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.136  (12.046, 12.095, 12.266; seeds [0, 1, 2])
+e112_lorag_f5_g13_t58 3875 2026-10-13T16:21:10Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.491  (12.428, 12.367, 12.679; seeds [0, 1, 2])
+e112_lorag_f5_g13_t58 3875 2026-10-13T16:21:10Z wrote runs/e112_lorag_f5_g13_t58/calib-003875.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_lorag_f5_g13_t58 3875 2026-10-13T16:25:12Z removed runs/e112_lorag_f5_g13_t58/calib-003875.ckpt (train-reference FID 11.896, this run's best is 11.633)
+e112_lorag_f5_g13_t58 3925 2026-10-13T17:34:02Z runs/e112_lorag_f5_g13_t58/d2o-state-latest.pt: 3925 kimg
+e112_lorag_f5_g13_t58 3925 2026-10-13T17:34:02Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.241  (12.225, 12.169, 12.328; seeds [0, 1, 2])
+e112_lorag_f5_g13_t58 3925 2026-10-13T17:34:02Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.952  (11.909, 11.925, 12.020; seeds [0, 1, 2])
+e112_lorag_f5_g13_t58 3925 2026-10-13T17:34:02Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.215  (12.140, 12.178, 12.327; seeds [0, 1, 2])
+e112_lorag_f5_g13_t58 3925 2026-10-13T17:34:02Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.559  (12.495, 12.457, 12.725; seeds [0, 1, 2])
+e112_lorag_f5_g13_t58 3925 2026-10-13T17:34:02Z wrote runs/e112_lorag_f5_g13_t58/calib-003925.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_lorag_f5_g13_t58 3925 2026-10-13T17:38:01Z removed runs/e112_lorag_f5_g13_t58/calib-003925.ckpt (train-reference FID 11.952, this run's best is 11.633)
+e112_lorag_f5_g13_t58 3975 2026-10-13T18:54:16Z runs/e112_lorag_f5_g13_t58/d2o-state-latest.pt: 3975 kimg
+e112_lorag_f5_g13_t58 3975 2026-10-13T18:54:16Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.273  (12.287, 12.204, 12.329; seeds [0, 1, 2])
+e112_lorag_f5_g13_t58 3975 2026-10-13T18:54:16Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.005  (11.976, 11.990, 12.049; seeds [0, 1, 2])
+e112_lorag_f5_g13_t58 3975 2026-10-13T18:54:16Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.240  (12.214, 12.155, 12.351; seeds [0, 1, 2])
+e112_lorag_f5_g13_t58 3975 2026-10-13T18:54:16Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.593  (12.583, 12.446, 12.750; seeds [0, 1, 2])
+e112_lorag_f5_g13_t58 3975 2026-10-13T18:54:16Z wrote runs/e112_lorag_f5_g13_t58/calib-003975.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_lorag_f5_g13_t58 3975 2026-10-13T18:58:21Z removed runs/e112_lorag_f5_g13_t58/calib-003975.ckpt (train-reference FID 12.005, this run's best is 11.633)
+e112_lorag_f5_g13_lr3b 3725 2026-10-13T20:21:34Z runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt: 3725 kimg
+e112_lorag_f5_g13_lr3b 3725 2026-10-13T20:21:34Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.863  (11.894, 11.713, 11.981; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 3725 2026-10-13T20:21:34Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.565  (11.550, 11.443, 11.704; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 3725 2026-10-13T20:21:34Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.801  (11.781, 11.698, 11.924; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 3725 2026-10-13T20:21:34Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.127  (12.089, 12.015, 12.275; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 3725 2026-10-13T20:21:34Z wrote runs/e112_lorag_f5_g13_lr3b/calib-003725.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_lorag_f5_g13_lr3b 3775 2026-10-13T21:45:21Z runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt: 3775 kimg
+e112_lorag_f5_g13_lr3b 3775 2026-10-13T21:45:21Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.862  (11.886, 11.715, 11.984; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 3775 2026-10-13T21:45:21Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.522  (11.485, 11.408, 11.672; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 3775 2026-10-13T21:45:21Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.769  (11.713, 11.668, 11.925; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 3775 2026-10-13T21:45:21Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.088  (12.006, 12.000, 12.258; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 3775 2026-10-13T21:45:21Z wrote runs/e112_lorag_f5_g13_lr3b/calib-003775.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_lorag_f5_g13_lr3b 3775 2026-10-13T21:51:00Z removed runs/e112_lorag_f5_g13_lr3b/calib-003725.ckpt (no longer this run's best)
+e112_lorag_f5_g13_lr3b 3825 2026-10-13T23:25:49Z runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt: 3825 kimg
+e112_lorag_f5_g13_lr3b 3825 2026-10-13T23:25:49Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.840  (11.878, 11.676, 11.968; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 3825 2026-10-13T23:25:49Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.520  (11.491, 11.420, 11.650; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 3825 2026-10-13T23:25:49Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.742  (11.684, 11.650, 11.892; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 3825 2026-10-13T23:25:49Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.066  (11.967, 11.986, 12.245; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 3825 2026-10-13T23:25:49Z wrote runs/e112_lorag_f5_g13_lr3b/calib-003825.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_lorag_f5_g13_lr3b 3825 2026-10-13T23:31:26Z removed runs/e112_lorag_f5_g13_lr3b/calib-003775.ckpt (no longer this run's best)
+e112_lorag_f5_g13_lr3b 3875 2026-10-14T01:07:27Z runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt: 3875 kimg
+e112_lorag_f5_g13_lr3b 3875 2026-10-14T01:07:27Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.838  (11.880, 11.674, 11.960; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 3875 2026-10-14T01:07:27Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.500  (11.459, 11.406, 11.634; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 3875 2026-10-14T01:07:27Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.735  (11.682, 11.639, 11.882; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 3875 2026-10-14T01:07:27Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.039  (11.973, 11.958, 12.186; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 3875 2026-10-14T01:07:27Z wrote runs/e112_lorag_f5_g13_lr3b/calib-003875.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_lorag_f5_g13_lr3b 3875 2026-10-14T01:13:05Z removed runs/e112_lorag_f5_g13_lr3b/calib-003825.ckpt (no longer this run's best)
+e112_lorag_f5_g13_lr3b 3925 2026-10-14T02:46:27Z runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt: 3925 kimg
+e112_lorag_f5_g13_lr3b 3925 2026-10-14T02:46:27Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.793  (11.867, 11.617, 11.895; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 3925 2026-10-14T02:46:27Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.477  (11.457, 11.401, 11.571; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 3925 2026-10-14T02:46:27Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.717  (11.667, 11.654, 11.829; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 3925 2026-10-14T02:46:27Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.034  (11.977, 11.942, 12.183; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 3925 2026-10-14T02:46:27Z wrote runs/e112_lorag_f5_g13_lr3b/calib-003925.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_lorag_f5_g13_lr3b 3925 2026-10-14T02:52:05Z removed runs/e112_lorag_f5_g13_lr3b/calib-003875.ckpt (no longer this run's best)
+e112_lorag_f5_g13_lr3b 3975 2026-10-14T04:26:16Z runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt: 3975 kimg
+e112_lorag_f5_g13_lr3b 3975 2026-10-14T04:26:16Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.788  (11.854, 11.605, 11.905; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 3975 2026-10-14T04:26:16Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.496  (11.485, 11.400, 11.602; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 3975 2026-10-14T04:26:16Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.724  (11.678, 11.640, 11.853; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 3975 2026-10-14T04:26:16Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.040  (12.025, 11.946, 12.148; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 3975 2026-10-14T04:26:16Z wrote runs/e112_lorag_f5_g13_lr3b/calib-003975.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_lorag_f5_g13_lr3b 3975 2026-10-14T04:31:53Z removed runs/e112_lorag_f5_g13_lr3b/calib-003975.ckpt (train-reference FID 11.496, this run's best is 11.477)
+e112_lorag_f5_g13_lr3b 4025 2026-10-14T06:04:26Z runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt: 4025 kimg
+e112_lorag_f5_g13_lr3b 4025 2026-10-14T06:04:26Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.783  (11.832, 11.630, 11.888; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 4025 2026-10-14T06:04:26Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.517  (11.517, 11.405, 11.630; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 4025 2026-10-14T06:04:26Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.740  (11.748, 11.643, 11.828; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 4025 2026-10-14T06:04:26Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.052  (12.055, 11.964, 12.138; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 4025 2026-10-14T06:04:26Z wrote runs/e112_lorag_f5_g13_lr3b/calib-004025.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_lorag_f5_g13_lr3b 4025 2026-10-14T06:10:04Z removed runs/e112_lorag_f5_g13_lr3b/calib-004025.ckpt (train-reference FID 11.517, this run's best is 11.477)
+e112_lorag_f5_g13_lr3b 4125 2026-10-14T09:07:24Z runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt: 4125 kimg
+e112_lorag_f5_g13_lr3b 4125 2026-10-14T09:07:24Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.775  (11.830, 11.679, 11.815; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 4125 2026-10-14T09:07:24Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.498  (11.487, 11.420, 11.587; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 4125 2026-10-14T09:07:24Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.733  (11.717, 11.649, 11.834; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 4125 2026-10-14T09:07:24Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.091  (12.109, 11.993, 12.170; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 4125 2026-10-14T09:07:24Z wrote runs/e112_lorag_f5_g13_lr3b/calib-004125.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_lorag_f5_g13_lr3b 4125 2026-10-14T09:12:46Z removed runs/e112_lorag_f5_g13_lr3b/calib-004125.ckpt (train-reference FID 11.498, this run's best is 11.477)
+e112_lorag_f5_g13_lr3b 4225 2026-10-14T12:17:32Z runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt: 4225 kimg
+e112_lorag_f5_g13_lr3b 4225 2026-10-14T12:17:32Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.765  (11.805, 11.687, 11.802; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 4225 2026-10-14T12:17:32Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.479  (11.478, 11.427, 11.532; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 4225 2026-10-14T12:17:32Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.711  (11.713, 11.667, 11.751; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 4225 2026-10-14T12:17:32Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.032  (12.065, 11.949, 12.083; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 4225 2026-10-14T12:17:32Z wrote runs/e112_lorag_f5_g13_lr3b/calib-004225.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_lorag_f5_g13_lr3b 4225 2026-10-14T12:22:48Z removed runs/e112_lorag_f5_g13_lr3b/calib-004225.ckpt (train-reference FID 11.479, this run's best is 11.477)
+e112_lorag_f5_g13_lr3b 4325 2026-10-14T15:22:33Z runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt: 4325 kimg
+e112_lorag_f5_g13_lr3b 4325 2026-10-14T15:22:33Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.776  (11.804, 11.689, 11.837; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 4325 2026-10-14T15:22:33Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.500  (11.446, 11.468, 11.585; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 4325 2026-10-14T15:22:33Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.713  (11.655, 11.675, 11.809; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 4325 2026-10-14T15:22:33Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.028  (11.972, 12.001, 12.109; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 4325 2026-10-14T15:22:33Z wrote runs/e112_lorag_f5_g13_lr3b/calib-004325.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_lorag_f5_g13_lr3b 4325 2026-10-14T15:28:09Z removed runs/e112_lorag_f5_g13_lr3b/calib-004325.ckpt (train-reference FID 11.500, this run's best is 11.477)
+e112_lorag_f5_g13_lr3b 4425 2026-10-14T18:30:46Z runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt: 4425 kimg
+e112_lorag_f5_g13_lr3b 4425 2026-10-14T18:30:46Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.747  (11.790, 11.678, 11.773; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 4425 2026-10-14T18:30:46Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.476  (11.408, 11.451, 11.568; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 4425 2026-10-14T18:30:46Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.710  (11.631, 11.680, 11.818; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 4425 2026-10-14T18:30:46Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.034  (11.987, 11.971, 12.146; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 4425 2026-10-14T18:30:46Z wrote runs/e112_lorag_f5_g13_lr3b/calib-004425.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_lorag_f5_g13_lr3b 4425 2026-10-14T18:36:20Z removed runs/e112_lorag_f5_g13_lr3b/calib-003925.ckpt (no longer this run's best)
+e112_lorag_f5_g13_lr3b 4525 2026-10-14T21:16:59Z runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt: 4525 kimg
+e112_lorag_f5_g13_lr3b 4525 2026-10-14T21:16:59Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.731  (11.817, 11.613, 11.764; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 4525 2026-10-14T21:16:59Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.476  (11.442, 11.383, 11.601; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 4525 2026-10-14T21:16:59Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.701  (11.659, 11.607, 11.836; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 4525 2026-10-14T21:16:59Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.018  (11.989, 11.923, 12.142; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 4525 2026-10-14T21:16:59Z wrote runs/e112_lorag_f5_g13_lr3b/calib-004525.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_lorag_f5_g13_lr3b 4525 2026-10-14T21:20:54Z removed runs/e112_lorag_f5_g13_lr3b/calib-004425.ckpt (no longer this run's best)
+e112_lorag_f5_g13_lr3b 4625 2026-10-14T23:37:46Z runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt: 4625 kimg
+e112_lorag_f5_g13_lr3b 4625 2026-10-14T23:37:46Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.670  (11.775, 11.566, 11.669; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 4625 2026-10-14T23:37:46Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.472  (11.510, 11.374, 11.531; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 4625 2026-10-14T23:37:46Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.668  (11.694, 11.562, 11.747; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 4625 2026-10-14T23:37:46Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.981  (11.986, 11.853, 12.104; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 4625 2026-10-14T23:37:46Z wrote runs/e112_lorag_f5_g13_lr3b/calib-004625.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_lorag_f5_g13_lr3b 4625 2026-10-14T23:41:41Z removed runs/e112_lorag_f5_g13_lr3b/calib-004525.ckpt (no longer this run's best)
+e112_lorag_f5_g13_lr3b 4725 2026-10-15T01:57:14Z runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt: 4725 kimg
+e112_lorag_f5_g13_lr3b 4725 2026-10-15T01:57:14Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.659  (11.723, 11.537, 11.717; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 4725 2026-10-15T01:57:14Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.436  (11.437, 11.353, 11.518; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 4725 2026-10-15T01:57:14Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.648  (11.621, 11.583, 11.742; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 4725 2026-10-15T01:57:14Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.001  (12.007, 11.903, 12.095; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 4725 2026-10-15T01:57:14Z wrote runs/e112_lorag_f5_g13_lr3b/calib-004725.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_lorag_f5_g13_lr3b 4725 2026-10-15T02:01:09Z removed runs/e112_lorag_f5_g13_lr3b/calib-004625.ckpt (no longer this run's best)
+e112_lorag_f5_g13_lr3b 4825 2026-10-15T04:13:07Z runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt: 4825 kimg
+e112_lorag_f5_g13_lr3b 4825 2026-10-15T04:13:07Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.633  (11.732, 11.511, 11.656; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 4825 2026-10-15T04:13:07Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.395  (11.395, 11.314, 11.477; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 4825 2026-10-15T04:13:07Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.606  (11.610, 11.480, 11.727; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 4825 2026-10-15T04:13:07Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.936  (11.949, 11.745, 12.115; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 4825 2026-10-15T04:13:07Z wrote runs/e112_lorag_f5_g13_lr3b/calib-004825.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_lorag_f5_g13_lr3b 4825 2026-10-15T04:17:00Z removed runs/e112_lorag_f5_g13_lr3b/calib-004725.ckpt (no longer this run's best)
+e112_lorag_f5_g13_lr3b 4925 2026-10-15T06:32:47Z runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt: 4925 kimg
+e112_lorag_f5_g13_lr3b 4925 2026-10-15T06:32:47Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.632  (11.738, 11.514, 11.644; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 4925 2026-10-15T06:32:47Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.384  (11.367, 11.308, 11.475; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 4925 2026-10-15T06:32:47Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.578  (11.591, 11.423, 11.722; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 4925 2026-10-15T06:32:47Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.939  (11.970, 11.745, 12.101; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 4925 2026-10-15T06:32:47Z wrote runs/e112_lorag_f5_g13_lr3b/calib-004925.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_lorag_f5_g13_lr3b 4925 2026-10-15T06:36:45Z removed runs/e112_lorag_f5_g13_lr3b/calib-004825.ckpt (no longer this run's best)
+e112_lorag_f5_g13_lr3b 5025 2026-10-15T08:50:26Z runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt: 5025 kimg
+e112_lorag_f5_g13_lr3b 5025 2026-10-15T08:50:26Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.632  (11.758, 11.476, 11.662; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 5025 2026-10-15T08:50:26Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.391  (11.444, 11.219, 11.511; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 5025 2026-10-15T08:50:26Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.604  (11.650, 11.414, 11.748; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 5025 2026-10-15T08:50:26Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.921  (11.993, 11.670, 12.100; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 5025 2026-10-15T08:50:26Z wrote runs/e112_lorag_f5_g13_lr3b/calib-005025.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_lorag_f5_g13_lr3b 5025 2026-10-15T08:54:20Z removed runs/e112_lorag_f5_g13_lr3b/calib-005025.ckpt (train-reference FID 11.391, this run's best is 11.384)
+e112_lorag_f5_g13_t58 3975 2026-10-15T10:53:08Z removed d2o-state-latest.pt, calib-003725.ckpt, best.ckpt (line ended 2026-10-13 18:59 UTC, never the best; disk for the held-out line)
+e112_lorag_f5_g13_lr3b 5125 2026-10-15T11:10:07Z runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt: 5125 kimg
+e112_lorag_f5_g13_lr3b 5125 2026-10-15T11:10:07Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.639  (11.758, 11.476, 11.682; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 5125 2026-10-15T11:10:07Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.368  (11.409, 11.208, 11.486; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 5125 2026-10-15T11:10:07Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.606  (11.657, 11.409, 11.753; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 5125 2026-10-15T11:10:07Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.961  (11.994, 11.734, 12.154; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 5125 2026-10-15T11:10:07Z wrote runs/e112_lorag_f5_g13_lr3b/calib-005125.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_lorag_f5_g13_lr3b 5125 2026-10-15T11:14:09Z removed runs/e112_lorag_f5_g13_lr3b/calib-004925.ckpt (no longer this run's best)
+e112_lorag 2875 2026-10-15T11:59:29Z removed d2o-state-latest.pt and calib-002875.ckpt; e112_lorag_f5 removed d2o-state-latest.pt, calib-003375.ckpt, best.ckpt (dominated within the e112_lorag line by _g13 and _lr3b; disk before the user's two days away)
+e112_lorag_f5_g13_lr3b 5225 2026-10-20T09:55:20Z runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt: 5225 kimg
+e112_lorag_f5_g13_lr3b 5225 2026-10-20T09:55:20Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.595  (11.686, 11.506, 11.594; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 5225 2026-10-20T09:55:20Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.347  (11.410, 11.193, 11.438; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 5225 2026-10-20T09:55:20Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.598  (11.654, 11.424, 11.716; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 5225 2026-10-20T09:55:20Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.947  (12.065, 11.716, 12.061; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 5225 2026-10-20T09:55:20Z wrote runs/e112_lorag_f5_g13_lr3b/calib-005225.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_lorag_f5_g13_lr3b 5225 2026-10-20T09:59:14Z removed runs/e112_lorag_f5_g13_lr3b/calib-005125.ckpt (no longer this run's best)
+e112_lorag_f5_g13_lr3b 5325 2026-10-20T12:08:14Z runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt: 5325 kimg
+e112_lorag_f5_g13_lr3b 5325 2026-10-20T12:08:14Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.578  (11.681, 11.534, 11.520; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 5325 2026-10-20T12:08:14Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.354  (11.415, 11.214, 11.433; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 5325 2026-10-20T12:08:14Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.578  (11.611, 11.421, 11.702; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 5325 2026-10-20T12:08:14Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.927  (12.012, 11.730, 12.039; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 5325 2026-10-20T12:08:14Z wrote runs/e112_lorag_f5_g13_lr3b/calib-005325.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_lorag_f5_g13_lr3b 5325 2026-10-20T12:12:10Z removed runs/e112_lorag_f5_g13_lr3b/calib-005325.ckpt (train-reference FID 11.354, this run's best is 11.347)
+e112_lorag_f5_g13_lr3b 5425 2026-10-20T14:19:10Z runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt: 5425 kimg
+e112_lorag_f5_g13_lr3b 5425 2026-10-20T14:19:10Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.592  (11.672, 11.569, 11.536; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 5425 2026-10-20T14:19:10Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.388  (11.420, 11.294, 11.449; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 5425 2026-10-20T14:19:10Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.618  (11.656, 11.496, 11.701; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 5425 2026-10-20T14:19:10Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.948  (12.022, 11.789, 12.032; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 5425 2026-10-20T14:19:10Z wrote runs/e112_lorag_f5_g13_lr3b/calib-005425.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_lorag_f5_g13_lr3b 5425 2026-10-20T14:23:08Z removed runs/e112_lorag_f5_g13_lr3b/calib-005425.ckpt (train-reference FID 11.388, this run's best is 11.347)
+e112_lorag_f5_g13_lr3b 5525 2026-10-20T16:42:05Z runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt: 5525 kimg
+e112_lorag_f5_g13_lr3b 5525 2026-10-20T16:42:05Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.568  (11.651, 11.520, 11.533; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 5525 2026-10-20T16:42:05Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.358  (11.405, 11.263, 11.407; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 5525 2026-10-20T16:42:05Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.598  (11.650, 11.454, 11.690; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 5525 2026-10-20T16:42:05Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.963  (12.040, 11.788, 12.061; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 5525 2026-10-20T16:42:05Z wrote runs/e112_lorag_f5_g13_lr3b/calib-005525.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_lorag_f5_g13_lr3b 5525 2026-10-20T16:46:15Z removed runs/e112_lorag_f5_g13_lr3b/calib-005525.ckpt (train-reference FID 11.358, this run's best is 11.347)
+e112_lorag_f5_g13_lr3b 5625 2026-10-20T19:01:42Z runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt: 5625 kimg
+e112_lorag_f5_g13_lr3b 5625 2026-10-20T19:01:42Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.540  (11.582, 11.526, 11.513; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 5625 2026-10-20T19:01:42Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.338  (11.390, 11.229, 11.395; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 5625 2026-10-20T19:01:42Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.605  (11.674, 11.440, 11.700; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 5625 2026-10-20T19:01:42Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.976  (12.049, 11.782, 12.095; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 5625 2026-10-20T19:01:42Z wrote runs/e112_lorag_f5_g13_lr3b/calib-005625.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_lorag_f5_g13_lr3b 5625 2026-10-20T19:05:45Z removed runs/e112_lorag_f5_g13_lr3b/calib-005225.ckpt (no longer this run's best)
+e112_lorag_f5_g13_lr3b 5725 2026-10-20T21:26:43Z runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt: 5725 kimg
+e112_lorag_f5_g13_lr3b 5725 2026-10-20T21:26:43Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.549  (11.591, 11.530, 11.526; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 5725 2026-10-20T21:26:43Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.338  (11.349, 11.256, 11.408; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 5725 2026-10-20T21:26:43Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.604  (11.633, 11.456, 11.723; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 5725 2026-10-20T21:26:43Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.976  (12.020, 11.831, 12.078; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 5725 2026-10-20T21:26:43Z wrote runs/e112_lorag_f5_g13_lr3b/calib-005725.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_lorag_f5_g13_lr3b 5725 2026-10-20T21:30:43Z removed runs/e112_lorag_f5_g13_lr3b/calib-005625.ckpt (no longer this run's best)
+e112_lorag_f5_g13_lr3b 5825 2026-10-20T23:51:52Z runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt: 5825 kimg
+e112_lorag_f5_g13_lr3b 5825 2026-10-20T23:51:52Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.533  (11.585, 11.495, 11.518; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 5825 2026-10-20T23:51:52Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.341  (11.357, 11.240, 11.427; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 5825 2026-10-20T23:51:52Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.588  (11.582, 11.482, 11.700; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 5825 2026-10-20T23:51:52Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.942  (11.937, 11.826, 12.064; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 5825 2026-10-20T23:51:52Z wrote runs/e112_lorag_f5_g13_lr3b/calib-005825.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_lorag_f5_g13_lr3b 5825 2026-10-20T23:55:58Z removed runs/e112_lorag_f5_g13_lr3b/calib-005825.ckpt (train-reference FID 11.341, this run's best is 11.338)
+e112_lorag_f5_g13_lr3b 5925 2026-10-21T02:13:49Z runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt: 5925 kimg
+e112_lorag_f5_g13_lr3b 5925 2026-10-21T02:13:49Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.543  (11.537, 11.528, 11.565; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 5925 2026-10-21T02:13:49Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.334  (11.343, 11.259, 11.400; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 5925 2026-10-21T02:13:49Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.589  (11.581, 11.510, 11.676; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 5925 2026-10-21T02:13:49Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.935  (11.952, 11.838, 12.015; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 5925 2026-10-21T02:13:49Z wrote runs/e112_lorag_f5_g13_lr3b/calib-005925.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_lorag_f5_g13_lr3b 5925 2026-10-21T02:17:54Z removed runs/e112_lorag_f5_g13_lr3b/calib-005725.ckpt (no longer this run's best)
+e112_lorag_f5_g13_lr3b 6025 2026-10-21T04:39:50Z runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt: 6025 kimg
+e112_lorag_f5_g13_lr3b 6025 2026-10-21T04:39:50Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.608  (11.614, 11.560, 11.651; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 6025 2026-10-21T04:39:50Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.374  (11.360, 11.312, 11.451; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 6025 2026-10-21T04:39:50Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.630  (11.623, 11.556, 11.711; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 6025 2026-10-21T04:39:50Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.966  (11.991, 11.852, 12.055; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 6025 2026-10-21T04:39:50Z wrote runs/e112_lorag_f5_g13_lr3b/calib-006025.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_lorag_f5_g13_lr3b 6025 2026-10-21T04:43:45Z removed runs/e112_lorag_f5_g13_lr3b/calib-006025.ckpt (train-reference FID 11.374, this run's best is 11.334)
+e112_lorag_f5_g13_lr3b 6125 2026-10-21T06:51:51Z runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt: 6125 kimg
+e112_lorag_f5_g13_lr3b 6125 2026-10-21T06:51:51Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.620  (11.646, 11.559, 11.654; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 6125 2026-10-21T06:51:51Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.400  (11.373, 11.311, 11.516; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 6125 2026-10-21T06:51:51Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.656  (11.617, 11.575, 11.775; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 6125 2026-10-21T06:51:51Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.986  (11.973, 11.907, 12.079; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 6125 2026-10-21T06:51:51Z wrote runs/e112_lorag_f5_g13_lr3b/calib-006125.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_lorag_f5_g13_lr3b 6125 2026-10-21T06:55:56Z removed runs/e112_lorag_f5_g13_lr3b/calib-006125.ckpt (train-reference FID 11.400, this run's best is 11.334)
+e112_lorag_f5_g13_lr3b 6225 2026-10-21T09:05:13Z runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt: 6225 kimg
+e112_lorag_f5_g13_lr3b 6225 2026-10-21T09:05:13Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.596  (11.641, 11.500, 11.647; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 6225 2026-10-21T09:05:13Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.352  (11.359, 11.256, 11.442; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 6225 2026-10-21T09:05:13Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.628  (11.650, 11.519, 11.714; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 6225 2026-10-21T09:05:13Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.961  (11.949, 11.874, 12.060; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 6225 2026-10-21T09:05:13Z wrote runs/e112_lorag_f5_g13_lr3b/calib-006225.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_lorag_f5_g13_lr3b 6225 2026-10-21T09:09:09Z removed runs/e112_lorag_f5_g13_lr3b/calib-006225.ckpt (train-reference FID 11.352, this run's best is 11.334)
+e112_lorag_f5_g13_lr3b 6325 2026-10-21T11:21:31Z runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt: 6325 kimg
+e112_lorag_f5_g13_lr3b 6325 2026-10-21T11:21:31Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.564  (11.609, 11.454, 11.629; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 6325 2026-10-21T11:21:31Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.367  (11.376, 11.275, 11.450; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 6325 2026-10-21T11:21:31Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.607  (11.636, 11.531, 11.654; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 6325 2026-10-21T11:21:31Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.945  (11.976, 11.867, 11.991; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 6325 2026-10-21T11:21:31Z wrote runs/e112_lorag_f5_g13_lr3b/calib-006325.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_lorag_f5_g13_lr3b 6325 2026-10-21T11:25:27Z removed runs/e112_lorag_f5_g13_lr3b/calib-006325.ckpt (train-reference FID 11.367, this run's best is 11.334)
+e112_lorag_f5_g13_lr3b 6425 2026-10-21T13:39:23Z runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt: 6425 kimg
+e112_lorag_f5_g13_lr3b 6425 2026-10-21T13:39:23Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.549  (11.629, 11.432, 11.585; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 6425 2026-10-21T13:39:23Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.384  (11.395, 11.258, 11.499; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 6425 2026-10-21T13:39:23Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.611  (11.627, 11.523, 11.682; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 6425 2026-10-21T13:39:23Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.948  (11.993, 11.841, 12.009; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 6425 2026-10-21T13:39:23Z wrote runs/e112_lorag_f5_g13_lr3b/calib-006425.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_lorag_f5_g13_lr3b 6425 2026-10-21T13:43:20Z removed runs/e112_lorag_f5_g13_lr3b/calib-006425.ckpt (train-reference FID 11.384, this run's best is 11.334)
+e112_lorag_f5_g13_lr3b 6525 2026-10-21T15:58:52Z runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt: 6525 kimg
+e112_lorag_f5_g13_lr3b 6525 2026-10-21T15:58:52Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.541  (11.564, 11.473, 11.587; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 6525 2026-10-21T15:58:52Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.372  (11.338, 11.259, 11.520; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 6525 2026-10-21T15:58:52Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.632  (11.651, 11.531, 11.714; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 6525 2026-10-21T15:58:52Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.973  (12.028, 11.871, 12.019; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 6525 2026-10-21T15:58:52Z wrote runs/e112_lorag_f5_g13_lr3b/calib-006525.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_lorag_f5_g13_lr3b 6525 2026-10-21T16:02:54Z removed runs/e112_lorag_f5_g13_lr3b/calib-006525.ckpt (train-reference FID 11.372, this run's best is 11.334)
+e112_lorag_f5_g13_lr3b 6625 2026-10-21T18:15:38Z runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt: 6625 kimg
+e112_lorag_f5_g13_lr3b 6625 2026-10-21T18:15:38Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.512  (11.546, 11.433, 11.556; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 6625 2026-10-21T18:15:38Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.353  (11.355, 11.275, 11.428; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 6625 2026-10-21T18:15:38Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.607  (11.604, 11.545, 11.673; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 6625 2026-10-21T18:15:38Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.965  (12.033, 11.877, 11.986; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 6625 2026-10-21T18:15:38Z wrote runs/e112_lorag_f5_g13_lr3b/calib-006625.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_lorag_f5_g13_lr3b 6625 2026-10-21T18:19:31Z removed runs/e112_lorag_f5_g13_lr3b/calib-006625.ckpt (train-reference FID 11.353, this run's best is 11.334)
+e112_lorag_f5_g13_lr3b 6725 2026-10-21T20:35:33Z runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt: 6725 kimg
+e112_lorag_f5_g13_lr3b 6725 2026-10-21T20:35:33Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.487  (11.542, 11.418, 11.502; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 6725 2026-10-21T20:35:33Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.334  (11.331, 11.276, 11.394; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 6725 2026-10-21T20:35:33Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.602  (11.628, 11.554, 11.625; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 6725 2026-10-21T20:35:33Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.957  (12.025, 11.905, 11.941; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 6725 2026-10-21T20:35:33Z wrote runs/e112_lorag_f5_g13_lr3b/calib-006725.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_lorag_f5_g13_lr3b 6725 2026-10-21T20:39:31Z removed runs/e112_lorag_f5_g13_lr3b/calib-005925.ckpt (no longer this run's best)
+e112_lorag_f5_g13_lr3b 6825 2026-10-21T23:02:51Z runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt: 6825 kimg
+e112_lorag_f5_g13_lr3b 6825 2026-10-21T23:02:51Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.470  (11.517, 11.427, 11.465; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 6825 2026-10-21T23:02:51Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.303  (11.340, 11.225, 11.345; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 6825 2026-10-21T23:02:51Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.569  (11.569, 11.537, 11.602; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 6825 2026-10-21T23:02:51Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.936  (11.979, 11.900, 11.930; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 6825 2026-10-21T23:02:51Z wrote runs/e112_lorag_f5_g13_lr3b/calib-006825.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_lorag_f5_g13_lr3b 6825 2026-10-21T23:06:46Z removed runs/e112_lorag_f5_g13_lr3b/calib-006725.ckpt (no longer this run's best)
+e112_lorag_f5_g13_lr3b 6925 2026-10-22T01:28:58Z runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt: 6925 kimg
+e112_lorag_f5_g13_lr3b 6925 2026-10-22T01:28:58Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.494  (11.530, 11.466, 11.485; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 6925 2026-10-22T01:28:58Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.323  (11.334, 11.268, 11.366; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 6925 2026-10-22T01:28:58Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.578  (11.564, 11.556, 11.614; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 6925 2026-10-22T01:28:58Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.964  (11.947, 11.920, 12.024; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 6925 2026-10-22T01:28:58Z wrote runs/e112_lorag_f5_g13_lr3b/calib-006925.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_lorag_f5_g13_lr3b 6925 2026-10-22T01:32:54Z removed runs/e112_lorag_f5_g13_lr3b/calib-006925.ckpt (train-reference FID 11.323, this run's best is 11.303)
+e112_lorag_f5_g13_lr3b 7025 2026-10-22T03:45:58Z runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt: 7025 kimg
+e112_lorag_f5_g13_lr3b 7025 2026-10-22T03:45:58Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.531  (11.586, 11.468, 11.540; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 7025 2026-10-22T03:45:58Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.373  (11.371, 11.316, 11.433; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 7025 2026-10-22T03:45:58Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.628  (11.633, 11.560, 11.690; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 7025 2026-10-22T03:45:58Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.964  (11.960, 11.890, 12.040; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 7025 2026-10-22T03:45:58Z wrote runs/e112_lorag_f5_g13_lr3b/calib-007025.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_lorag_f5_g13_lr3b 7025 2026-10-22T03:49:52Z removed runs/e112_lorag_f5_g13_lr3b/calib-007025.ckpt (train-reference FID 11.373, this run's best is 11.303)
+e112_lorag_f5_g13_lr3b 7125 2026-10-22T06:20:49Z runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt: 7125 kimg
+e112_lorag_f5_g13_lr3b 7125 2026-10-22T06:20:49Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.547  (11.613, 11.472, 11.555; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 7125 2026-10-22T06:20:49Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.390  (11.350, 11.370, 11.452; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 7125 2026-10-22T06:20:49Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.652  (11.637, 11.617, 11.702; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 7125 2026-10-22T06:20:49Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.968  (12.019, 11.901, 11.986; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 7125 2026-10-22T06:20:49Z wrote runs/e112_lorag_f5_g13_lr3b/calib-007125.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_lorag_f5_g13_lr3b 7125 2026-10-22T06:24:42Z removed runs/e112_lorag_f5_g13_lr3b/calib-007125.ckpt (train-reference FID 11.390, this run's best is 11.303)
+e112_lorag_f5_g13_lr3b 7225 2026-10-22T08:51:44Z runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt: 7225 kimg
+e112_lorag_f5_g13_lr3b 7225 2026-10-22T08:51:44Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.606  (11.661, 11.518, 11.638; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 7225 2026-10-22T08:51:44Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.422  (11.418, 11.367, 11.481; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 7225 2026-10-22T08:51:44Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.662  (11.676, 11.574, 11.736; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 7225 2026-10-22T08:51:44Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.992  (12.031, 11.897, 12.047; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 7225 2026-10-22T08:51:44Z wrote runs/e112_lorag_f5_g13_lr3b/calib-007225.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_lorag_f5_g13_lr3b 7225 2026-10-22T08:55:47Z removed runs/e112_lorag_f5_g13_lr3b/calib-007225.ckpt (train-reference FID 11.422, this run's best is 11.303)
+e112_lorag_f5_g13_lr3b 7325 2026-10-22T23:45:36Z runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt: 7325 kimg
+e112_lorag_f5_g13_lr3b 7325 2026-10-22T23:45:36Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.604  (11.650, 11.519, 11.644; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 7325 2026-10-22T23:45:36Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.416  (11.407, 11.352, 11.489; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 7325 2026-10-22T23:45:36Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.673  (11.636, 11.615, 11.769; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 7325 2026-10-22T23:45:36Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.978  (11.950, 11.877, 12.107; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 7325 2026-10-22T23:45:36Z wrote runs/e112_lorag_f5_g13_lr3b/calib-007325.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_lorag_f5_g13_lr3b 7325 2026-10-22T23:49:39Z removed runs/e112_lorag_f5_g13_lr3b/calib-007325.ckpt (train-reference FID 11.416, this run's best is 11.303)
+e112_lorag_f5_g13_lr3b 7425 2026-10-23T02:07:06Z runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt: 7425 kimg
+e112_lorag_f5_g13_lr3b 7425 2026-10-23T02:07:06Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.619  (11.678, 11.474, 11.704; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 7425 2026-10-23T02:07:06Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.398  (11.365, 11.304, 11.525; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 7425 2026-10-23T02:07:06Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.664  (11.643, 11.530, 11.819; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 7425 2026-10-23T02:07:06Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.995  (11.988, 11.814, 12.184; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 7425 2026-10-23T02:07:06Z wrote runs/e112_lorag_f5_g13_lr3b/calib-007425.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_lorag_f5_g13_lr3b 7425 2026-10-23T02:11:05Z removed runs/e112_lorag_f5_g13_lr3b/calib-007425.ckpt (train-reference FID 11.398, this run's best is 11.303)
+e112_lorag_f5_g13_lr3b 7525 2026-10-23T04:30:59Z runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt: 7525 kimg
+e112_lorag_f5_g13_lr3b 7525 2026-10-23T04:30:59Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.621  (11.628, 11.496, 11.738; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 7525 2026-10-23T04:30:59Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.384  (11.336, 11.274, 11.543; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 7525 2026-10-23T04:30:59Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.647  (11.632, 11.512, 11.797; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 7525 2026-10-23T04:30:59Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.004  (11.997, 11.848, 12.167; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 7525 2026-10-23T04:30:59Z wrote runs/e112_lorag_f5_g13_lr3b/calib-007525.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_lorag_f5_g13_lr3b 7525 2026-10-23T04:35:00Z removed runs/e112_lorag_f5_g13_lr3b/calib-007525.ckpt (train-reference FID 11.384, this run's best is 11.303)
+e112_lorag_f5_g13_lr3b 7625 2026-10-23T06:48:42Z runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt: 7625 kimg
+e112_lorag_f5_g13_lr3b 7625 2026-10-23T06:48:42Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.592  (11.595, 11.487, 11.694; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 7625 2026-10-23T06:48:42Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.379  (11.334, 11.274, 11.528; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 7625 2026-10-23T06:48:42Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.631  (11.615, 11.504, 11.773; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 7625 2026-10-23T06:48:42Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.994  (11.980, 11.828, 12.173; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 7625 2026-10-23T06:48:42Z wrote runs/e112_lorag_f5_g13_lr3b/calib-007625.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_lorag_f5_g13_lr3b 7625 2026-10-23T06:52:42Z removed runs/e112_lorag_f5_g13_lr3b/calib-007625.ckpt (train-reference FID 11.379, this run's best is 11.303)
+e112_lorag_f5_g13_lr3b 7725 2026-10-23T09:08:08Z runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt: 7725 kimg
+e112_lorag_f5_g13_lr3b 7725 2026-10-23T09:08:08Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.605  (11.611, 11.524, 11.680; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 7725 2026-10-23T09:08:08Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.409  (11.399, 11.293, 11.533; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 7725 2026-10-23T09:08:08Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.673  (11.666, 11.532, 11.820; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 7725 2026-10-23T09:08:08Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.029  (12.025, 11.835, 12.227; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 7725 2026-10-23T09:08:08Z wrote runs/e112_lorag_f5_g13_lr3b/calib-007725.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_lorag_f5_g13_lr3b 7725 2026-10-23T09:12:11Z removed runs/e112_lorag_f5_g13_lr3b/calib-007725.ckpt (train-reference FID 11.409, this run's best is 11.303)
+e112_lorag_f5_g13_lr3b 7825 2026-10-23T11:32:20Z runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt: 7825 kimg
+e112_lorag_f5_g13_lr3b 7825 2026-10-23T11:32:20Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.627  (11.661, 11.581, 11.639; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 7825 2026-10-23T11:32:20Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.415  (11.413, 11.321, 11.511; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 7825 2026-10-23T11:32:20Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.665  (11.695, 11.483, 11.817; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 7825 2026-10-23T11:32:20Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.034  (12.043, 11.817, 12.241; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 7825 2026-10-23T11:32:20Z wrote runs/e112_lorag_f5_g13_lr3b/calib-007825.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_lorag_f5_g13_lr3b 7825 2026-10-23T11:36:24Z removed runs/e112_lorag_f5_g13_lr3b/calib-007825.ckpt (train-reference FID 11.415, this run's best is 11.303)
+e112_lorag_f5_g13_lr3b 7925 2026-10-23T13:56:21Z runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt: 7925 kimg
+e112_lorag_f5_g13_lr3b 7925 2026-10-23T13:56:21Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.614  (11.656, 11.565, 11.623; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 7925 2026-10-23T13:56:21Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.450  (11.414, 11.384, 11.552; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 7925 2026-10-23T13:56:21Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.706  (11.712, 11.595, 11.812; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 7925 2026-10-23T13:56:21Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.053  (12.080, 11.878, 12.202; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 7925 2026-10-23T13:56:21Z wrote runs/e112_lorag_f5_g13_lr3b/calib-007925.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_lorag_f5_g13_lr3b 7925 2026-10-23T14:00:16Z removed runs/e112_lorag_f5_g13_lr3b/calib-007925.ckpt (train-reference FID 11.450, this run's best is 11.303)
+e112_lorag_f5_g13_lr3b 8025 2026-10-23T16:14:54Z runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt: 8025 kimg
+e112_lorag_f5_g13_lr3b 8025 2026-10-23T16:14:54Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.621  (11.648, 11.612, 11.602; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 8025 2026-10-23T16:14:54Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.477  (11.412, 11.451, 11.568; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 8025 2026-10-23T16:14:54Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.711  (11.686, 11.652, 11.795; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 8025 2026-10-23T16:14:54Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.064  (12.069, 11.909, 12.213; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 8025 2026-10-23T16:14:54Z wrote runs/e112_lorag_f5_g13_lr3b/calib-008025.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_lorag_f5_g13_lr3b 8025 2026-10-23T16:18:48Z removed runs/e112_lorag_f5_g13_lr3b/calib-008025.ckpt (train-reference FID 11.477, this run's best is 11.303)
+e112_lorag_f5_g13_lr3b 8125 2026-10-23T18:34:11Z runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt: 8125 kimg
+e112_lorag_f5_g13_lr3b 8125 2026-10-23T18:34:11Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.655  (11.666, 11.696, 11.603; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 8125 2026-10-23T18:34:11Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.475  (11.436, 11.443, 11.546; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 8125 2026-10-23T18:34:11Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.735  (11.719, 11.665, 11.823; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 8125 2026-10-23T18:34:11Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.093  (12.105, 11.922, 12.252; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 8125 2026-10-23T18:34:11Z wrote runs/e112_lorag_f5_g13_lr3b/calib-008125.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_lorag_f5_g13_lr3b 8125 2026-10-23T18:38:09Z removed runs/e112_lorag_f5_g13_lr3b/calib-008125.ckpt (train-reference FID 11.475, this run's best is 11.303)
+e112_lorag_f5_g13_lr3b 8225 2026-10-23T20:51:42Z runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt: 8225 kimg
+e112_lorag_f5_g13_lr3b 8225 2026-10-23T20:51:42Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.670  (11.640, 11.710, 11.660; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 8225 2026-10-23T20:51:42Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.503  (11.446, 11.433, 11.632; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 8225 2026-10-23T20:51:42Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.750  (11.692, 11.651, 11.908; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 8225 2026-10-23T20:51:42Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.091  (12.103, 11.902, 12.268; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 8225 2026-10-23T20:51:42Z wrote runs/e112_lorag_f5_g13_lr3b/calib-008225.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_lorag_f5_g13_lr3b 8225 2026-10-23T20:55:39Z removed runs/e112_lorag_f5_g13_lr3b/calib-008225.ckpt (train-reference FID 11.503, this run's best is 11.303)
+e112_lorag_f5_g13_lr3b 8325 2026-10-23T23:08:52Z runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt: 8325 kimg
+e112_lorag_f5_g13_lr3b 8325 2026-10-23T23:08:52Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.679  (11.619, 11.694, 11.724; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 8325 2026-10-23T23:08:52Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.477  (11.362, 11.426, 11.644; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 8325 2026-10-23T23:08:52Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.742  (11.673, 11.670, 11.883; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 8325 2026-10-23T23:08:52Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.085  (12.100, 11.917, 12.239; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 8325 2026-10-23T23:08:52Z wrote runs/e112_lorag_f5_g13_lr3b/calib-008325.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_lorag_f5_g13_lr3b 8325 2026-10-23T23:12:52Z removed runs/e112_lorag_f5_g13_lr3b/calib-008325.ckpt (train-reference FID 11.477, this run's best is 11.303)
+e112_lorag_f5_g13_lr3b 8425 2026-10-24T01:27:45Z runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt: 8425 kimg
+e112_lorag_f5_g13_lr3b 8425 2026-10-24T01:27:45Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.673  (11.625, 11.706, 11.687; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 8425 2026-10-24T01:27:45Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.494  (11.426, 11.429, 11.629; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 8425 2026-10-24T01:27:45Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.760  (11.751, 11.660, 11.868; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 8425 2026-10-24T01:27:45Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.115  (12.190, 11.962, 12.193; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 8425 2026-10-24T01:27:45Z wrote runs/e112_lorag_f5_g13_lr3b/calib-008425.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_lorag_f5_g13_lr3b 8425 2026-10-24T01:31:38Z removed runs/e112_lorag_f5_g13_lr3b/calib-008425.ckpt (train-reference FID 11.494, this run's best is 11.303)
+e112_lorag_f5_g13_lr3b 8525 2026-10-24T03:46:26Z runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt: 8525 kimg
+e112_lorag_f5_g13_lr3b 8525 2026-10-24T03:46:26Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.660  (11.598, 11.651, 11.732; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 8525 2026-10-24T03:46:26Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.515  (11.458, 11.440, 11.646; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 8525 2026-10-24T03:46:26Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.769  (11.829, 11.619, 11.859; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 8525 2026-10-24T03:46:26Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.160  (12.222, 11.934, 12.326; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 8525 2026-10-24T03:46:26Z wrote runs/e112_lorag_f5_g13_lr3b/calib-008525.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_lorag_f5_g13_lr3b 8525 2026-10-24T03:50:23Z removed runs/e112_lorag_f5_g13_lr3b/calib-008525.ckpt (train-reference FID 11.515, this run's best is 11.303)
+e112_lorag_f5_g13_lr3b 8625 2026-10-24T06:12:29Z runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt: 8625 kimg
+e112_lorag_f5_g13_lr3b 8625 2026-10-24T06:12:29Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.667  (11.613, 11.648, 11.739; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 8625 2026-10-24T06:12:29Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.506  (11.424, 11.452, 11.642; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 8625 2026-10-24T06:12:29Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.793  (11.819, 11.670, 11.891; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 8625 2026-10-24T06:12:29Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.137  (12.216, 11.975, 12.220; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 8625 2026-10-24T06:12:29Z wrote runs/e112_lorag_f5_g13_lr3b/calib-008625.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_lorag_f5_g13_lr3b 8625 2026-10-24T06:16:42Z removed runs/e112_lorag_f5_g13_lr3b/calib-008625.ckpt (train-reference FID 11.506, this run's best is 11.303)
+e112_lorag_f5_g13_lr3b 8725 2026-10-24T08:32:04Z runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt: 8725 kimg
+e112_lorag_f5_g13_lr3b 8725 2026-10-24T08:32:04Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.649  (11.612, 11.617, 11.718; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 8725 2026-10-24T08:32:04Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.495  (11.413, 11.429, 11.644; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 8725 2026-10-24T08:32:04Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.801  (11.781, 11.712, 11.909; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 8725 2026-10-24T08:32:04Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.175  (12.246, 12.019, 12.260; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 8725 2026-10-24T08:32:04Z wrote runs/e112_lorag_f5_g13_lr3b/calib-008725.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_lorag_f5_g13_lr3b 8725 2026-10-24T08:36:02Z removed runs/e112_lorag_f5_g13_lr3b/calib-008725.ckpt (train-reference FID 11.495, this run's best is 11.303)
+e112_lorag_f5_g13_lr3b 8825 2026-10-24T10:53:04Z runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt: 8825 kimg
+e112_lorag_f5_g13_lr3b 8825 2026-10-24T10:53:04Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.623  (11.625, 11.573, 11.670; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 8825 2026-10-24T10:53:04Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.500  (11.457, 11.404, 11.639; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 8825 2026-10-24T10:53:04Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.791  (11.765, 11.672, 11.935; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 8825 2026-10-24T10:53:04Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.158  (12.240, 11.981, 12.253; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 8825 2026-10-24T10:53:04Z wrote runs/e112_lorag_f5_g13_lr3b/calib-008825.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_lorag_f5_g13_lr3b 8825 2026-10-24T10:57:00Z removed runs/e112_lorag_f5_g13_lr3b/calib-008825.ckpt (train-reference FID 11.500, this run's best is 11.303)
+e112_lorag_f5_g13_lr3b 8925 2026-10-24T13:09:09Z runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt: 8925 kimg
+e112_lorag_f5_g13_lr3b 8925 2026-10-24T13:09:09Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.639  (11.679, 11.564, 11.675; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 8925 2026-10-24T13:09:09Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.499  (11.433, 11.432, 11.631; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 8925 2026-10-24T13:09:09Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.794  (11.765, 11.711, 11.907; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 8925 2026-10-24T13:09:09Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.171  (12.239, 12.023, 12.251; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 8925 2026-10-24T13:09:09Z wrote runs/e112_lorag_f5_g13_lr3b/calib-008925.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_lorag_f5_g13_lr3b 8925 2026-10-24T13:13:06Z removed runs/e112_lorag_f5_g13_lr3b/calib-008925.ckpt (train-reference FID 11.499, this run's best is 11.303)
+e112_lorag_f5_g13_lr3b 9025 2026-10-24T15:27:32Z runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt: 9025 kimg
+e112_lorag_f5_g13_lr3b 9025 2026-10-24T15:27:32Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.642  (11.680, 11.602, 11.644; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 9025 2026-10-24T15:27:32Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.518  (11.497, 11.440, 11.617; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 9025 2026-10-24T15:27:32Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.791  (11.781, 11.727, 11.865; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 9025 2026-10-24T15:27:32Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.166  (12.265, 11.998, 12.236; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 9025 2026-10-24T15:27:32Z wrote runs/e112_lorag_f5_g13_lr3b/calib-009025.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_lorag_f5_g13_lr3b 9025 2026-10-24T15:31:30Z removed runs/e112_lorag_f5_g13_lr3b/calib-009025.ckpt (train-reference FID 11.518, this run's best is 11.303)
+e112_lorag_f5_g13_lr3b 9125 2026-10-24T17:44:34Z runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt: 9125 kimg
+e112_lorag_f5_g13_lr3b 9125 2026-10-24T17:44:34Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.658  (11.703, 11.589, 11.683; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 9125 2026-10-24T17:44:34Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.488  (11.525, 11.371, 11.568; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 9125 2026-10-24T17:44:34Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.766  (11.770, 11.659, 11.868; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 9125 2026-10-24T17:44:34Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.143  (12.192, 12.005, 12.233; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 9125 2026-10-24T17:44:34Z wrote runs/e112_lorag_f5_g13_lr3b/calib-009125.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_lorag_f5_g13_lr3b 9125 2026-10-24T17:48:30Z removed runs/e112_lorag_f5_g13_lr3b/calib-009125.ckpt (train-reference FID 11.488, this run's best is 11.303)
+e112_lorag_f5_g13_lr3b 9225 2026-10-24T20:01:14Z runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt: 9225 kimg
+e112_lorag_f5_g13_lr3b 9225 2026-10-24T20:01:14Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.647  (11.666, 11.565, 11.709; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 9225 2026-10-24T20:01:14Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.504  (11.485, 11.416, 11.610; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 9225 2026-10-24T20:01:14Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.808  (11.771, 11.728, 11.924; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 9225 2026-10-24T20:01:14Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.183  (12.190, 12.074, 12.286; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 9225 2026-10-24T20:01:14Z wrote runs/e112_lorag_f5_g13_lr3b/calib-009225.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_lorag_f5_g13_lr3b 9225 2026-10-24T20:05:12Z removed runs/e112_lorag_f5_g13_lr3b/calib-009225.ckpt (train-reference FID 11.504, this run's best is 11.303)
+e112_lorag_f5_g13_lr3b 9325 2026-10-24T22:25:59Z runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt: 9325 kimg
+e112_lorag_f5_g13_lr3b 9325 2026-10-24T22:25:59Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.663  (11.688, 11.591, 11.709; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 9325 2026-10-24T22:25:59Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.505  (11.497, 11.410, 11.609; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 9325 2026-10-24T22:25:59Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.807  (11.820, 11.724, 11.877; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 9325 2026-10-24T22:25:59Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.184  (12.203, 12.069, 12.281; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 9325 2026-10-24T22:25:59Z wrote runs/e112_lorag_f5_g13_lr3b/calib-009325.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_lorag_f5_g13_lr3b 9325 2026-10-24T22:29:56Z removed runs/e112_lorag_f5_g13_lr3b/calib-009325.ckpt (train-reference FID 11.505, this run's best is 11.303)
+e112_lorag_f5_g13_lr3b 9425 2026-10-25T00:50:13Z runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt: 9425 kimg
+e112_lorag_f5_g13_lr3b 9425 2026-10-25T00:50:13Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.725  (11.760, 11.652, 11.762; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 9425 2026-10-25T00:50:13Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.551  (11.561, 11.470, 11.623; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 9425 2026-10-25T00:50:13Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.824  (11.854, 11.730, 11.886; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 9425 2026-10-25T00:50:13Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.191  (12.259, 12.035, 12.278; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 9425 2026-10-25T00:50:13Z wrote runs/e112_lorag_f5_g13_lr3b/calib-009425.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_lorag_f5_g13_lr3b 9425 2026-10-25T00:54:12Z removed runs/e112_lorag_f5_g13_lr3b/calib-009425.ckpt (train-reference FID 11.551, this run's best is 11.303)
+e112_lorag_f5_g13_lr3b 9525 2026-10-25T03:13:29Z runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt: 9525 kimg
+e112_lorag_f5_g13_lr3b 9525 2026-10-25T03:13:29Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.724  (11.809, 11.631, 11.733; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 9525 2026-10-25T03:13:29Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.557  (11.608, 11.467, 11.595; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 9525 2026-10-25T03:13:29Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.860  (11.899, 11.770, 11.912; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 9525 2026-10-25T03:13:29Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.206  (12.290, 12.045, 12.284; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 9525 2026-10-25T03:13:29Z wrote runs/e112_lorag_f5_g13_lr3b/calib-009525.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_lorag_f5_g13_lr3b 9525 2026-10-25T03:17:27Z removed runs/e112_lorag_f5_g13_lr3b/calib-009525.ckpt (train-reference FID 11.557, this run's best is 11.303)
+e112_lorag_f5_g13_lr3b 9625 2026-10-25T05:34:59Z runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt: 9625 kimg
+e112_lorag_f5_g13_lr3b 9625 2026-10-25T05:34:59Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.714  (11.818, 11.630, 11.694; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 9625 2026-10-25T05:34:59Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.571  (11.621, 11.480, 11.612; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 9625 2026-10-25T05:34:59Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.865  (11.910, 11.724, 11.961; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 9625 2026-10-25T05:34:59Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.228  (12.310, 12.027, 12.348; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 9625 2026-10-25T05:34:59Z wrote runs/e112_lorag_f5_g13_lr3b/calib-009625.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_lorag_f5_g13_lr3b 9625 2026-10-25T05:39:00Z removed runs/e112_lorag_f5_g13_lr3b/calib-009625.ckpt (train-reference FID 11.571, this run's best is 11.303)
+e112_lorag_f5_g13_lr3b 9725 2026-10-25T07:53:06Z runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt: 9725 kimg
+e112_lorag_f5_g13_lr3b 9725 2026-10-25T07:53:06Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.696  (11.822, 11.623, 11.644; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 9725 2026-10-25T07:53:06Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.564  (11.602, 11.498, 11.593; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 9725 2026-10-25T07:53:06Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.868  (11.884, 11.734, 11.987; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 9725 2026-10-25T07:53:06Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.258  (12.301, 12.072, 12.401; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 9725 2026-10-25T07:53:06Z wrote runs/e112_lorag_f5_g13_lr3b/calib-009725.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_lorag_f5_g13_lr3b 9725 2026-10-25T07:57:04Z removed runs/e112_lorag_f5_g13_lr3b/calib-009725.ckpt (train-reference FID 11.564, this run's best is 11.303)
+e112_lorag_f5_g13_lr3b 9825 2026-10-25T10:12:54Z runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt: 9825 kimg
+e112_lorag_f5_g13_lr3b 9825 2026-10-25T10:12:54Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.675  (11.791, 11.613, 11.621; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 9825 2026-10-25T10:12:54Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.540  (11.588, 11.460, 11.572; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 9825 2026-10-25T10:12:54Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.847  (11.894, 11.755, 11.892; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 9825 2026-10-25T10:12:54Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.252  (12.305, 12.087, 12.365; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 9825 2026-10-25T10:12:54Z wrote runs/e112_lorag_f5_g13_lr3b/calib-009825.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_lorag_f5_g13_lr3b 9825 2026-10-25T10:16:55Z removed runs/e112_lorag_f5_g13_lr3b/calib-009825.ckpt (train-reference FID 11.540, this run's best is 11.303)
+e112_lorag_f5_g13_lr3b 9925 2026-10-25T12:44:39Z runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt: 9925 kimg
+e112_lorag_f5_g13_lr3b 9925 2026-10-25T12:44:39Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.703  (11.812, 11.645, 11.652; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 9925 2026-10-25T12:44:39Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.545  (11.567, 11.503, 11.565; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 9925 2026-10-25T12:44:39Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.858  (11.882, 11.783, 11.909; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 9925 2026-10-25T12:44:39Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.231  (12.220, 12.107, 12.364; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 9925 2026-10-25T12:44:39Z wrote runs/e112_lorag_f5_g13_lr3b/calib-009925.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_lorag_f5_g13_lr3b 9925 2026-10-25T12:48:46Z removed runs/e112_lorag_f5_g13_lr3b/calib-009925.ckpt (train-reference FID 11.545, this run's best is 11.303)
+e112_lorag_f5_g13_lr3b 10025 2026-10-25T14:40:27Z runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt: 10009 kimg
+e112_lorag_f5_g13_lr3b 10025 2026-10-25T14:40:27Z alpha +0.00 gain 1.00 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.676  (11.733, 11.646, 11.648; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 10025 2026-10-25T14:40:27Z alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.532  (11.525, 11.532, 11.540; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 10025 2026-10-25T14:40:27Z alpha +0.00 gain 1.20 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 11.859  (11.844, 11.825, 11.909; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 10025 2026-10-25T14:40:27Z alpha +0.00 gain 1.30 smooth 0.00 label 1.00 chroma 1.00  train-reference FID 12.240  (12.212, 12.152, 12.355; seeds [0, 1, 2])
+e112_lorag_f5_g13_lr3b 10025 2026-10-25T14:40:27Z wrote runs/e112_lorag_f5_g13_lr3b/calib-010025.ckpt with alpha +0.00 gain 1.10 smooth 0.00 label 1.00 chroma 1.00
+e112_lorag_f5_g13_lr3b 10025 2026-10-25T14:44:34Z removed runs/e112_lorag_f5_g13_lr3b/calib-010025.ckpt (train-reference FID 11.532, this run's best is 11.303)

@@ -1,0 +1,6 @@
+2026-10-15T10:46:15Z runs/e112_lorag_f5_g13/calib-003575.ckpt (3575 kimg), seeds [0, 1, 2]: reference_train 11.580 (11.553, 11.545, 11.642) | reference_train_balanced 11.631 (11.602, 11.605, 11.687)
+2026-10-15T10:47:52Z runs/e112_lorag_f5_g13_lr3b/calib-004925.ckpt (4925 kimg), seeds [0, 1, 2]: reference_train 11.397 (11.407, 11.448, 11.336) | reference_train_balanced 11.445 (11.466, 11.487, 11.382)
+2026-10-15T10:49:27Z runs/e112_lorag_f5/calib-003375.ckpt (3375 kimg), seeds [0, 1, 2]: reference_train 11.580 (11.642, 11.543, 11.557) | reference_train_balanced 11.637 (11.703, 11.602, 11.606)
+2026-10-15T10:51:04Z runs/e112_lorag/calib-002875.ckpt (2875 kimg), seeds [0, 1, 2]: reference_train 11.797 (11.843, 11.791, 11.758) | reference_train_balanced 11.859 (11.928, 11.848, 11.802)
+2026-10-15T10:52:42Z runs/e112_lorag_f5_g13_t58/calib-003725.ckpt (3725 kimg), seeds [0, 1, 2]: reference_train 11.626 (11.589, 11.581, 11.709) | reference_train_balanced 11.677 (11.640, 11.643, 11.749)
+2026-10-15T10:54:19Z runs/e112_fit/calib-001950.ckpt (1950 kimg), seeds [0, 1, 2]: reference_train 13.905 (13.854, 14.045, 13.817) | reference_train_balanced 13.989 (13.946, 14.128, 13.893)

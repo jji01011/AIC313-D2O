@@ -1,0 +1,995 @@
+# D2O jobs for runs/chain_final.sh, one per line: <outdir> <train_d2o.py arguments>. Lines can be appended while the chain runs.
+# Common arguments are set in the chain script: best EDM snapshot, and the learning rates that won the 1000-kimg-EDM ablation
+# (runs/d2o_x_lr2.5: --lr 5e-5 --dlr 1e-4, FID 45.9 / 42.6 / 39.2 at 150 / 200 / 300 kimg against 53.5 / 48.7 for the defaults).
+# One-step only.
+#   1. main run, all generator weights trainable (--freeze 0 from the chain script)
+#   2. D2O-F (--freeze 1, the paper's frozen variant): only tested so far on the 250-kimg EDM, where it lost; compare at 300 kimg
+#      Result with the 5000-kimg EDM: it lost again (100 kimg: 51.3 against 40.8), so it was ended at 120 kimg on 2026-10-08 12:10 UTC.
+#   3. main run to 1150 kimg: the baseline for lines 4 and 5 (was --kimg 2000 until 2026-10-08 12:05 UTC).
+#   4, 5. discriminator-noise branches (added 2026-10-08 12:05 UTC): each continues a copy of the main run's 1000-kimg state
+#      with less noise on the discriminator input (--d_sigma_mean -2.5 / -3.0 instead of -2.0), everything else unchanged.
+#      Compare their FID at 1025..1150 kimg with the main run's. Reason: STATUS.md, section "진단".
+#      --d_sigma_mean is not stored in the state, so it has to be repeated every time a branch is resumed.
+#      Result (2026-10-08 13:56 UTC): less noise is better, in order. FID at 1125 kimg: main 24.55, -2.5 24.18, -3.0 23.00.
+#      From here on the -3.0 branch (runs/d2o_one_dn30) replaces runs/d2o_one_final as the run that is continued.
+#   6. dn30 to 1300 kimg: the baseline for lines 7 and 8.
+#   7, 8. even less noise (-3.5 / -4.0), each continuing a copy of dn30's 1150-kimg state. Compare at 1175..1300 kimg with line 6.
+#   9. continues dn30 so the GPU does not idle. If line 7 or 8 is clearly ahead at 1300 kimg, replace this line with its continuation.
+#      Result (2026-10-08 15:40 UTC): no difference. Mean FID of 1225..1300 kimg: -3.0 22.42, -3.5 22.27, -4.0 22.4; after output
+#      calibration -3.0 and -3.5 both score 19.5. dn30 stays the run that is continued. Line 9 was ended early by hand (SIGTERM) so
+#      that lines 10 and 11 run first; line 12 continues dn30 from where line 9 stopped.
+#   10, 11. two more branches from a copy of dn30's 1300-kimg state (runs/d2o_one_dn30/d2o-state-001300.pt), 150 kimg each:
+#      forced augmentation (ADA target 0.35 instead of 0.6, so the augmentation probability rises until the discriminator's
+#      sign statistic falls to 0.35) and batch 128 instead of 64. Compare at 1325..1450 kimg with dn30 (line 12).
+#      --ada_target / --ada_kimg / --batch are not stored in the state either: repeat them when a branch is resumed.
+#   12. dn30 to 1450 kimg: the baseline for lines 10, 11 and 13 (was --kimg 3000 until 2026-10-08 16:15 UTC).
+#   13. lower learning rates (added 2026-10-08 16:15 UTC): a copy of dn30's 1300-kimg state continued with --lr 2e-5 --dlr 4e-5
+#      (0.4 times the chain's values; the official D2O defaults). Reason: at 1300 kimg the raw and the EMA generator give very
+#      different images from the same latents (RMS difference 0.57 against an image RMS of 0.69), so the raw weights move far
+#      within one EMA half-life. train_d2o.py applies --lr / --dlr on --resume since the same date; repeat them when resuming.
+#   (2026-10-08 16:50 UTC: two lines inserted before the learning-rate branch, which is now line 15; the fallback is line 16.)
+#   13, 14. stronger augmentation at a fixed probability (0.2 / 0.4) from a copy of dn30's 1300-kimg state. Reason: the discriminator
+#      recognises the training images. At 1300 kimg its mean logit for real train images falls from +0.50 to +0.33 / +0.18 when they
+#      are shifted by 2 / 4 pixels, while the logit of generated images does not move (-0.43). Line 10 (adaptive, p settled at 0.09)
+#      left this almost unchanged. --ada_target 0 switches the adaptive rule of the chain script off; train_d2o.py then keeps
+#      --augment_p on --resume (since the same date). Repeat both arguments when a branch is resumed.
+#   16. continues dn30; fallback so the GPU does not idle. If a branch is clearly ahead at 1450 kimg, add its continuation.
+#   (2026-10-08 18:55 UTC: lines 15 and 16 replaced. The learning-rate branch was taken out before it started: every 150-kimg
+#   branch so far ends within +-0.2 of the baseline after output calibration, so short branches no longer separate settings;
+#   a learning-rate decay is tested at the very end instead, on the run that is submitted.)
+#   15-24. long comparison, baseline against augmentation at probability 0.2, alternating in 250-kimg pieces so that both
+#      curves exist at the same kimg whenever somebody looks: aug20 to 1700, dn30 to 1700, aug20 to 1950, dn30 to 1950, ...
+#      Compare after calibration (calibrate_generator.py --state <run>/d2o-state-latest.pt --gains=1.2,1.3 --smooths=0.2
+#      --seeds 0,1,2). When one side is clearly ahead (0.7 or more at two consecutive points), delete the other side's
+#      remaining lines that have not started (never lines above the running one) or let them run out.
+#done runs/d2o_one_final --kimg 1000
+#done runs/d2o_one_f1 --freeze 1 --kimg 300
+#done runs/d2o_one_final --resume runs/d2o_one_final/d2o-state-latest.pt --kimg 1150
+#done runs/d2o_one_dn25 --resume runs/d2o_one_dn25/d2o-state-latest.pt --d_sigma_mean -2.5 --kimg 1150
+#done runs/d2o_one_dn30 --resume runs/d2o_one_dn30/d2o-state-latest.pt --d_sigma_mean -3.0 --kimg 1150
+#done runs/d2o_one_dn30 --resume runs/d2o_one_dn30/d2o-state-latest.pt --d_sigma_mean -3.0 --kimg 1300
+#done runs/d2o_one_dn35 --resume runs/d2o_one_dn35/d2o-state-latest.pt --d_sigma_mean -3.5 --kimg 1300
+#done runs/d2o_one_dn40 --resume runs/d2o_one_dn40/d2o-state-latest.pt --d_sigma_mean -4.0 --kimg 1300
+#done runs/d2o_one_dn30 --resume runs/d2o_one_dn30/d2o-state-latest.pt --d_sigma_mean -3.0 --kimg 2000
+#done runs/d2o_one_ada35 --resume runs/d2o_one_ada35/d2o-state-latest.pt --d_sigma_mean -3.0 --ada_target 0.35 --ada_kimg 100 --kimg 1450
+#done runs/d2o_one_b128 --resume runs/d2o_one_b128/d2o-state-latest.pt --d_sigma_mean -3.0 --batch 128 --kimg 1450
+#done runs/d2o_one_dn30 --resume runs/d2o_one_dn30/d2o-state-latest.pt --d_sigma_mean -3.0 --kimg 1450
+#done runs/d2o_one_aug20 --resume runs/d2o_one_aug20/d2o-state-latest.pt --d_sigma_mean -3.0 --ada_target 0 --augment_p 0.2 --kimg 1450
+#done runs/d2o_one_aug40 --resume runs/d2o_one_aug40/d2o-state-latest.pt --d_sigma_mean -3.0 --ada_target 0 --augment_p 0.4 --kimg 1450
+#done runs/d2o_one_aug20 --resume runs/d2o_one_aug20/d2o-state-latest.pt --d_sigma_mean -3.0 --ada_target 0 --augment_p 0.2 --kimg 1700
+#done runs/d2o_one_dn30 --resume runs/d2o_one_dn30/d2o-state-latest.pt --d_sigma_mean -3.0 --kimg 1700
+#done runs/d2o_one_aug20 --resume runs/d2o_one_aug20/d2o-state-latest.pt --d_sigma_mean -3.0 --ada_target 0 --augment_p 0.2 --kimg 1950
+#done runs/d2o_one_dn30 --resume runs/d2o_one_dn30/d2o-state-latest.pt --d_sigma_mean -3.0 --kimg 1950
+#done runs/d2o_one_aug20 --resume runs/d2o_one_aug20/d2o-state-latest.pt --d_sigma_mean -3.0 --ada_target 0 --augment_p 0.2 --kimg 2200
+#done runs/d2o_one_dn30 --resume runs/d2o_one_dn30/d2o-state-latest.pt --d_sigma_mean -3.0 --kimg 2200
+#done runs/d2o_one_aug20 --resume runs/d2o_one_aug20/d2o-state-latest.pt --d_sigma_mean -3.0 --ada_target 0 --augment_p 0.2 --kimg 2450
+#done runs/d2o_one_dn30 --resume runs/d2o_one_dn30/d2o-state-latest.pt --d_sigma_mean -3.0 --kimg 2450
+# 2026-10-09 06:10 UTC. At 2200 kimg, after calibration: dn30 17.53, aug20 18.01 (results/long_comparison.log).
+# 2026-10-09 09:00 UTC. Everything below was rewritten (none of it had started). The user decided to use the teammate's
+#      EDM (checkpoints/edm/ema-0016777216-0.100.pt: EDM2, 95.2M, train-reference FID 11.56 at 35 NFE). It cannot be the
+#      generator (generator + EMA copy would be 190M), so its offline samples (data/cache/teacher_edm2/shard-*.pt, made by
+#      diagnostics/teammate_edm2/generate_teacher_samples.py) are mixed into the discriminator's real images: every real
+#      image is replaced by a teacher sample with probability 0.5 (--extra_real, --extra_real_p; not stored in the state,
+#      repeat both on every --resume of that run).
+#      Three branches from the same state (runs/d2o_one_dn30/d2o-state-002200.pt), 250 kimg each, compared at 2450 kimg
+#      after calibration:
+#        runs/d2o_one_dn30        nothing changed (the line above)
+#        runs/d2o_one_dn30_tmix   teacher samples mixed in
+#        runs/d2o_one_dn30_lr2e5  learning rate 2e-5 / 4e-5 instead of 5e-5 / 1e-4
+#      The aug20 lines that were here (2700, 2950, 3200) were removed to make room: after calibration aug20 was 0.48
+#      behind dn30 at 2200 kimg and moved only 0.07 from there to 2450 (17.94). Its state stays in runs/d2o_one_aug20; to
+#      continue it: --d_sigma_mean -3.0 --ada_target 0 --augment_p 0.2.
+#      The list at the end of runs/watch_long_comparison.sh must name the same points in the same order as the lines
+#      below (it waits for each in turn); change both together and restart the watcher by PID.
+#done runs/d2o_one_dn30_tmix --resume runs/d2o_one_dn30_tmix/d2o-state-latest.pt --d_sigma_mean -3.0 --extra_real data/cache/teacher_edm2 --extra_real_p 0.5 --kimg 2450
+# 2026-10-09 10:45 UTC. Second way of using the teammate's EDM, queued before the result of the first is known (the two
+#      are independent): its encoder (cut after the 16x16 blocks, 13.2M of 95.2M) replaces our own EDM's encoder as the
+#      discriminator's frozen feature network (--d_teacher; d2o/edm2.py, EDM2FeatureNetwork in d2o/discriminator.py).
+#      Generator + EMA copy + this discriminator = 92.9M. The branch starts from dn30's 2450-kimg state
+#      (runs/d2o_one_dn30/d2o-state-002450.pt, the state of the current candidate); the trainer sees that the state holds
+#      another discriminator, starts the new heads from scratch and trains them alone for 50 kimg (--d_warmup_kimg) before
+#      the generator moves. Compare with dn30's own 2700 kimg (next line) after calibration, and look at the curve: a
+#      new discriminator may need more than 250 kimg to pay off. Repeat --d_teacher on every --resume of that run.
+#done runs/d2o_one_dn30_tdisc --resume runs/d2o_one_dn30_tdisc/d2o-state-latest.pt --d_sigma_mean -3.0 --d_teacher checkpoints/edm/ema-0020971520-0.100.pt --d_warmup_kimg 50 --kimg 2700
+# 2026-10-09 12:20 UTC. The same experiment with the teammate's whole encoder (all four stages, 29.4M; the line above
+#      stops after the 16x16 stage). The user's reading of the parameter rule is that an EMA copy is not a separate
+#      model; with it, generator 34.8M + this discriminator 42.5M = 77.3M. Counting the generator's EMA copy as well it
+#      would be 112.1M, so a checkpoint of this run can only be submitted under that reading. Same start (dn30's
+#      2450-kimg state), same warm-up; compare with the line above and with dn30 at 2700.
+#done runs/d2o_one_dn30_tdisc8 --resume runs/d2o_one_dn30_tdisc8/d2o-state-latest.pt --d_sigma_mean -3.0 --d_teacher checkpoints/edm/ema-0020971520-0.100.pt --d_teacher_min_res 8 --d_warmup_kimg 50 --kimg 2700
+# 2026-10-09 13:50 UTC. tdisc at 2700 kimg: before calibration 18.55 and still falling (19.94 at the start, the baseline
+#      had been flat around 19.9 for 250 kimg); after calibration 17.42 (gain 1.2), the same as the baseline's 17.37 at
+#      2450, because this generator needs less of the gain. It is continued for another 250 kimg to see whether the
+#      fall carries through to the calibrated score. Its 2700-kimg state is kept as d2o-state-002700.pt.
+#done runs/d2o_one_dn30_tdisc --resume runs/d2o_one_dn30_tdisc/d2o-state-latest.pt --d_sigma_mean -3.0 --d_teacher checkpoints/edm/ema-0020971520-0.100.pt --d_warmup_kimg 50 --kimg 2950
+# 2026-10-09 16:45 UTC. Pre-test for using the teammate's E112 as the generator (user: "try it"). E112 has 95.2M
+#      parameters, so the discriminator cannot hold its own copy of an encoder: the generator's embeddings and encoder
+#      stay frozen (only the decoder is fine-tuned) and the discriminator reads its features from that same encoder,
+#      with heads narrowed to fit under 100M. These two short runs try both changes on our own 34.8M EDM, from scratch,
+#      against the first 100 kimg of runs/d2o_one_final (25: 61.2, 50: 49.6, 75: 41.0, 100: 40.8): frozen encoder alone,
+#      then frozen encoder with the narrow heads. (Our discriminator already holds a frozen copy of this encoder, which
+#      is the same thing numerically as sharing it.)
+# 2026-10-09 17:00 UTC. E112 as the generator, taken as it is (user: leave the 100M limit aside for now, see whether E112
+#      helps, and only then look for a way to fit it): the teammate's whole EDM2 denoiser is the one-step generator and all
+#      of it is trained (95,158,709), the discriminator is the unreduced one of tdisc8 (its own frozen copy of the E112
+#      encoder, full-width heads: 42,459,983). 137.6M together, 232.8M with the generator's EMA copy: a trial, NOT a
+#      submission candidate. Generator learning rate 1e-3 (EDM2 weights have element magnitude 1, ours 0.05, so 5e-5 would
+#      be a 20 times smaller relative step); --batch_gpu 16 because the memory was not measured (4 rounds, still 64 images
+#      per step). Discriminator noise -2.0 as in the reference run from our EDM, runs/d2o_one_final: 25: 61.2, 50: 49.6,
+#      75: 41.0, 100: 40.8, 150: 38.0, 200: 35.0, 300: 30.2. First 50 kimg with FID every 10 kimg, then on to 250.
+#done runs/e112_full --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --d_teacher checkpoints/edm/ema-0020971520-0.100.pt --d_teacher_min_res 8 --lr 1e-3 --batch_gpu 16 --snap_kimg 10 --kimg 50
+# 2026-10-09 17:20 UTC. runs/e112_full is at 28.5 after 10 kimg and 21.75 after 20 kimg (from our EDM: 61.2 at 25 kimg, 24.4
+#      at 1000 kimg), so E112 as the generator helps a lot. Next question (user: think about how to fit it once it helps):
+#      does the form that stays inside 100M keep the effect? The generator's embeddings and encoder are frozen (decoder
+#      65.7M trained), the discriminator reads its features from that same frozen encoder and its heads are narrowed
+#      (--d_width 0.5625: 4.80M): 99,963,661 with the generator, EMA copy not counted. Same learning rate, rounds and
+#      schedule as the first 50 kimg of runs/e112_full, to be compared with it at 10, 20, 30, 40, 50 kimg.
+#done runs/e112_fit --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --lr 1e-3 --batch_gpu 16 --snap_kimg 10 --kimg 50
+# 2026-10-09 18:02 UTC. runs/e112_fit (inside 100M) is well behind runs/e112_full: 52.8, 28.8, 24.8, 24.0 at 10..40 kimg
+#      against 28.5, 21.8, 20.4, 19.3. It differs in two things, so one run with only one of them tells which one costs:
+#      everything trained and the discriminator's own frozen E112 encoder as in e112_full, but the narrow heads of
+#      e112_fit (--d_width 0.5625). Close to e112_full: the frozen encoder is what costs; close to e112_fit: the heads.
+#done runs/e112_w56 --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --d_teacher checkpoints/edm/ema-0020971520-0.100.pt --d_teacher_min_res 8 --lr 1e-3 --batch_gpu 16 --d_width 0.5625 --snap_kimg 10 --kimg 50
+# 2026-10-09 18:08 UTC. A second form inside 100M, without freezing anything: the generator trains all of E112 and the
+#      discriminator reads its features from the generator's encoder as it is at every step, as constants (--d_shared 2,
+#      added today; gradients checked against a separate frozen copy of the encoder). Narrow heads as in e112_fit:
+#      99,963,661 with the generator. e112_fit ended at 21.27 (50 kimg), e112_full at 18.90.
+#done runs/e112_live --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --d_shared 2 --d_width 0.5625 --lr 1e-3 --batch_gpu 16 --snap_kimg 10 --kimg 50
+# 2026-10-09 19:05 UTC. Results at 10..50 kimg: e112_full 28.5, 21.8, 20.4, 19.3, 18.9; e112_w56 (narrow heads only) 31.7, 23.1,
+#      24.1, 20.8, 19.3; e112_fit (frozen encoder + narrow heads) 52.8, 28.8, 24.8, 24.0, 21.3; e112_live 36.6, 24.8, 23.0, 21.2
+#      at 10..40. So freezing the encoder is what costs, and e112_live, inside 100M without freezing, is ahead of e112_fit at
+#      every point. It is the form that can be submitted and goes on first; e112_full (over the limit) follows it in
+#      alternating pieces as the reference: if e112_live falls behind it more and more, the shared encoder is drifting.
+#done runs/e112_live --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --d_shared 2 --d_width 0.5625 --lr 1e-3 --batch_gpu 16 --kimg 150
+#done runs/e112_full --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --d_teacher checkpoints/edm/ema-0020971520-0.100.pt --d_teacher_min_res 8 --lr 1e-3 --batch_gpu 16 --kimg 150
+#done runs/e112_live --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --d_shared 2 --d_width 0.5625 --lr 1e-3 --batch_gpu 16 --kimg 250
+#done runs/e112_full --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --d_teacher checkpoints/edm/ema-0020971520-0.100.pt --d_teacher_min_res 8 --lr 1e-3 --batch_gpu 16 --kimg 250
+#done runs/e112_live --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --d_shared 2 --d_width 0.5625 --lr 1e-3 --batch_gpu 16 --kimg 500
+#      Taken out at the same time (never started): the within-limit form of the same idea and its pre-tests on our EDM.
+#      Put them back once the plain run shows that E112 helps:
+#        runs/e112_lr2e3 --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --lr 2e-3 --snap_kimg 10 --kimg 50
+#        runs/e112_lr5e4 --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --lr 5e-4 --snap_kimg 10 --kimg 50
+#        runs/d2o_fe_w56_probe --freeze_encoder 1 --d_width 0.5625 --kimg 100
+#        runs/d2o_fe_probe --freeze_encoder 1 --kimg 100
+# 2026-10-09 14:45 UTC. tdisc8 (whole encoder) is ahead of tdisc at every snapshot so far, before calibration:
+#      19.87/19.57/19.47/19.01/18.64 at 2475..2575 kimg against 20.02/19.82/19.54/19.29/19.09. It is continued to 2950
+#      as well, after tdisc, so that both can be compared at 2700 and at 2950 after calibration.
+#done runs/d2o_one_dn30 --resume runs/d2o_one_dn30/d2o-state-latest.pt --d_sigma_mean -3.0 --kimg 2700
+# 2026-10-09 15:55 UTC. tdisc8 at 2700 kimg after calibration: 17.67 (gain 1.15), behind tdisc (17.42) and the baseline
+#      at 2450 (17.37), and its curve before calibration stopped falling (18.34, 18.69, 18.69). The baseline's 2700-kimg
+#      piece, the reference for both tdisc branches, was moved in front of it.
+# 2026-10-09 17:20 UTC. Taken out before it started: tdisc at 2950 kimg is 17.52 after calibration (17.42 at 2700, baseline
+#      17.37 at 2450), so 250 more kimg under the E112 discriminator moved nothing, and tdisc8 was behind tdisc at 2700.
+#        runs/d2o_one_dn30_tdisc8 --resume runs/d2o_one_dn30_tdisc8/d2o-state-latest.pt --d_sigma_mean -3.0 --d_teacher checkpoints/edm/ema-0020971520-0.100.pt --d_teacher_min_res 8 --d_warmup_kimg 50 --kimg 2950
+# 2026-10-09 19:12 UTC. The five E112 lines above FAILED AT ONCE (19:09 UTC, exit status 1, "already holds a run"): they had
+#      no --resume. The chain process that is running was started before chain_final.sh learned to add --resume by itself,
+#      so EVERY LINE THAT CONTINUES A RUN NEEDS AN EXPLICIT --resume. The chain counted them as done and went on to the
+#      baseline line above, which was stopped (kill -9, before its first save: its state is still at 2450 kimg). The five
+#      failed lines must stay where they are (the chain counts lines); here they are again with --resume, and the
+#      baseline's 2700-kimg piece after them.
+#done runs/e112_live --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --d_shared 2 --d_width 0.5625 --lr 1e-3 --batch_gpu 16 --resume runs/e112_live/d2o-state-latest.pt --kimg 150
+# 2026-10-09 19:15 UTC. At 50 kimg the two forms inside 100M are close after all: e112_live 20.92, e112_fit 21.27 (e112_live
+#      was 2.8 ahead at 40 kimg). e112_fit goes on to 150 as well, so that the two are compared there before one is taken far.
+#done runs/e112_fit --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --lr 1e-3 --batch_gpu 16 --resume runs/e112_fit/d2o-state-latest.pt --kimg 150
+#done runs/e112_full --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --d_teacher checkpoints/edm/ema-0020971520-0.100.pt --d_teacher_min_res 8 --lr 1e-3 --batch_gpu 16 --resume runs/e112_full/d2o-state-latest.pt --kimg 150
+# 2026-10-09 21:22 UTC. At 150 kimg e112_fit (frozen encoder) is ahead of e112_live: 17.38 against 19.25 before calibration,
+#      16.19 against 17.25 after it (e112_live's best snapshot, 125 kimg: 16.68). It was behind up to 50 kimg and passed it
+#      at 75. e112_fit at 150 kimg is the lowest train-reference FID so far and scored 27.73 official (previous lowest
+#      28.29). So the long run is e112_fit; the e112_live lines that stood here (to 250 and to 500) were replaced before
+#      they started (its state stays at 150 kimg). The over-limit reference e112_full follows after it.
+#done runs/e112_fit --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --lr 1e-3 --batch_gpu 16 --resume runs/e112_fit/d2o-state-latest.pt --kimg 250
+#done runs/e112_fit --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --lr 1e-3 --batch_gpu 16 --resume runs/e112_fit/d2o-state-latest.pt --kimg 500
+#done runs/e112_fit --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --lr 1e-3 --batch_gpu 16 --resume runs/e112_fit/d2o-state-latest.pt --kimg 750
+#done runs/e112_fit --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --lr 1e-3 --batch_gpu 16 --resume runs/e112_fit/d2o-state-latest.pt --kimg 1000
+#done runs/e112_full --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --d_teacher checkpoints/edm/ema-0020971520-0.100.pt --d_teacher_min_res 8 --lr 1e-3 --batch_gpu 16 --resume runs/e112_full/d2o-state-latest.pt --kimg 250
+# 2026-10-10 05:27 UTC. e112_fit is still going down at 1000 kimg: 15.75, 15.22, 14.80, 14.41 after calibration at 250,
+#      500, 750, 1000 kimg (official 27.48, 27.20, 26.46 for the first three). The baseline is at 17.37, so e112_fit goes
+#      on to 2000 kimg before the baseline lines below (inserted while e112_full -> 250 was running; about 2 h 05 a piece).
+#done runs/e112_fit --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --lr 1e-3 --batch_gpu 16 --resume runs/e112_fit/d2o-state-latest.pt --kimg 1250
+# 2026-10-10 08:06 UTC. Coverage term (train_d2o.py --imle_ratio, IMLE): two short branches from e112_fit's 1250-kimg state,
+#      75 kimg each, gradient ratio 0.3 and 0.1 (a tiny-batch test at 1.0 made the discriminator separate real and fake
+#      within a few steps). Both read e112_fit's state, which rests at 1250 kimg until its own line below starts.
+#done runs/e112_imle30 --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --lr 1e-3 --batch_gpu 16 --resume runs/e112_fit/d2o-state-latest.pt --imle_ratio 0.3 --kimg 1325
+# 2026-10-10 08:40 UTC. The coverage term at ratio 0.3 is worse after 25 kimg (16.09 at 1275 kimg against 15.36 at 1250,
+#      discriminator logits doubled, intra-class distance down), so the ratio-0.1 branch that stood here was replaced before
+#      it started by the lever that is known to work on our own generator: discriminator noise -3.0 instead of -2.0
+#      (1.3 lower there after 150 kimg). 100 kimg from e112_fit's 1250-kimg state.
+#done runs/e112_dn30 --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --lr 1e-3 --batch_gpu 16 --resume runs/e112_fit/d2o-state-latest.pt --d_sigma_mean -3.0 --kimg 1350
+# 2026-10-10 09:16 UTC. Consistency term of ECT (train_d2o.py --ect_ratio, ported from the official code in /home/jiin/ect)
+#      on top of the GAN loss: gradient ratio 0.5, 32 real images per generator step, dt = t * adjust / 256 without
+#      doubling (the official recipe for tuning a pre-trained diffusion model). 100 kimg from e112_fit's 1250-kimg state,
+#      the same starting point as e112_dn30 and e112_imle30.
+#done runs/e112_ect50 --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --lr 1e-3 --batch_gpu 16 --resume runs/e112_fit/d2o-state-latest.pt --ect_ratio 0.5 --ect_rounds 2 --kimg 1350
+#done runs/e112_fit --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --lr 1e-3 --batch_gpu 16 --resume runs/e112_fit/d2o-state-latest.pt --kimg 1500
+# 2026-10-10 12:15 UTC. The E112 teacher (35 NFE) is far ahead of the one-step generator (11.3 against 15.1, recall 0.73
+#      against 0.65), so the GAN alone does not carry the teacher's quality over. Paired distillation next to the GAN loss
+#      (train_d2o.py --kd_ratio): the 18,120 (noise, class, image) triples of data/cache/teacher_edm2 as regression targets.
+#      A fresh start from E112 with e112_fit's settings; e112_fit's values at the same points are the reference
+#      (50: 21.27, 75: 19.13, 100: 17.92, 125: 17.90, 150: 17.38; 16.19 after calibration at 150). Not a submission
+#      candidate until the TA has said whether a teacher used offline counts towards the 100M limit.
+#done runs/e112_kd --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --lr 1e-3 --batch_gpu 16 --kd_ratio 1.0 --kd_pairs data/cache/teacher_edm2 --kimg 150
+# 2026-10-10 11:46 UTC. Results of the three branches from 1250 kimg: IMLE and the ECT consistency term made it worse
+#      (stopped / dropped), discriminator noise -3.0 made no difference (15.05 against 15.10 on average over 1275-1350).
+#      Next lever, from e112_fit's 1500-kimg state: relativistic pairing loss with R1 + R2 (R3GAN), 100 kimg.
+#done runs/e112_rp --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --lr 1e-3 --batch_gpu 16 --resume runs/e112_fit/d2o-state-latest.pt --loss_type rp --r2_gamma 0.02 --kimg 1600
+# 2026-10-10 14:35 UTC. Paired distillation (e112_kd) ended far behind: 22.66 at 150 kimg, 22.17 after calibration,
+#      against 17.38 / 16.19 for the GAN alone. Next cheap test of the setup itself, a fresh start from E112 with the
+#      generator's input noise level at 2.5 instead of 80 (the level SiD found to work best for EDM-based one-step
+#      generators); same reference points as e112_kd (150 kimg: 17.38, 16.19 after calibration).
+#done runs/e112_s25 --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --lr 1e-3 --batch_gpu 16 --sigma_g 2.5 --kimg 150
+#done runs/e112_fit --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --lr 1e-3 --batch_gpu 16 --resume runs/e112_fit/d2o-state-latest.pt --kimg 1750
+# 2026-10-10 17:50 UTC. Distribution matching of DMD2 on top of the GAN loss (train_d2o.py --dmd_ratio): frozen E112
+#      teacher, a trainable fake-score network of the same size, from e112_fit's 1750-kimg state. The first 15 kimg train
+#      the fake score only, then the term acts with gradient ratio 1.0. An effect test: generator + discriminator +
+#      fake score is over 100M if the fake score counts with the student, so no checkpoint of it is a candidate yet.
+#      If it runs out of GPU memory it exits with an error and the chain goes on with e112_fit.
+#done runs/e112_dmd --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --lr 1e-3 --batch_gpu 16 --resume runs/e112_fit/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_from_kimg 1765 --dmd_fake_steps 2 --kimg 1850
+# 2026-10-10 20:40 UTC. The DMD2 term works: e112_dmd went from 15.13 (e112_fit at 1750 kimg) to 14.71, 14.33, 14.07
+#      at 1775, 1800, 1825 kimg (before calibration), while e112_fit had stood at 15.0-15.25 for 250 kimg. So the DMD
+#      branch is continued. It takes 16 GB on the GPU, and a calibration (3.7 GB) does not fit next to it, so every
+#      measurement needs a lighter piece running: e112_fit goes on in 100-kimg pieces in between, and the watcher works then.
+#done runs/e112_fit --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --lr 1e-3 --batch_gpu 16 --resume runs/e112_fit/d2o-state-latest.pt --kimg 1850
+#done runs/e112_dmd --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --lr 1e-3 --batch_gpu 16 --resume runs/e112_dmd/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_from_kimg 1765 --dmd_fake_steps 2 --kimg 2000
+#done runs/e112_fit --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --lr 1e-3 --batch_gpu 16 --resume runs/e112_fit/d2o-state-latest.pt --kimg 1950
+# 2026-10-10 21:25 UTC. e112_dmd at 1850 kimg: 13.14 on the train reference after calibration, 23.95 official (e112_fit:
+#      14.07, 25.44). Its fake score is E112-sized, which is over 100M if it counts with the student. A form that is
+#      inside the limit either way: standard DMD2 on our own 34.8M generator, the fake score our own EDM (34.8M), the
+#      teacher E112 (a model of its own): generator + discriminator + fake score = 94,549,958. From d2o_one_dn30's
+#      2450-kimg state (17.37 after calibration, 28.29 official), 15 kimg for the fake score alone, then 85 kimg.
+#done runs/dn30_dmd --resume runs/d2o_one_dn30/d2o-state-latest.pt --d_sigma_mean -3.0 --batch_gpu 16 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_edm runs/edm_c96/edm-005000.pt --dmd_fake_lr 5e-5 --dmd_from_kimg 2465 --dmd_fake_steps 2 --kimg 2550
+#done runs/e112_fit --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --lr 1e-3 --batch_gpu 16 --resume runs/e112_fit/d2o-state-latest.pt --kimg 2050
+#done runs/e112_dmd --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --lr 1e-3 --batch_gpu 16 --resume runs/e112_dmd/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_from_kimg 1765 --dmd_fake_steps 2 --kimg 2150
+#done runs/e112_fit --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --lr 1e-3 --batch_gpu 16 --resume runs/e112_fit/d2o-state-latest.pt --kimg 2150
+#done runs/d2o_one_dn30 --resume runs/d2o_one_dn30/d2o-state-latest.pt --d_sigma_mean -3.0 --kimg 2700
+#done runs/d2o_one_dn30_lr2e5 --resume runs/d2o_one_dn30_lr2e5/d2o-state-latest.pt --d_sigma_mean -3.0 --lr 2e-5 --dlr 4e-5 --kimg 2450
+#done runs/d2o_one_dn30 --resume runs/d2o_one_dn30/d2o-state-latest.pt --d_sigma_mean -3.0 --kimg 2950
+#done runs/d2o_one_dn30 --resume runs/d2o_one_dn30/d2o-state-latest.pt --d_sigma_mean -3.0 --kimg 3200
+# ---- 2026-10-11 06:21 UTC: fresh chain after the full disk (03:50 UTC). Every line above is closed ("#done": ran, or
+# failed on the full disk and is repeated below where still wanted); a chain started now begins here.
+# Measurements are queue lines of their own ("! command", alone on the GPU); e112_fit is no longer extended.
+! bash runs/watch_e112.sh old_point dn30_dmd 2550
+! bash runs/watch_e112.sh report_official e112_fit 1950 runs/e112_fit/calib-001950.ckpt 14.029
+runs/dn30_dmd --resume runs/dn30_dmd/d2o-state-latest.pt --d_sigma_mean -3.0 --batch_gpu 16 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_edm runs/edm_c96/edm-005000.pt --dmd_fake_lr 5e-5 --dmd_from_kimg 2465 --dmd_fake_steps 2 --kimg 2650
+! bash runs/watch_e112.sh old_point dn30_dmd 2650
+# 2026-10-11: the E112 generator with the distribution-matching term inside the limit. The fake score is the frozen teacher
+# plus rank-4 branches (d2o/lora.py, 1,202,140 parameters), the discriminator is narrower (3,562,616) and starts fresh:
+# generator + discriminator + fake score 99,923,465. From e112_fit's 1950-kimg state; the term acts from 1975 kimg.
+runs/e112_lora --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.46875 --lr 1e-3 --batch_gpu 16 --resume runs/e112_fit/d2o-state-latest.pt --d_warmup_kimg 50 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 4 --dmd_fake_lr 2e-4 --dmd_from_kimg 1975 --dmd_fake_steps 2 --kimg 2050
+#dropped (fresh narrower discriminator sat at chance, 2026-10-11 09:20 UTC) ! bash runs/watch_e112.sh score e112_lora 2050 keep
+# 2026-10-11: the same with the branches on the generator itself (rank 8, decoder only, 1,631,640; discriminator 3,189,384):
+# generator + discriminator + fake score 99,979,733, and the fake score uses no weight outside that count. Two pieces:
+# 50 kimg in which only the fake score is prepared (look at loss_fake before the second piece), then 75 kimg with the term.
+#dropped (fresh narrower discriminator sat at chance, 2026-10-11 09:20 UTC) runs/e112_lorag --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.4375 --lr 1e-3 --batch_gpu 16 --resume runs/e112_fit/d2o-state-latest.pt --d_warmup_kimg 50 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 8 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 3 --kimg 2000
+#dropped (fresh narrower discriminator sat at chance, 2026-10-11 09:20 UTC) runs/e112_lorag --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.4375 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 8 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 3 --kimg 2075
+#dropped (fresh narrower discriminator sat at chance, 2026-10-11 09:20 UTC) ! bash runs/watch_e112.sh score e112_lorag 2075 keep
+#dropped (over the limit: TA, 2026-10-11) runs/e112_dmd --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --lr 1e-3 --batch_gpu 16 --resume runs/e112_dmd/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_from_kimg 1765 --dmd_fake_steps 2 --kimg 2150
+#dropped ! bash runs/watch_e112.sh dmd_point 2150
+#held (its official score does not follow, 2026-10-11) runs/dn30_dmd --resume runs/dn30_dmd/d2o-state-latest.pt --d_sigma_mean -3.0 --batch_gpu 16 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_edm runs/edm_c96/edm-005000.pt --dmd_fake_lr 5e-5 --dmd_from_kimg 2465 --dmd_fake_steps 2 --kimg 2750
+#held (its official score does not follow, 2026-10-11) ! bash runs/watch_e112.sh old_point dn30_dmd 2750
+#dropped (over the limit: TA, 2026-10-11) runs/e112_dmd --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --lr 1e-3 --batch_gpu 16 --resume runs/e112_dmd/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_from_kimg 1765 --dmd_fake_steps 2 --kimg 2300
+#dropped ! bash runs/watch_e112.sh dmd_point 2300
+
+# ---- 2026-10-11 09:20 UTC: the trained discriminator of e112_fit is kept, minus the head that separates least (head 1 of 4,
+# 1,194,920 parameters; measured on the CPU), instead of a narrower discriminator that starts from nothing.
+# e112_lora2: branches on the frozen teacher, rank 4 (1,202,140): generator + discriminator + fake score 99,970,881.
+runs/e112_lora2 --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_fit/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 4 --dmd_fake_lr 2e-4 --dmd_from_kimg 1975 --dmd_fake_steps 2 --kimg 2050
+! bash runs/watch_e112.sh score e112_lora2 2050 keep
+# e112_lorag: branches on the generator itself, decoder only, rank 6 (1,223,730): 99,992,471, no weight outside that count.
+# First 50 kimg in which only the fake score is prepared (look at loss_fake before the second piece), then 75 kimg with the term.
+runs/e112_lorag --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_fit/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 3 --kimg 2000
+#moved to runs/director.py (2026-10-11 11:02 UTC) runs/e112_lorag --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 3 --kimg 2075
+#moved to runs/director.py (2026-10-11 11:02 UTC) ! bash runs/watch_e112.sh score e112_lorag 2075 keep
+# 2026-10-11 11:02 UTC. From here the queue is written by runs/director.py (see its header): the user is away for about a day and a
+#      Claude session may not survive that long. After e112_lorag's preparation piece it looks at loss_fake and, if the fake
+#      score has learnt the generator, appends the piece with the term (to 2075) and its score; then it continues whichever
+#      branch still improves on the calibrated train-reference FID, 100 kimg at a time. It only ever appends below this line.
+#      Stop it: touch runs/director.stop. Its decisions: runs/director.log.
+! python3 runs/director.py
+# director, 2026-10-11T12:26:34Z: e112_lorag: loss_fake 0.351 after the preparation, the term goes on
+runs/e112_lorag --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 3 --kimg 2075
+! bash runs/watch_e112.sh score e112_lorag 2075 keep
+! python3 runs/director.py
+# director, 2026-10-11T14:19:19Z: e112_lorag (13.435) is within 0.15 of e112_lora2 (13.334) and the safer one with the TA
+runs/e112_lorag --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 3 --kimg 2175
+! bash runs/watch_e112.sh score e112_lorag 2175 keep
+! python3 runs/director.py
+# director, 2026-10-11T16:45:44Z: e112_lorag (12.886) is within 0.15 of e112_lora2 (13.334) and the safer one with the TA
+runs/e112_lorag --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 3 --kimg 2275
+! bash runs/watch_e112.sh score e112_lorag 2275 keep
+! python3 runs/director.py
+# director, 2026-10-11T19:30:14Z: e112_lorag (12.636) is ahead of e112_lora2 (13.334) and the safer one with the TA
+runs/e112_lorag --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 3 --kimg 2375
+! bash runs/watch_e112.sh score e112_lorag 2375 keep
+! python3 runs/director.py
+# director, 2026-10-11T21:49:42Z: e112_lorag (12.308) is ahead of e112_lora2 (13.334) and the safer one with the TA
+runs/e112_lorag --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 3 --kimg 2475
+! bash runs/watch_e112.sh score e112_lorag 2475 keep
+! python3 runs/director.py
+# director, 2026-10-12T00:16:50Z: e112_lorag (12.131) is ahead of e112_lora2 (13.334) and the safer one with the TA
+runs/e112_lorag --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 3 --kimg 2575
+! bash runs/watch_e112.sh score e112_lorag 2575 keep
+! python3 runs/director.py
+# director, 2026-10-12T02:43:55Z: e112_lorag (12.01) is ahead of e112_lora2 (13.334) and the safer one with the TA
+runs/e112_lorag --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 3 --kimg 2675
+! bash runs/watch_e112.sh score e112_lorag 2675 keep
+! python3 runs/director.py
+# director, 2026-10-12T05:11:49Z: e112_lorag (11.99) is ahead of e112_lora2 (13.334) and the safer one with the TA
+runs/e112_lorag --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 3 --kimg 2775
+! bash runs/watch_e112.sh score e112_lorag 2775 keep
+! python3 runs/director.py
+# director, 2026-10-12T07:37:06Z: e112_lorag (11.914) is ahead of e112_lora2 (13.334) and the safer one with the TA
+runs/e112_lorag --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 3 --kimg 2875
+! bash runs/watch_e112.sh score e112_lorag 2875 keep
+! python3 runs/director.py
+# director, 2026-10-12T10:02:33Z: e112_lorag (11.89) is ahead of e112_lora2 (13.334) and the safer one with the TA
+runs/e112_lorag --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 3 --kimg 2975
+! bash runs/watch_e112.sh score e112_lorag 2975 keep
+! python3 runs/director.py
+# director, 2026-10-12T10:07:56Z: e112_lorag (best 11.89) no longer improves; it goes on as e112_lorag_f5 with 5 fake-score steps per generator step
+runs/e112_lorag_f5 --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --kimg 2925
+! bash runs/watch_e112.sh score e112_lorag_f5 2925 keep
+! python3 runs/director.py
+# director, 2026-10-12T11:49:18Z: e112_lorag_f5 (11.862) still improves
+runs/e112_lorag_f5 --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --kimg 2975
+! bash runs/watch_e112.sh score e112_lorag_f5 2975 keep
+! python3 runs/director.py
+# director, 2026-10-12T13:30:20Z: e112_lorag_f5 (11.805) still improves
+runs/e112_lorag_f5 --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --kimg 3025
+! bash runs/watch_e112.sh score e112_lorag_f5 3025 keep
+! python3 runs/director.py
+# director, 2026-10-12T15:12:14Z: e112_lorag_f5 (11.789) still improves
+runs/e112_lorag_f5 --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --kimg 3075
+! bash runs/watch_e112.sh score e112_lorag_f5 3075 keep
+! python3 runs/director.py
+# director, 2026-10-12T16:54:44Z: e112_lorag_f5 (11.748) still improves
+runs/e112_lorag_f5 --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --kimg 3125
+! bash runs/watch_e112.sh score e112_lorag_f5 3125 keep
+! python3 runs/director.py
+# director, 2026-10-12T18:37:07Z: e112_lorag_f5 (11.727) still improves
+runs/e112_lorag_f5 --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --kimg 3175
+! bash runs/watch_e112.sh score e112_lorag_f5 3175 keep
+! python3 runs/director.py
+# director, 2026-10-12T20:18:15Z: e112_lorag_f5 (11.675) still improves
+runs/e112_lorag_f5 --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --kimg 3225
+! bash runs/watch_e112.sh score e112_lorag_f5 3225 keep
+! python3 runs/director.py
+# director, 2026-10-12T21:58:53Z: e112_lorag_f5 (11.65) still improves
+runs/e112_lorag_f5 --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --kimg 3275
+! bash runs/watch_e112.sh score e112_lorag_f5 3275 keep
+! python3 runs/director.py
+# director, 2026-10-12T23:38:49Z: e112_lorag_f5 (11.65) still improves
+runs/e112_lorag_f5 --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --kimg 3325
+! bash runs/watch_e112.sh score e112_lorag_f5 3325 keep
+! python3 runs/director.py
+# director, 2026-10-13T01:03:32Z: e112_lorag_f5 (11.618) still improves
+runs/e112_lorag_f5 --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --kimg 3375
+! bash runs/watch_e112.sh score e112_lorag_f5 3375 keep
+! python3 runs/director.py
+# director, 2026-10-13T02:15:38Z: e112_lorag_f5 (11.603) still improves
+runs/e112_lorag_f5 --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --kimg 3425
+! bash runs/watch_e112.sh score e112_lorag_f5 3425 keep
+! python3 runs/director.py
+# director, 2026-10-13T03:30:25Z: e112_lorag_f5 (best 11.603) no longer improves; it goes on as e112_lorag_f5_g13 with the teacher's score guided by 1.3 for 0.25 < sigma <= 4
+runs/e112_lorag_f5_g13 --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --kimg 3475
+! bash runs/watch_e112.sh score e112_lorag_f5_g13 3475 keep
+! python3 runs/director.py
+# director, 2026-10-13T04:43:27Z: e112_lorag_f5_g13 (11.577) still improves
+runs/e112_lorag_f5_g13 --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --kimg 3525
+! bash runs/watch_e112.sh score e112_lorag_f5_g13 3525 keep
+! python3 runs/director.py
+# director, 2026-10-13T06:00:27Z: e112_lorag_f5_g13 (11.574) still improves
+runs/e112_lorag_f5_g13 --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --kimg 3575
+! bash runs/watch_e112.sh score e112_lorag_f5_g13 3575 keep
+! python3 runs/director.py
+# director, 2026-10-13T07:19:04Z: e112_lorag_f5_g13 (11.552) still improves
+runs/e112_lorag_f5_g13 --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --kimg 3625
+! bash runs/watch_e112.sh score e112_lorag_f5_g13 3625 keep
+! python3 runs/director.py
+# director, 2026-10-13T08:44:59Z: e112_lorag_f5_g13 (11.552) still improves
+runs/e112_lorag_f5_g13 --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --kimg 3675
+! bash runs/watch_e112.sh score e112_lorag_f5_g13 3675 keep
+! python3 runs/director.py
+# director, 2026-10-13T09:59:53Z: e112_lorag_f5_g13 (best 11.552) no longer improves; it goes on as e112_lorag_f5_g13_lr3 with the generator's and the discriminator's learning rates at 0.3 of before
+runs/e112_lorag_f5_g13_lr3 --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 3725
+! bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3 3725 keep
+! python3 runs/director.py
+# director, 2026-10-13T11:27:52Z: e112_lorag_f5_g13 (best 11.552) no longer improves; it goes on as e112_lorag_f5_g13_t58 with the teacher trained to 58.7M images (EMA 0.13) as the real score
+runs/e112_lorag_f5_g13_t58 --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --dmd_teacher checkpoints/edm/teacher_unguided-0058720256-0.130.pt --lr 1e-3 --dlr 1e-4 --kimg 3725
+! bash runs/watch_e112.sh score e112_lorag_f5_g13_t58 3725 keep
+! python3 runs/director.py
+# director, 2026-10-13T12:46:08Z: e112_lorag_f5_g13_t58 (11.633) still improves
+runs/e112_lorag_f5_g13_t58 --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_t58/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --dmd_teacher checkpoints/edm/teacher_unguided-0058720256-0.130.pt --lr 1e-3 --dlr 1e-4 --kimg 3775
+! bash runs/watch_e112.sh score e112_lorag_f5_g13_t58 3775 keep
+! bash runs/nearest_check.sh e112_lorag_f5_g13_t58 3775
+! python3 runs/director.py
+# director, 2026-10-13T13:57:31Z: e112_lorag_f5_g13_t58 (11.633) still improves
+runs/e112_lorag_f5_g13_t58 --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_t58/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --dmd_teacher checkpoints/edm/teacher_unguided-0058720256-0.130.pt --lr 1e-3 --dlr 1e-4 --kimg 3825
+! bash runs/watch_e112.sh score e112_lorag_f5_g13_t58 3825 keep
+! bash runs/nearest_check.sh e112_lorag_f5_g13_t58 3825
+! python3 runs/director.py
+# director, 2026-10-13T15:10:24Z: e112_lorag_f5_g13_t58 (11.633) still improves
+runs/e112_lorag_f5_g13_t58 --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_t58/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --dmd_teacher checkpoints/edm/teacher_unguided-0058720256-0.130.pt --lr 1e-3 --dlr 1e-4 --kimg 3875
+! bash runs/watch_e112.sh score e112_lorag_f5_g13_t58 3875 keep
+! bash runs/nearest_check.sh e112_lorag_f5_g13_t58 3875
+! python3 runs/director.py
+# director, 2026-10-13T16:26:03Z: e112_lorag_f5_g13_t58 (11.633) still improves
+runs/e112_lorag_f5_g13_t58 --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_t58/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --dmd_teacher checkpoints/edm/teacher_unguided-0058720256-0.130.pt --lr 1e-3 --dlr 1e-4 --kimg 3925
+! bash runs/watch_e112.sh score e112_lorag_f5_g13_t58 3925 keep
+! bash runs/nearest_check.sh e112_lorag_f5_g13_t58 3925
+! python3 runs/director.py
+# director, 2026-10-13T17:38:50Z: e112_lorag_f5_g13_t58 (11.633) still improves
+runs/e112_lorag_f5_g13_t58 --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_t58/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --dmd_teacher checkpoints/edm/teacher_unguided-0058720256-0.130.pt --lr 1e-3 --dlr 1e-4 --kimg 3975
+! bash runs/watch_e112.sh score e112_lorag_f5_g13_t58 3975 keep
+! bash runs/nearest_check.sh e112_lorag_f5_g13_t58 3975
+! python3 runs/director.py
+# director, 2026-10-13T18:59:13Z: e112_lorag_f5_g13 (best 11.552) no longer improves; it goes on as e112_lorag_f5_g13_lr3b with the generator's and the discriminator's learning rates at 0.3 of before
+runs/e112_lorag_f5_g13_lr3b --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 3725
+! bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 3725 keep
+! bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 3725
+! python3 runs/director.py
+# director, 2026-10-13T20:26:22Z: e112_lorag_f5_g13_lr3b (11.565) still improves
+runs/e112_lorag_f5_g13_lr3b --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 3775
+! bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 3775 keep
+! bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 3775
+! python3 runs/director.py
+# director, 2026-10-13T21:54:21Z: e112_lorag_f5_g13_lr3b (11.522) still improves
+runs/e112_lorag_f5_g13_lr3b --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 3825
+! bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 3825 keep
+! bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 3825
+! python3 runs/director.py
+# director, 2026-10-13T23:34:49Z: e112_lorag_f5_g13_lr3b (11.52) still improves
+runs/e112_lorag_f5_g13_lr3b --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 3875
+! bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 3875 keep
+! bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 3875
+! python3 runs/director.py
+# director, 2026-10-14T01:16:27Z: e112_lorag_f5_g13_lr3b (11.5) still improves
+runs/e112_lorag_f5_g13_lr3b --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 3925
+! bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 3925 keep
+! bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 3925
+! python3 runs/director.py
+# director, 2026-10-14T02:54:57Z: e112_lorag_f5_g13_lr3b (11.477) still improves
+runs/e112_lorag_f5_g13_lr3b --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 3975
+! bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 3975 keep
+! bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 3975
+! python3 runs/director.py
+# director, 2026-10-14T04:32:45Z: e112_lorag_f5_g13_lr3b (11.477) still improves
+runs/e112_lorag_f5_g13_lr3b --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 4025
+! bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 4025 keep
+! bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 4025
+! python3 runs/director.py
+# director, 2026-10-14T06:11:05Z: nothing improves any more; e112_lorag_f5_g13_lr3b (best 11.477) keeps training so that the GPU is not idle
+runs/e112_lorag_f5_g13_lr3b --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 4125
+! bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 4125 keep
+! bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 4125
+! python3 runs/director.py
+# director, 2026-10-14T09:13:46Z: nothing improves any more; e112_lorag_f5_g13_lr3b (best 11.477) keeps training so that the GPU is not idle
+runs/e112_lorag_f5_g13_lr3b --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 4225
+! bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 4225 keep
+! bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 4225
+! python3 runs/director.py
+# director, 2026-10-14T12:23:38Z: nothing improves any more; e112_lorag_f5_g13_lr3b (best 11.477) keeps training so that the GPU is not idle
+runs/e112_lorag_f5_g13_lr3b --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 4325
+! bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 4325 keep
+! bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 4325
+! python3 runs/director.py
+# director, 2026-10-14T15:29:08Z: nothing improves any more; e112_lorag_f5_g13_lr3b (best 11.477) keeps training so that the GPU is not idle
+runs/e112_lorag_f5_g13_lr3b --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 4425
+! bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 4425 keep
+! bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 4425
+! python3 runs/director.py
+# director, 2026-10-14T18:39:20Z: nothing improves any more; e112_lorag_f5_g13_lr3b (best 11.476) keeps training so that the GPU is not idle
+runs/e112_lorag_f5_g13_lr3b --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 4525
+! bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 4525 keep
+! bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 4525
+! python3 runs/director.py
+# director, 2026-10-14T21:23:27Z: nothing improves any more; e112_lorag_f5_g13_lr3b (best 11.476) keeps training so that the GPU is not idle
+runs/e112_lorag_f5_g13_lr3b --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 4625
+! bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 4625 keep
+! bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 4625
+! python3 runs/director.py
+# director, 2026-10-14T23:44:14Z: nothing improves any more; e112_lorag_f5_g13_lr3b (best 11.472) keeps training so that the GPU is not idle
+runs/e112_lorag_f5_g13_lr3b --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 4725
+! bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 4725 keep
+! bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 4725
+! python3 runs/director.py
+# director, 2026-10-15T02:03:42Z: nothing improves any more; e112_lorag_f5_g13_lr3b (best 11.436) keeps training so that the GPU is not idle
+runs/e112_lorag_f5_g13_lr3b --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 4825
+! bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 4825 keep
+! bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 4825
+! python3 runs/director.py
+# director, 2026-10-15T04:19:31Z: nothing improves any more; e112_lorag_f5_g13_lr3b (best 11.395) keeps training so that the GPU is not idle
+runs/e112_lorag_f5_g13_lr3b --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 4925
+! bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 4925 keep
+! bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 4925
+! python3 runs/director.py
+# director, 2026-10-15T06:39:15Z: nothing improves any more; e112_lorag_f5_g13_lr3b (best 11.384) keeps training so that the GPU is not idle
+runs/e112_lorag_f5_g13_lr3b --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 5025
+! bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 5025 keep
+! bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 5025
+! python3 runs/director.py
+# director, 2026-10-15T08:55:08Z: nothing improves any more; e112_lorag_f5_g13_lr3b (best 11.384) keeps training so that the GPU is not idle
+runs/e112_lorag_f5_g13_lr3b --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 5125
+! bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 5125 keep
+! bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 5125
+! python3 runs/director.py
+# director, 2026-10-15T11:16:42Z: e112_h20 (manual entry): from 0 to 100 kimg
+runs/e112_h20 --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --holdout results/holdout_h20.json --balanced 1 --fid_reference results/reference_holdout_h20 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 100 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --kimg 100
+! bash runs/h20_score.sh e112_h20 100
+! python3 runs/director.py
+# director, 2026-10-15T13:55:20Z: e112_h20 (manual entry): from 100 to 150 kimg
+runs/e112_h20 --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --holdout results/holdout_h20.json --balanced 1 --fid_reference results/reference_holdout_h20 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 100 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --kimg 150
+! bash runs/h20_score.sh e112_h20 150
+! python3 runs/director.py
+# director, 2026-10-15T15:13:59Z: e112_treal (manual entry): from 5125 to 5175 kimg
+runs/e112_treal --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/teacher_unguided-0058720256-0.130.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.0 --extra_real data/cache/teacher58_real --extra_real_p 1.0 --dlr 1e-4 --fid_reference results/reference_teacher58 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --kimg 5175
+! bash runs/tref_score.sh e112_treal 5175
+! python3 runs/director.py
+# director, 2026-10-15T16:26:39Z: e112_treal (manual entry): from 5175 to 5225 kimg
+runs/e112_treal --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/teacher_unguided-0058720256-0.130.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.0 --extra_real data/cache/teacher58_real --extra_real_p 1.0 --dlr 1e-4 --fid_reference results/reference_teacher58 --kimg 5225
+! bash runs/tref_score.sh e112_treal 5225
+! python3 runs/director.py
+# director, 2026-10-15T17:42:11Z: e112_treal (manual entry): from 5225 to 5275 kimg
+runs/e112_treal --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/teacher_unguided-0058720256-0.130.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.0 --extra_real data/cache/teacher58_real --extra_real_p 1.0 --dlr 1e-4 --fid_reference results/reference_teacher58 --kimg 5275
+! bash runs/tref_score.sh e112_treal 5275
+! python3 runs/director.py
+# director, 2026-10-15T18:59:12Z: e112_treal (manual entry): from 5275 to 5325 kimg
+runs/e112_treal --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/teacher_unguided-0058720256-0.130.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.0 --extra_real data/cache/teacher58_real --extra_real_p 1.0 --dlr 1e-4 --fid_reference results/reference_teacher58 --kimg 5325
+! bash runs/tref_score.sh e112_treal 5325
+! python3 runs/director.py
+# director, 2026-10-15T20:13:25Z: e112_treal (manual entry): from 5325 to 5375 kimg
+runs/e112_treal --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/teacher_unguided-0058720256-0.130.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.0 --extra_real data/cache/teacher58_real --extra_real_p 1.0 --dlr 1e-4 --fid_reference results/reference_teacher58 --kimg 5375
+! bash runs/tref_score.sh e112_treal 5375
+! python3 runs/director.py
+# director, 2026-10-15T21:29:14Z: e112_treal (manual entry): from 5375 to 5425 kimg
+runs/e112_treal --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/teacher_unguided-0058720256-0.130.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.0 --extra_real data/cache/teacher58_real --extra_real_p 1.0 --dlr 1e-4 --fid_reference results/reference_teacher58 --kimg 5425
+! bash runs/tref_score.sh e112_treal 5425
+! python3 runs/director.py
+# director, 2026-10-15T22:42:09Z: e112_treal (manual entry): from 5425 to 5475 kimg
+runs/e112_treal --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/teacher_unguided-0058720256-0.130.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.0 --extra_real data/cache/teacher58_real --extra_real_p 1.0 --dlr 1e-4 --fid_reference results/reference_teacher58 --kimg 5475
+! bash runs/tref_score.sh e112_treal 5475
+! python3 runs/director.py
+# director, 2026-10-15T23:54:59Z: e112_treal (manual entry): from 5475 to 5525 kimg
+runs/e112_treal --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/teacher_unguided-0058720256-0.130.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.0 --extra_real data/cache/teacher58_real --extra_real_p 1.0 --dlr 1e-4 --fid_reference results/reference_teacher58 --kimg 5525
+! bash runs/tref_score.sh e112_treal 5525
+! python3 runs/director.py
+# director, 2026-10-16T01:08:21Z: e112_h20 (manual entry): from 150 to 250 kimg
+runs/e112_h20 --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --holdout results/holdout_h20.json --balanced 1 --fid_reference results/reference_holdout_h20 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 100 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --kimg 250
+! bash runs/h20_score.sh e112_h20 250
+! python3 runs/director.py
+# director, 2026-10-16T03:28:48Z: e112_h20 (manual entry): from 250 to 350 kimg
+runs/e112_h20 --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --holdout results/holdout_h20.json --balanced 1 --fid_reference results/reference_holdout_h20 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 100 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --kimg 350
+! bash runs/h20_score.sh e112_h20 350
+! python3 runs/director.py
+# director, 2026-10-16T05:47:54Z: e112_h20 (manual entry): from 350 to 450 kimg
+runs/e112_h20 --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --holdout results/holdout_h20.json --balanced 1 --fid_reference results/reference_holdout_h20 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 100 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --kimg 450
+! bash runs/h20_score.sh e112_h20 450
+! python3 runs/director.py
+# director, 2026-10-16T08:03:30Z: e112_h20 (manual entry): from 450 to 550 kimg
+runs/e112_h20 --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --holdout results/holdout_h20.json --balanced 1 --fid_reference results/reference_holdout_h20 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 100 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --kimg 550
+! bash runs/h20_score.sh e112_h20 550
+! python3 runs/director.py
+# director, 2026-10-16T10:59:54Z: e112_h20 (manual entry): from 550 to 650 kimg
+runs/e112_h20 --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --holdout results/holdout_h20.json --balanced 1 --fid_reference results/reference_holdout_h20 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 100 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --kimg 650
+! bash runs/h20_score.sh e112_h20 650
+! python3 runs/director.py
+# director, 2026-10-16T14:13:37Z: e112_h20 (manual entry): from 650 to 750 kimg
+runs/e112_h20 --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --holdout results/holdout_h20.json --balanced 1 --fid_reference results/reference_holdout_h20 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 100 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --kimg 750
+! bash runs/h20_score.sh e112_h20 750
+! python3 runs/director.py
+# director, 2026-10-16T17:32:35Z: e112_h20 (manual entry): from 750 to 850 kimg
+runs/e112_h20 --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --holdout results/holdout_h20.json --balanced 1 --fid_reference results/reference_holdout_h20 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 100 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --kimg 850
+! bash runs/h20_score.sh e112_h20 850
+! python3 runs/director.py
+# director, 2026-10-16T20:51:33Z: e112_h20 (manual entry): from 850 to 950 kimg
+runs/e112_h20 --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --holdout results/holdout_h20.json --balanced 1 --fid_reference results/reference_holdout_h20 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 100 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --kimg 950
+! bash runs/h20_score.sh e112_h20 950
+! python3 runs/director.py
+# director, 2026-10-17T00:11:46Z: e112_h20 (manual entry): from 950 to 1050 kimg
+runs/e112_h20 --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --holdout results/holdout_h20.json --balanced 1 --fid_reference results/reference_holdout_h20 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 100 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --kimg 1050
+! bash runs/h20_score.sh e112_h20 1050
+! python3 runs/director.py
+# director, 2026-10-17T03:31:42Z: e112_h20 (manual entry): from 1050 to 1150 kimg
+runs/e112_h20 --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --holdout results/holdout_h20.json --balanced 1 --fid_reference results/reference_holdout_h20 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 100 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --kimg 1150
+! bash runs/h20_score.sh e112_h20 1150
+! python3 runs/director.py
+# director, 2026-10-17T06:48:50Z: e112_h20 (manual entry): from 1150 to 1250 kimg
+runs/e112_h20 --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --holdout results/holdout_h20.json --balanced 1 --fid_reference results/reference_holdout_h20 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 100 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --kimg 1250
+! bash runs/h20_score.sh e112_h20 1250
+! python3 runs/director.py
+# director, 2026-10-17T10:10:46Z: e112_h20 (manual entry): from 1250 to 1350 kimg
+runs/e112_h20 --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --holdout results/holdout_h20.json --balanced 1 --fid_reference results/reference_holdout_h20 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 100 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --kimg 1350
+! bash runs/h20_score.sh e112_h20 1350
+! python3 runs/director.py
+# director, 2026-10-17T12:56:36Z: e112_h20 (manual entry): from 1350 to 1450 kimg
+runs/e112_h20 --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --holdout results/holdout_h20.json --balanced 1 --fid_reference results/reference_holdout_h20 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 100 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --kimg 1450
+! bash runs/h20_score.sh e112_h20 1450
+! python3 runs/director.py
+# director, 2026-10-17T15:15:51Z: e112_h20 (manual entry): from 1450 to 1550 kimg
+runs/e112_h20 --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --holdout results/holdout_h20.json --balanced 1 --fid_reference results/reference_holdout_h20 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 100 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --kimg 1550
+! bash runs/h20_score.sh e112_h20 1550
+! python3 runs/director.py
+# director, 2026-10-17T17:35:23Z: e112_h20 (manual entry): from 1550 to 1650 kimg
+runs/e112_h20 --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --holdout results/holdout_h20.json --balanced 1 --fid_reference results/reference_holdout_h20 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 100 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --kimg 1650
+! bash runs/h20_score.sh e112_h20 1650
+! python3 runs/director.py
+# director, 2026-10-17T19:52:11Z: e112_h20 (manual entry): from 1650 to 1750 kimg
+runs/e112_h20 --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --holdout results/holdout_h20.json --balanced 1 --fid_reference results/reference_holdout_h20 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 100 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --kimg 1750
+! bash runs/h20_score.sh e112_h20 1750
+! python3 runs/director.py
+# director, 2026-10-17T22:06:58Z: e112_h20 (manual entry): from 1750 to 1850 kimg
+runs/e112_h20 --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --holdout results/holdout_h20.json --balanced 1 --fid_reference results/reference_holdout_h20 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 100 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --kimg 1850
+! bash runs/h20_score.sh e112_h20 1850
+! python3 runs/director.py
+# director, 2026-10-18T00:31:38Z: e112_h20 (manual entry): from 1850 to 1950 kimg
+runs/e112_h20 --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --holdout results/holdout_h20.json --balanced 1 --fid_reference results/reference_holdout_h20 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 100 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --kimg 1950
+! bash runs/h20_score.sh e112_h20 1950
+! python3 runs/director.py
+# director, 2026-10-18T03:49:43Z: e112_h20 (manual entry): from 1950 to 2050 kimg
+runs/e112_h20 --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --holdout results/holdout_h20.json --balanced 1 --fid_reference results/reference_holdout_h20 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 100 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --kimg 2050
+! bash runs/h20_score.sh e112_h20 2050
+! python3 runs/director.py
+# director, 2026-10-18T07:09:19Z: e112_h20 (manual entry): from 2050 to 2150 kimg
+runs/e112_h20 --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --holdout results/holdout_h20.json --balanced 1 --fid_reference results/reference_holdout_h20 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 100 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --kimg 2150
+! bash runs/h20_score.sh e112_h20 2150
+! python3 runs/director.py
+# director, 2026-10-18T10:19:51Z: e112_h20 (manual entry): from 2150 to 2250 kimg
+runs/e112_h20 --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --holdout results/holdout_h20.json --balanced 1 --fid_reference results/reference_holdout_h20 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 100 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --kimg 2250
+! bash runs/h20_score.sh e112_h20 2250
+! python3 runs/director.py
+# director, 2026-10-18T13:37:26Z: e112_h20 (manual entry): from 2250 to 2350 kimg
+runs/e112_h20 --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --holdout results/holdout_h20.json --balanced 1 --fid_reference results/reference_holdout_h20 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 100 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --kimg 2350
+! bash runs/h20_score.sh e112_h20 2350
+! python3 runs/director.py
+# director, 2026-10-18T16:52:32Z: e112_h20 (manual entry): from 2350 to 2450 kimg
+runs/e112_h20 --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --holdout results/holdout_h20.json --balanced 1 --fid_reference results/reference_holdout_h20 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 100 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --kimg 2450
+! bash runs/h20_score.sh e112_h20 2450
+! python3 runs/director.py
+# director, 2026-10-18T19:10:25Z: e112_h20 (manual entry): from 2450 to 2550 kimg
+runs/e112_h20 --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --holdout results/holdout_h20.json --balanced 1 --fid_reference results/reference_holdout_h20 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 100 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --kimg 2550
+! bash runs/h20_score.sh e112_h20 2550
+! python3 runs/director.py
+# director, 2026-10-18T21:28:13Z: e112_h20 (manual entry): from 2550 to 2650 kimg
+runs/e112_h20 --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --holdout results/holdout_h20.json --balanced 1 --fid_reference results/reference_holdout_h20 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 100 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --kimg 2650
+! bash runs/h20_score.sh e112_h20 2650
+! python3 runs/director.py
+# director, 2026-10-18T23:46:30Z: e112_h20 (manual entry): from 2650 to 2750 kimg
+runs/e112_h20 --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --holdout results/holdout_h20.json --balanced 1 --fid_reference results/reference_holdout_h20 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 100 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --kimg 2750
+! bash runs/h20_score.sh e112_h20 2750
+! python3 runs/director.py
+# director, 2026-10-19T02:04:24Z: e112_h20 (manual entry): from 2750 to 2850 kimg
+runs/e112_h20 --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --holdout results/holdout_h20.json --balanced 1 --fid_reference results/reference_holdout_h20 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 100 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --kimg 2850
+! bash runs/h20_score.sh e112_h20 2850
+! python3 runs/director.py
+# director, 2026-10-19T04:25:03Z: e112_h20 (manual entry): from 2850 to 2950 kimg
+runs/e112_h20 --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --holdout results/holdout_h20.json --balanced 1 --fid_reference results/reference_holdout_h20 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 100 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --kimg 2950
+! bash runs/h20_score.sh e112_h20 2950
+! python3 runs/director.py
+# director, 2026-10-19T06:53:58Z: e112_h20 (manual entry): from 2950 to 3050 kimg
+runs/e112_h20 --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --holdout results/holdout_h20.json --balanced 1 --fid_reference results/reference_holdout_h20 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 100 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --kimg 3050
+! bash runs/h20_score.sh e112_h20 3050
+! python3 runs/director.py
+# director, 2026-10-19T09:21:51Z: e112_h20 (manual entry): from 3050 to 3150 kimg
+runs/e112_h20 --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --holdout results/holdout_h20.json --balanced 1 --fid_reference results/reference_holdout_h20 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 100 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --kimg 3150
+! bash runs/h20_score.sh e112_h20 3150
+! python3 runs/director.py
+# director, 2026-10-19T11:43:08Z: e112_h20 (manual entry): from 3150 to 3250 kimg
+runs/e112_h20 --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --holdout results/holdout_h20.json --balanced 1 --fid_reference results/reference_holdout_h20 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 100 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --kimg 3250
+! bash runs/h20_score.sh e112_h20 3250
+! python3 runs/director.py
+# director, 2026-10-19T13:57:44Z: e112_h20 (manual entry): from 3250 to 3350 kimg
+runs/e112_h20 --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --holdout results/holdout_h20.json --balanced 1 --fid_reference results/reference_holdout_h20 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 100 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --kimg 3350
+! bash runs/h20_score.sh e112_h20 3350
+! python3 runs/director.py
+# director, 2026-10-19T16:15:53Z: e112_h20 (manual entry): from 3350 to 3450 kimg
+runs/e112_h20 --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --holdout results/holdout_h20.json --balanced 1 --fid_reference results/reference_holdout_h20 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 100 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --kimg 3450
+! bash runs/h20_score.sh e112_h20 3450
+! python3 runs/director.py
+# director, 2026-10-19T18:34:25Z: e112_h20 (manual entry): from 3450 to 3550 kimg
+runs/e112_h20 --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --holdout results/holdout_h20.json --balanced 1 --fid_reference results/reference_holdout_h20 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 100 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --kimg 3550
+! bash runs/h20_score.sh e112_h20 3550
+! python3 runs/director.py
+# director, 2026-10-19T21:01:56Z: e112_h20 (manual entry): from 3550 to 3650 kimg
+runs/e112_h20 --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --holdout results/holdout_h20.json --balanced 1 --fid_reference results/reference_holdout_h20 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 100 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --kimg 3650
+! bash runs/h20_score.sh e112_h20 3650
+! python3 runs/director.py
+# director, 2026-10-19T23:18:08Z: e112_h20 (manual entry): from 3650 to 3750 kimg
+runs/e112_h20 --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --holdout results/holdout_h20.json --balanced 1 --fid_reference results/reference_holdout_h20 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 100 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --kimg 3750
+! bash runs/h20_score.sh e112_h20 3750
+! python3 runs/director.py
+# director, 2026-10-20T01:51:48Z: e112_h20 (manual entry): from 3750 to 3850 kimg
+runs/e112_h20 --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --holdout results/holdout_h20.json --balanced 1 --fid_reference results/reference_holdout_h20 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 100 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --kimg 3850
+! bash runs/h20_score.sh e112_h20 3850
+! python3 runs/director.py
+# director, 2026-10-20T04:12:49Z: e112_h20 (manual entry): from 3850 to 3950 kimg
+runs/e112_h20 --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --holdout results/holdout_h20.json --balanced 1 --fid_reference results/reference_holdout_h20 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 100 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --kimg 3950
+! bash runs/h20_score.sh e112_h20 3950
+! python3 runs/director.py
+# director, 2026-10-20T06:37:02Z: e112_h20 (manual entry): from 3950 to 4000 kimg
+runs/e112_h20 --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --holdout results/holdout_h20.json --balanced 1 --fid_reference results/reference_holdout_h20 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 100 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --kimg 4000
+! bash runs/h20_score.sh e112_h20 4000
+! python3 runs/director.py
+# director, 2026-10-20T07:48:35Z: nothing improves any more; e112_lorag_f5_g13_lr3b (best 11.368) keeps training so that the GPU is not idle
+runs/e112_lorag_f5_g13_lr3b --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 5225
+! bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 5225 keep
+! bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 5225
+! python3 runs/director.py
+# director, 2026-10-20T10:01:46Z: nothing improves any more; e112_lorag_f5_g13_lr3b (best 11.347) keeps training so that the GPU is not idle
+runs/e112_lorag_f5_g13_lr3b --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 5325
+! bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 5325 keep
+! bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 5325
+! python3 runs/director.py
+# director, 2026-10-20T12:13:00Z: nothing improves any more; e112_lorag_f5_g13_lr3b (best 11.347) keeps training so that the GPU is not idle
+runs/e112_lorag_f5_g13_lr3b --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 5425
+! bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 5425 keep
+! bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 5425
+! python3 runs/director.py
+# director, 2026-10-20T14:23:59Z: nothing improves any more; e112_lorag_f5_g13_lr3b (best 11.347) keeps training so that the GPU is not idle
+runs/e112_lorag_f5_g13_lr3b --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 5525
+! bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 5525 keep
+! bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 5525
+! python3 runs/director.py
+# director, 2026-10-20T16:47:11Z: nothing improves any more; e112_lorag_f5_g13_lr3b (best 11.347) keeps training so that the GPU is not idle
+runs/e112_lorag_f5_g13_lr3b --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 5625
+! bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 5625 keep
+! bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 5625
+! python3 runs/director.py
+# director, 2026-10-20T19:08:21Z: nothing improves any more; e112_lorag_f5_g13_lr3b (best 11.338) keeps training so that the GPU is not idle
+runs/e112_lorag_f5_g13_lr3b --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 5725
+! bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 5725 keep
+! bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 5725
+! python3 runs/director.py
+# director, 2026-10-20T21:33:17Z: nothing improves any more; e112_lorag_f5_g13_lr3b (best 11.338) keeps training so that the GPU is not idle
+runs/e112_lorag_f5_g13_lr3b --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 5825
+! bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 5825 keep
+! bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 5825
+! python3 runs/director.py
+# director, 2026-10-20T23:56:50Z: nothing improves any more; e112_lorag_f5_g13_lr3b (best 11.338) keeps training so that the GPU is not idle
+runs/e112_lorag_f5_g13_lr3b --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 5925
+! bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 5925 keep
+! bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 5925
+! python3 runs/director.py
+# director, 2026-10-21T02:20:37Z: nothing improves any more; e112_lorag_f5_g13_lr3b (best 11.334) keeps training so that the GPU is not idle
+runs/e112_lorag_f5_g13_lr3b --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 6025
+! bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 6025 keep
+! bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 6025
+! python3 runs/director.py
+# director, 2026-10-21T04:44:34Z: nothing improves any more; e112_lorag_f5_g13_lr3b (best 11.334) keeps training so that the GPU is not idle
+runs/e112_lorag_f5_g13_lr3b --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 6125
+! bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 6125 keep
+! bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 6125
+! python3 runs/director.py
+# director, 2026-10-21T06:56:45Z: nothing improves any more; e112_lorag_f5_g13_lr3b (best 11.334) keeps training so that the GPU is not idle
+runs/e112_lorag_f5_g13_lr3b --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 6225
+! bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 6225 keep
+! bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 6225
+! python3 runs/director.py
+# director, 2026-10-21T09:09:58Z: nothing improves any more; e112_lorag_f5_g13_lr3b (best 11.334) keeps training so that the GPU is not idle
+runs/e112_lorag_f5_g13_lr3b --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 6325
+! bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 6325 keep
+! bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 6325
+! python3 runs/director.py
+# director, 2026-10-21T11:26:13Z: nothing improves any more; e112_lorag_f5_g13_lr3b (best 11.334) keeps training so that the GPU is not idle
+runs/e112_lorag_f5_g13_lr3b --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 6425
+! bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 6425 keep
+! bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 6425
+! python3 runs/director.py
+# director, 2026-10-21T13:44:09Z: nothing improves any more; e112_lorag_f5_g13_lr3b (best 11.334) keeps training so that the GPU is not idle
+runs/e112_lorag_f5_g13_lr3b --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 6525
+! bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 6525 keep
+! bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 6525
+! python3 runs/director.py
+# director, 2026-10-21T16:03:42Z: nothing improves any more; e112_lorag_f5_g13_lr3b (best 11.334) keeps training so that the GPU is not idle
+runs/e112_lorag_f5_g13_lr3b --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 6625
+! bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 6625 keep
+! bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 6625
+! python3 runs/director.py
+# director, 2026-10-21T18:20:18Z: nothing improves any more; e112_lorag_f5_g13_lr3b (best 11.334) keeps training so that the GPU is not idle
+runs/e112_lorag_f5_g13_lr3b --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 6725
+! bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 6725 keep
+! bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 6725
+! python3 runs/director.py
+# director, 2026-10-21T20:42:02Z: nothing improves any more; e112_lorag_f5_g13_lr3b (best 11.334) keeps training so that the GPU is not idle
+runs/e112_lorag_f5_g13_lr3b --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 6825
+! bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 6825 keep
+! bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 6825
+! python3 runs/director.py
+# director, 2026-10-21T23:09:17Z: nothing improves any more; e112_lorag_f5_g13_lr3b (best 11.303) keeps training so that the GPU is not idle
+runs/e112_lorag_f5_g13_lr3b --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 6925
+! bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 6925 keep
+! bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 6925
+! python3 runs/director.py
+# director, 2026-10-22T01:33:44Z: nothing improves any more; e112_lorag_f5_g13_lr3b (best 11.303) keeps training so that the GPU is not idle
+runs/e112_lorag_f5_g13_lr3b --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 7025
+! bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 7025 keep
+! bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 7025
+! python3 runs/director.py
+# director, 2026-10-22T03:50:41Z: nothing improves any more; e112_lorag_f5_g13_lr3b (best 11.303) keeps training so that the GPU is not idle
+runs/e112_lorag_f5_g13_lr3b --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 7125
+! bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 7125 keep
+! bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 7125
+! python3 runs/director.py
+# director, 2026-10-22T06:25:32Z: nothing improves any more; e112_lorag_f5_g13_lr3b (best 11.303) keeps training so that the GPU is not idle
+runs/e112_lorag_f5_g13_lr3b --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 7225
+! bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 7225 keep
+! bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 7225
+! python3 runs/director.py
+# director, 2026-10-22T08:56:36Z: e112_treal_lr3 (manual entry): from 5525 to 5575 kimg
+runs/e112_treal_lr3 --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 3e-4 --batch_gpu 16 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/teacher_unguided-0058720256-0.130.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.0 --extra_real data/cache/teacher58_real --extra_real_p 1.0 --dlr 3e-5 --fid_reference results/reference_teacher58 --resume runs/e112_treal/d2o-state-latest.pt --kimg 5575
+! bash runs/tref_score.sh e112_treal_lr3 5575
+! python3 runs/director.py
+# director, 2026-10-22T10:14:44Z: e112_treal_lr3 (manual entry): from 5575 to 5625 kimg
+runs/e112_treal_lr3 --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 3e-4 --batch_gpu 16 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/teacher_unguided-0058720256-0.130.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.0 --extra_real data/cache/teacher58_real --extra_real_p 1.0 --dlr 3e-5 --fid_reference results/reference_teacher58 --kimg 5625
+! bash runs/tref_score.sh e112_treal_lr3 5625
+! python3 runs/director.py
+# director, 2026-10-22T11:30:15Z: e112_treal_lr3 (manual entry): from 5625 to 5675 kimg
+runs/e112_treal_lr3 --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 3e-4 --batch_gpu 16 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/teacher_unguided-0058720256-0.130.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.0 --extra_real data/cache/teacher58_real --extra_real_p 1.0 --dlr 3e-5 --fid_reference results/reference_teacher58 --kimg 5675
+! bash runs/tref_score.sh e112_treal_lr3 5675
+! python3 runs/director.py
+# director, 2026-10-22T12:43:57Z: e112_treal_lr3 (manual entry): from 5675 to 5725 kimg
+runs/e112_treal_lr3 --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 3e-4 --batch_gpu 16 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/teacher_unguided-0058720256-0.130.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.0 --extra_real data/cache/teacher58_real --extra_real_p 1.0 --dlr 3e-5 --fid_reference results/reference_teacher58 --kimg 5725
+! bash runs/tref_score.sh e112_treal_lr3 5725
+! python3 runs/director.py
+# director, 2026-10-22T13:57:11Z: e112_treal_lr3 (manual entry): from 5725 to 5775 kimg
+runs/e112_treal_lr3 --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 3e-4 --batch_gpu 16 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/teacher_unguided-0058720256-0.130.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.0 --extra_real data/cache/teacher58_real --extra_real_p 1.0 --dlr 3e-5 --fid_reference results/reference_teacher58 --kimg 5775
+! bash runs/tref_score.sh e112_treal_lr3 5775
+! python3 runs/director.py
+# director, 2026-10-22T15:12:28Z: e112_treal_lr3 (manual entry): from 5775 to 5825 kimg
+runs/e112_treal_lr3 --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 3e-4 --batch_gpu 16 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/teacher_unguided-0058720256-0.130.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.0 --extra_real data/cache/teacher58_real --extra_real_p 1.0 --dlr 3e-5 --fid_reference results/reference_teacher58 --kimg 5825
+! bash runs/tref_score.sh e112_treal_lr3 5825
+! python3 runs/director.py
+# director, 2026-10-22T16:25:56Z: e112_treal (manual entry): from 5525 to 5575 kimg
+runs/e112_treal --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/teacher_unguided-0058720256-0.130.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.0 --extra_real data/cache/teacher58_real --extra_real_p 1.0 --dlr 1e-4 --fid_reference results/reference_teacher58 --kimg 5575
+! bash runs/tref_score.sh e112_treal 5575
+! python3 runs/director.py
+# director, 2026-10-22T17:40:53Z: e112_treal (manual entry): from 5575 to 5625 kimg
+runs/e112_treal --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/teacher_unguided-0058720256-0.130.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.0 --extra_real data/cache/teacher58_real --extra_real_p 1.0 --dlr 1e-4 --fid_reference results/reference_teacher58 --kimg 5625
+! bash runs/tref_score.sh e112_treal 5625
+! python3 runs/director.py
+# director, 2026-10-22T18:54:56Z: e112_treal (manual entry): from 5625 to 5675 kimg
+runs/e112_treal --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/teacher_unguided-0058720256-0.130.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.0 --extra_real data/cache/teacher58_real --extra_real_p 1.0 --dlr 1e-4 --fid_reference results/reference_teacher58 --kimg 5675
+! bash runs/tref_score.sh e112_treal 5675
+! python3 runs/director.py
+# director, 2026-10-22T20:11:22Z: e112_treal (manual entry): from 5675 to 5725 kimg
+runs/e112_treal --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/teacher_unguided-0058720256-0.130.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.0 --extra_real data/cache/teacher58_real --extra_real_p 1.0 --dlr 1e-4 --fid_reference results/reference_teacher58 --kimg 5725
+! bash runs/tref_score.sh e112_treal 5725
+! python3 runs/director.py
+# director, 2026-10-22T21:25:39Z: nothing improves any more; e112_lorag_f5_g13_lr3b (best 11.303) keeps training so that the GPU is not idle
+runs/e112_lorag_f5_g13_lr3b --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 7325
+! bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 7325 keep
+! bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 7325
+! python3 runs/director.py
+# director, 2026-10-22T23:50:31Z: nothing improves any more; e112_lorag_f5_g13_lr3b (best 11.303) keeps training so that the GPU is not idle
+runs/e112_lorag_f5_g13_lr3b --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 7425
+! bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 7425 keep
+! bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 7425
+! python3 runs/director.py
+# director, 2026-10-23T02:11:55Z: nothing improves any more; e112_lorag_f5_g13_lr3b (best 11.303) keeps training so that the GPU is not idle
+runs/e112_lorag_f5_g13_lr3b --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 7525
+! bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 7525 keep
+! bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 7525
+! python3 runs/director.py
+# director, 2026-10-23T04:35:50Z: nothing improves any more; e112_lorag_f5_g13_lr3b (best 11.303) keeps training so that the GPU is not idle
+runs/e112_lorag_f5_g13_lr3b --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 7625
+! bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 7625 keep
+! bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 7625
+! python3 runs/director.py
+# director, 2026-10-23T06:53:33Z: nothing improves any more; e112_lorag_f5_g13_lr3b (best 11.303) keeps training so that the GPU is not idle
+runs/e112_lorag_f5_g13_lr3b --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 7725
+! bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 7725 keep
+! bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 7725
+! python3 runs/director.py
+# director, 2026-10-23T09:13:01Z: nothing improves any more; e112_lorag_f5_g13_lr3b (best 11.303) keeps training so that the GPU is not idle
+runs/e112_lorag_f5_g13_lr3b --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 7825
+! bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 7825 keep
+! bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 7825
+! python3 runs/director.py
+# director, 2026-10-23T11:37:16Z: nothing improves any more; e112_lorag_f5_g13_lr3b (best 11.303) keeps training so that the GPU is not idle
+runs/e112_lorag_f5_g13_lr3b --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 7925
+! bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 7925 keep
+! bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 7925
+! python3 runs/director.py
+# director, 2026-10-23T14:01:05Z: nothing improves any more; e112_lorag_f5_g13_lr3b (best 11.303) keeps training so that the GPU is not idle
+runs/e112_lorag_f5_g13_lr3b --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 8025
+! bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 8025 keep
+! bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 8025
+! python3 runs/director.py
+# director, 2026-10-23T16:19:36Z: nothing improves any more; e112_lorag_f5_g13_lr3b (best 11.303) keeps training so that the GPU is not idle
+runs/e112_lorag_f5_g13_lr3b --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 8125
+! bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 8125 keep
+! bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 8125
+! python3 runs/director.py
+# director, 2026-10-23T18:39:02Z: nothing improves any more; e112_lorag_f5_g13_lr3b (best 11.303) keeps training so that the GPU is not idle
+runs/e112_lorag_f5_g13_lr3b --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 8225
+! bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 8225 keep
+! bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 8225
+! python3 runs/director.py
+# director, 2026-10-23T20:56:30Z: nothing improves any more; e112_lorag_f5_g13_lr3b (best 11.303) keeps training so that the GPU is not idle
+runs/e112_lorag_f5_g13_lr3b --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 8325
+! bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 8325 keep
+! bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 8325
+! python3 runs/director.py
+# director, 2026-10-23T23:13:45Z: nothing improves any more; e112_lorag_f5_g13_lr3b (best 11.303) keeps training so that the GPU is not idle
+runs/e112_lorag_f5_g13_lr3b --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 8425
+! bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 8425 keep
+! bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 8425
+! python3 runs/director.py
+# director, 2026-10-24T01:32:27Z: nothing improves any more; e112_lorag_f5_g13_lr3b (best 11.303) keeps training so that the GPU is not idle
+runs/e112_lorag_f5_g13_lr3b --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 8525
+! bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 8525 keep
+! bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 8525
+! python3 runs/director.py
+# director, 2026-10-24T03:51:10Z: nothing improves any more; e112_lorag_f5_g13_lr3b (best 11.303) keeps training so that the GPU is not idle
+runs/e112_lorag_f5_g13_lr3b --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 8625
+! bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 8625 keep
+! bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 8625
+! python3 runs/director.py
+# director, 2026-10-24T06:17:33Z: nothing improves any more; e112_lorag_f5_g13_lr3b (best 11.303) keeps training so that the GPU is not idle
+runs/e112_lorag_f5_g13_lr3b --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 8725
+! bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 8725 keep
+! bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 8725
+! python3 runs/director.py
+# director, 2026-10-24T08:36:54Z: nothing improves any more; e112_lorag_f5_g13_lr3b (best 11.303) keeps training so that the GPU is not idle
+runs/e112_lorag_f5_g13_lr3b --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 8825
+! bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 8825 keep
+! bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 8825
+! python3 runs/director.py
+# director, 2026-10-24T10:57:49Z: nothing improves any more; e112_lorag_f5_g13_lr3b (best 11.303) keeps training so that the GPU is not idle
+runs/e112_lorag_f5_g13_lr3b --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 8925
+! bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 8925 keep
+! bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 8925
+! python3 runs/director.py
+# director, 2026-10-24T13:13:52Z: nothing improves any more; e112_lorag_f5_g13_lr3b (best 11.303) keeps training so that the GPU is not idle
+runs/e112_lorag_f5_g13_lr3b --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 9025
+! bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 9025 keep
+! bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 9025
+! python3 runs/director.py
+# director, 2026-10-24T15:32:19Z: nothing improves any more; e112_lorag_f5_g13_lr3b (best 11.303) keeps training so that the GPU is not idle
+runs/e112_lorag_f5_g13_lr3b --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 9125
+! bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 9125 keep
+! bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 9125
+! python3 runs/director.py
+# director, 2026-10-24T17:49:17Z: nothing improves any more; e112_lorag_f5_g13_lr3b (best 11.303) keeps training so that the GPU is not idle
+runs/e112_lorag_f5_g13_lr3b --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 9225
+! bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 9225 keep
+! bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 9225
+! python3 runs/director.py
+# director, 2026-10-24T20:06:02Z: nothing improves any more; e112_lorag_f5_g13_lr3b (best 11.303) keeps training so that the GPU is not idle
+runs/e112_lorag_f5_g13_lr3b --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 9325
+! bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 9325 keep
+! bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 9325
+! python3 runs/director.py
+# director, 2026-10-24T22:30:44Z: nothing improves any more; e112_lorag_f5_g13_lr3b (best 11.303) keeps training so that the GPU is not idle
+runs/e112_lorag_f5_g13_lr3b --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 9425
+! bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 9425 keep
+! bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 9425
+! python3 runs/director.py
+# director, 2026-10-25T00:55:02Z: nothing improves any more; e112_lorag_f5_g13_lr3b (best 11.303) keeps training so that the GPU is not idle
+runs/e112_lorag_f5_g13_lr3b --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 9525
+! bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 9525 keep
+! bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 9525
+! python3 runs/director.py
+# director, 2026-10-25T03:18:15Z: nothing improves any more; e112_lorag_f5_g13_lr3b (best 11.303) keeps training so that the GPU is not idle
+runs/e112_lorag_f5_g13_lr3b --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 9625
+! bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 9625 keep
+! bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 9625
+! python3 runs/director.py
+# director, 2026-10-25T05:39:52Z: nothing improves any more; e112_lorag_f5_g13_lr3b (best 11.303) keeps training so that the GPU is not idle
+runs/e112_lorag_f5_g13_lr3b --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 9725
+! bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 9725 keep
+! bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 9725
+! python3 runs/director.py
+# director, 2026-10-25T07:57:51Z: nothing improves any more; e112_lorag_f5_g13_lr3b (best 11.303) keeps training so that the GPU is not idle
+runs/e112_lorag_f5_g13_lr3b --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 9825
+! bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 9825 keep
+! bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 9825
+! python3 runs/director.py
+# director, 2026-10-25T10:17:48Z: nothing improves any more; e112_lorag_f5_g13_lr3b (best 11.303) keeps training so that the GPU is not idle
+runs/e112_lorag_f5_g13_lr3b --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 9925
+! bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 9925 keep
+! bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 9925
+! python3 runs/director.py
+# director, 2026-10-25T12:49:36Z: nothing improves any more; e112_lorag_f5_g13_lr3b (best 11.303) keeps training so that the GPU is not idle
+runs/e112_lorag_f5_g13_lr3b --g_edm2 checkpoints/edm/ema-0020971520-0.100.pt --freeze_encoder 1 --d_shared 1 --d_width 0.5625 --d_drop_heads 1 --lr 1e-3 --batch_gpu 16 --resume runs/e112_lorag_f5_g13_lr3b/d2o-state-latest.pt --dmd_ratio 1.0 --dmd_teacher checkpoints/edm/ema-0020971520-0.100.pt --dmd_fake_lora 6 --dmd_fake_lora_base generator --dmd_fake_lora_dec 1 --dmd_fake_lr 2e-4 --dmd_from_kimg 2000 --dmd_fake_steps 5 --dmd_guidance 1.3 --dmd_guidance_lo 0.25 --dmd_guidance_hi 4 --lr 3e-4 --dlr 3e-5 --kimg 10025
+! bash runs/watch_e112.sh score e112_lorag_f5_g13_lr3b 10025 keep
+! bash runs/nearest_check.sh e112_lorag_f5_g13_lr3b 10025
+! python3 runs/director.py

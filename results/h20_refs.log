@@ -1,0 +1,5 @@
+2026-10-15T10:58:12Z runs/e112_lorag_f5_g13/calib-003575.ckpt (3575 kimg), seeds [0, 1, 2]: reference_holdout_h20 17.093 (17.030, 17.065, 17.183) | reference_holdout_c5 40.213 (40.006, 40.277, 40.357)
+2026-10-15T10:59:56Z runs/e112_lorag_f5_g13_lr3b/calib-004925.ckpt (4925 kimg), seeds [0, 1, 2]: reference_holdout_h20 16.937 (16.905, 16.964, 16.944) | reference_holdout_c5 40.249 (40.108, 40.282, 40.358)
+2026-10-15T11:01:40Z runs/e112_lorag_f5/calib-003375.ckpt (3375 kimg), seeds [0, 1, 2]: reference_holdout_h20 17.085 (17.126, 17.052, 17.078) | reference_holdout_c5 40.202 (40.237, 40.226, 40.143)
+2026-10-15T11:03:23Z runs/e112_lorag/calib-002875.ckpt (2875 kimg), seeds [0, 1, 2]: reference_holdout_h20 17.270 (17.299, 17.226, 17.285) | reference_holdout_c5 40.364 (40.354, 40.423, 40.316)
+2026-10-15T11:05:07Z runs/e112_fit/calib-001950.ckpt (1950 kimg), seeds [0, 1, 2]: reference_holdout_h20 19.419 (19.371, 19.581, 19.306) | reference_holdout_c5 42.665 (42.527, 42.801, 42.666)
