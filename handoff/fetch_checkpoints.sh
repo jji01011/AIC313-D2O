@@ -5,7 +5,7 @@
 # Files already present with the right md5 are skipped. teacher58_real.tar is unpacked into data/cache/teacher58_real/.
 set -euo pipefail
 cd "$(dirname "$0")/.."
-REPO="${REPO:-__REPO__}"
+REPO="${REPO:-jji01011/AIC313-D2O}"
 TAG="${TAG:-handoff-2026-10-27}"
 : "${GH_TOKEN:?set GH_TOKEN to a GitHub token that can read $REPO}"
 api() { curl -fsSL -H "Authorization: Bearer $GH_TOKEN" -H "X-GitHub-Api-Version: 2022-11-28" "$@"; }

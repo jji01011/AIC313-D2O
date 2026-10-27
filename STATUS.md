@@ -191,6 +191,11 @@ Claude 세션이 끊겨도 이어서 작업할 수 있도록 목표, 제한사�
 
 ## 현재 상태 (맨 위 항목이 최신, 아래 16:15 UTC 블록보다 최신)
 
+- **2026-10-27 08:15 UTC: 사용자 "팀원에게 지금 버전을 checkpoint와 코드 전부 GitHub으로 넘긴다".** 사용자 선택: 사용자 계정의 새 private 저장소, checkpoint는 핵심만, 큰 파일은 GitHub Release 첨부.
+  - 로컬 브랜치 `d2o-handoff` 커밋 `7a18e63` (과제 원본 `main`은 그대로). `.gitignore`로 `*.pt`, `*.ckpt`, 데이터셋, `data/cache/`, FID 샘플 폴더 제외. 1,273개 파일, 약 690 MB.
+  - Release에 붙일 8개 파일(약 3.7 GB)과 md5: `handoff/checkpoints.txt`. 받는 스크립트 `handoff/fetch_checkpoints.sh`, 설명 `handoff/README.md`. teacher 표본 tar는 scratchpad에 만듦 (세션이 끊기면 `tar -cf ... -C data/cache teacher58_real`로 다시).
+  - **남은 것**: 이 서버에 GitHub 인증이 없음 (gh, git-lfs, 토큰 없음). 사용자가 빈 private 저장소와 토큰을 주면 push, Release 생성, 업로드, `fetch_checkpoints.sh`의 `__REPO__` 채우기.
+
 - **2026-10-25 14:50 UTC: 사용자 "학습 더 개선 안 되는 것 같으니 stop". GPU 학습 전부 멈춤 (GPU 비어 있음).**
   - `runs/watchdog.stop`, `runs/director.stop`을 만든 뒤 `_lr3b`에 SIGTERM. 10,009 kimg에서 상태 저장 후 정상 종료 (14:40). 그 조각의 보정 점수 11.532 (로그상 kimg 10025로 기록), 최저(11.303 @6825)가 아니라 calib은 스크립트가 지움.
   - 체인은 director가 `director.stop`을 보고 "queue empty"로 끝남 (14:45, 호출 160). cron 두 줄은 남아 있지만 stop 파일과 `results/treal_setup.done` 때문에 아무것도 하지 않음.
