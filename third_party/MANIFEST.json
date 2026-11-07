@@ -1,0 +1,34 @@
+{
+  "repos": {
+    "edm2": {
+      "url": "https://github.com/NVlabs/edm2",
+      "commit": "4bf8162f601bcc09472ce8a32dd0cbe8889dc8fc",
+      "license": "CC BY-NC-SA 4.0"
+    },
+    "edm": {
+      "url": "https://github.com/NVlabs/edm",
+      "commit": "008a4e5316c8e3bfe61a62f874bddba254295afb",
+      "license": "CC BY-NC-SA 4.0"
+    }
+  },
+  "files": {
+    "edm/LICENSE.txt": "b7249043cca5e5c88f99730ddc40490a3284780dfe423b19f2c75bd5e2a8f03e",
+    "edm/training/augment.py": "fd411af7c2d74489ce11a245293047369fc044d00a9aeed1c0bd46b322c8a8b5",
+    "edm/training/loss.py": "b26f0937bc72b18cc5f9869c86035ca9b872138cdfae7994237e9733951e4415",
+    "edm/training/networks.py": "5db27dcd96674b95c72d5e6491b879cdc35e24039ada3411b4b46a28ed1fe284",
+    "edm2/LICENSE.txt": "d5c3971df0965e517c7dc5adae77166882f80c2c414cdcb0e15df91a5a41b924",
+    "edm2/dnnlib/__init__.py": "d6cfe75cdc48736ecc1defdd4cbdedba94be14a2e1f90f21b32f91a7e0916c03",
+    "edm2/dnnlib/util.py": "fa2bff71d999706764a0a309ee78c1e639b614b785a03d40aa6e2d15c23b2d1a",
+    "edm2/generate_images.py": "4550b05fe2f206754fab278526c1ac5efc909e8b334d55861980f4b08894bf93",
+    "edm2/reconstruct_phema.py": "3feec1fa64a72040177372f4952108701bf9583343574f7c014f2d820604710e",
+    "edm2/torch_utils/__init__.py": "e6191415d4ee726a2b18a639811070d39e5b8fc46bad388b4cc11795e60129b2",
+    "edm2/torch_utils/distributed.py": "f8353316e7440d7c8955f37e5e3cc0216a826417cfbb61b72f647be8a70eed24",
+    "edm2/torch_utils/misc.py": "2d2db83d436984ff1682ed55854088acdc8299ce2215686734fd16e07f466905",
+    "edm2/torch_utils/persistence.py": "b40c59784da360b92db83164e28c41ea16808053dbefb043f0b783ca2a8eeb33",
+    "edm2/torch_utils/training_stats.py": "87889392a6cf0888f5aa61265c3b7f53f110a78e3fc79fb73ff2b712d4ea05ee",
+    "edm2/training/__init__.py": "e6191415d4ee726a2b18a639811070d39e5b8fc46bad388b4cc11795e60129b2",
+    "edm2/training/networks_edm2.py": "7298880db4bf955d2941496cce3a554a970867b3eae4d22276cb1c293c131fa2",
+    "edm2/training/phema.py": "7b300c7aa154eeae8b2246ec1543ecd0f07c6caf48fa8a04d72ac32f545226cd",
+    "edm2/training/training_loop.py": "eb070f85cb46012bbe549402d8721f5997bbd73c23a2db157eaf88de1b1b95e2"
+  }
+}

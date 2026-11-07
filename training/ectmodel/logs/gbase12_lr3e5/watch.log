@@ -1,0 +1,48 @@
+gbase12_lr3e5_35	80,5,1.8,0.4@0#all!0/0/0/0	seed 0	HO 18.736	TR 9.626
+gbase12_lr3e5_35	80,5,1.8,0.4@0#all!0/0/0/0	seed 1	HO 18.778	TR 9.564
+gbase12_lr3e5_35	80,5,1.8,0.4@0#all!0/0/0/0	seed 2	HO 18.950	TR 9.778
+gbase12_lr3e5_35	80,5,1.8,0.4@0#all!0/0/0/0	seed 3	HO 18.576	TR 9.693
+gbase12_lr3e5_40	80,5,1.8,0.4@0#all!0/0/0/0	seed 0	HO 18.714	TR 9.599
+gbase12_lr3e5_40	80,5,1.8,0.4@0#all!0/0/0/0	seed 1	HO 18.757	TR 9.543
+gbase12_lr3e5_40	80,5,1.8,0.4@0#all!0/0/0/0	seed 2	HO 18.916	TR 9.746
+gbase12_lr3e5_40	80,5,1.8,0.4@0#all!0/0/0/0	seed 3	HO 18.548	TR 9.663
+gbase12_lr3e5_45	80,5,1.8,0.4@0#all!0/0/0/0	seed 0	HO 18.679	TR 9.570
+gbase12_lr3e5_45	80,5,1.8,0.4@0#all!0/0/0/0	seed 1	HO 18.711	TR 9.504
+gbase12_lr3e5_45	80,5,1.8,0.4@0#all!0/0/0/0	seed 2	HO 18.882	TR 9.709
+gbase12_lr3e5_45	80,5,1.8,0.4@0#all!0/0/0/0	seed 3	HO 18.522	TR 9.619
+pruned 35 kimg (HO 18.760); keep [(45, 18.698), (40, 18.734)]
+gbase12_lr3e5_50	80,5,1.8,0.4@0#all!0/0/0/0	seed 0	HO 18.639	TR 9.547
+gbase12_lr3e5_50	80,5,1.8,0.4@0#all!0/0/0/0	seed 1	HO 18.665	TR 9.483
+gbase12_lr3e5_50	80,5,1.8,0.4@0#all!0/0/0/0	seed 2	HO 18.854	TR 9.664
+gbase12_lr3e5_50	80,5,1.8,0.4@0#all!0/0/0/0	seed 3	HO 18.485	TR 9.583
+pruned 40 kimg (HO 18.734); keep [(50, 18.661), (45, 18.698)]
+gbase12_lr3e5_55	80,5,1.8,0.4@0#all!0/0/0/0	seed 0	HO 18.609	TR 9.542
+gbase12_lr3e5_55	80,5,1.8,0.4@0#all!0/0/0/0	seed 1	HO 18.610	TR 9.450
+gbase12_lr3e5_55	80,5,1.8,0.4@0#all!0/0/0/0	seed 2	HO 18.798	TR 9.632
+gbase12_lr3e5_55	80,5,1.8,0.4@0#all!0/0/0/0	seed 3	HO 18.442	TR 9.554
+pruned 45 kimg (HO 18.698); keep [(55, 18.615), (50, 18.661)]
+gbase12_lr3e5_60	80,5,1.8,0.4@0#all!0/0/0/0	seed 0	HO 18.592	TR 9.544
+gbase12_lr3e5_60	80,5,1.8,0.4@0#all!0/0/0/0	seed 1	HO 18.581	TR 9.432
+gbase12_lr3e5_60	80,5,1.8,0.4@0#all!0/0/0/0	seed 2	HO 18.769	TR 9.606
+gbase12_lr3e5_60	80,5,1.8,0.4@0#all!0/0/0/0	seed 3	HO 18.399	TR 9.529
+pruned 50 kimg (HO 18.661); keep [(60, 18.585), (55, 18.615)]
+gbase12_lr3e5_65	80,5,1.8,0.4@0#all!0/0/0/0	seed 0	HO 18.576	TR 9.538
+gbase12_lr3e5_65	80,5,1.8,0.4@0#all!0/0/0/0	seed 1	HO 18.577	TR 9.440
+gbase12_lr3e5_65	80,5,1.8,0.4@0#all!0/0/0/0	seed 2	HO 18.754	TR 9.596
+gbase12_lr3e5_65	80,5,1.8,0.4@0#all!0/0/0/0	seed 3	HO 18.372	TR 9.512
+pruned 55 kimg (HO 18.615); keep [(65, 18.57), (60, 18.585)]
+gbase12_lr3e5_70	80,5,1.8,0.4@0#all!0/0/0/0	seed 0	HO 18.570	TR 9.547
+gbase12_lr3e5_70	80,5,1.8,0.4@0#all!0/0/0/0	seed 1	HO 18.575	TR 9.469
+gbase12_lr3e5_70	80,5,1.8,0.4@0#all!0/0/0/0	seed 2	HO 18.717	TR 9.607
+gbase12_lr3e5_70	80,5,1.8,0.4@0#all!0/0/0/0	seed 3	HO 18.399	TR 9.533
+pruned 60 kimg (HO 18.585); keep [(70, 18.565), (65, 18.57)]
+gbase12_lr3e5_75	80,5,1.8,0.4@0#all!0/0/0/0	seed 0	HO 18.592	TR 9.581
+gbase12_lr3e5_75	80,5,1.8,0.4@0#all!0/0/0/0	seed 1	HO 18.582	TR 9.497
+gbase12_lr3e5_75	80,5,1.8,0.4@0#all!0/0/0/0	seed 2	HO 18.716	TR 9.614
+gbase12_lr3e5_75	80,5,1.8,0.4@0#all!0/0/0/0	seed 3	HO 18.418	TR 9.549
+pruned 75 kimg (HO 18.577); keep [(70, 18.565), (65, 18.57)]
+gbase12_lr3e5_80	80,5,1.8,0.4@0#all!0/0/0/0	seed 0	HO 18.633	TR 9.625
+gbase12_lr3e5_80	80,5,1.8,0.4@0#all!0/0/0/0	seed 1	HO 18.625	TR 9.551
+gbase12_lr3e5_80	80,5,1.8,0.4@0#all!0/0/0/0	seed 2	HO 18.731	TR 9.648
+gbase12_lr3e5_80	80,5,1.8,0.4@0#all!0/0/0/0	seed 3	HO 18.447	TR 9.578
+pruned 80 kimg (HO 18.609); keep [(70, 18.565), (65, 18.57)]

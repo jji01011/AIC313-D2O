@@ -1,0 +1,36 @@
+{
+ "family": "edm2",
+ "preset": "E112",
+ "kwargs": {
+  "img_resolution": 64,
+  "img_channels": 3,
+  "label_dim": 151,
+  "sigma_data": 0.634817864072234,
+  "model_channels": 112,
+  "channel_mult": [
+   1,
+   2,
+   3,
+   4
+  ],
+  "num_blocks": 3,
+  "attn_resolutions": [
+   16,
+   8
+  ],
+  "channels_per_head": 56,
+  "augment_dim": 9,
+  "augment_balance": 0.2,
+  "logvar_channels": 128,
+  "null_class": true,
+  "use_fp16": true,
+  "precision": "fp16",
+  "forced_wn": "post_step",
+  "dropout_res": {
+   "64": 0.0,
+   "32": 0.15,
+   "16": 0.15,
+   "8": 0.15
+  }
+ }
+}

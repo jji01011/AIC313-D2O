@@ -1,0 +1,113 @@
+import argparse
+import os
+import tempfile
+
+import torch
+
+from d2o.config import GENERATOR_KWARGS
+from d2o.discriminator import EDM2FeatureNetwork, ProjectedDiscriminator
+from d2o.edm2 import Block, EDM2Encoder
+from d2o.networks import EDMPrecond, UNetBlock
+from d2o.training_utils import apply_freeze
+from evaluate import MAX_MODEL_PARAMETERS
+from model import Model, ModelFewNFE, ModelOneNFE
+from src.utils import count_parameters
+
+
+def check(condition, message):
+    print(("PASS  " if condition else "FAIL  ") + message)
+    if not condition:
+        raise SystemExit(1)
+
+
+def main(args):
+    device = torch.device(args.device if torch.cuda.is_available() else "cpu")
+    model_class, max_nfe = {"one_nfe": (ModelOneNFE, 1), "few_nfe": (ModelFewNFE, 4)}[args.mode]
+
+    with tempfile.TemporaryDirectory() as tmp:
+        checkpoint = args.checkpoint
+        if checkpoint is None:
+            checkpoint = os.path.join(tmp, f"{args.mode}.ckpt")
+            torch.save({"state_dict": model_class().state_dict()}, checkpoint)
+        model = Model.load_checkpoint(checkpoint, evaluate_mode=args.mode, device=device)
+        resaved = os.path.join(tmp, "resaved.ckpt")
+        torch.save({"state_dict": model.state_dict()}, resaved)
+        reloaded = Model.load_checkpoint(resaved, evaluate_mode=args.mode, device=device)
+    same = all(torch.equal(a, b) for a, b in zip(model.state_dict().values(), reloaded.state_dict().values()))
+    check(same and not model.training, "checkpoint round trip through Model.load_checkpoint (strict, eval mode)")
+
+    generator = model.count_parameters()
+    edm2 = getattr(model, "family", "edm") == "edm2"
+    edm = EDMPrecond(**GENERATOR_KWARGS)
+    if args.edm is not None and not edm2:
+        edm.load_state_dict(torch.load(args.edm, map_location="cpu", weights_only=False)["ema"])
+    cout = int(round(64 * args.d_width))
+    teacher_features, d_name = None, "frozen EDM encoder"
+    if args.d_shared:
+        teacher_features, d_name = EDM2FeatureNetwork(model.backbone, cout=cout, shared=True), "projections on the generator's frozen encoder"
+    elif args.d_teacher:
+        teacher_features = EDM2FeatureNetwork(EDM2Encoder.from_checkpoint(args.d_teacher, min_resolution=args.d_teacher_min_res), cout=cout)
+        d_name = f"frozen EDM2 encoder down to {args.d_teacher_min_res}x{args.d_teacher_min_res}"
+    discriminator = ProjectedDiscriminator(edm, c_dim=model.backbone.label_dim, feature_network=teacher_features, width=args.d_width)
+    d_count = count_parameters(discriminator, trainable_only=False)
+    trainable = sum(param.numel() for param in apply_freeze(model.backbone, 1))
+    model.requires_grad_(False)
+    counts = {
+        f"{model_class.__name__} (submitted generator)": generator,
+        "EDM teacher / initialisation": generator if edm2 else count_parameters(edm, trainable_only=False),
+        f"discriminator ({d_name} + heads)": d_count,
+        "D2O training framework, generator + discriminator": generator + d_count,
+    }
+    for name, value in counts.items():
+        check(value < MAX_MODEL_PARAMETERS, f"{name}: {value:,} parameters")
+    for name, total in (("generator + its EMA copy", 2 * generator), ("generator + its EMA copy + discriminator", 2 * generator + d_count)):
+        print(f"      with the EMA copy counted as one more model, {name}: {total:,} parameters "
+              f"({'inside' if total < MAX_MODEL_PARAMETERS else 'over'} the limit of {MAX_MODEL_PARAMETERS:,})")
+    print(f"      D2O-F (freeze=1): {trainable:,} trainable generator parameters ({100 * (1 - trainable / generator):.1f}% frozen)")
+    print(f"      discriminator heads: {count_parameters(discriminator.heads, trainable_only=False):,} trainable parameters")
+
+    calls = {"backbone": 0, "unet": 0, "blocks": 0}
+    block_types = (UNetBlock, Block)
+    num_blocks = sum(isinstance(module, block_types) for module in model.backbone.modules())
+    hooks = [model.backbone.register_forward_hook(lambda *_: calls.__setitem__("backbone", calls["backbone"] + 1))]
+    if edm2:
+        hooks.append(model.backbone.unet.out_conv.register_forward_hook(lambda *_: calls.__setitem__("unet", calls["unet"] + 1)))
+    else:
+        hooks.append(model.backbone.model.register_forward_hook(lambda *_: calls.__setitem__("unet", calls["unet"] + 1)))
+    hooks += [
+        module.register_forward_hook(lambda *_: calls.__setitem__("blocks", calls["blocks"] + 1))
+        for module in model.backbone.modules() if isinstance(module, block_types)
+    ]
+    category = torch.arange(8, device=device) * 19
+    torch.manual_seed(0)
+    samples = model.sample((8, 3, 64, 64), device=device, category=category)
+    for hook in hooks:
+        hook.remove()
+    nfe = calls["backbone"]
+    expected = 1 if args.mode == "one_nfe" else int((model.sigmas > 0).sum())
+    check(nfe == expected <= max_nfe and calls == {"backbone": nfe, "unet": nfe, "blocks": nfe * num_blocks},
+          f"sample() runs the backbone {nfe} time(s), limit {max_nfe} (calls: {calls}, {num_blocks} blocks)")
+    check(samples.shape == (8, 3, 64, 64) and samples.dtype == torch.float32, "sample() returns float32 [N, 3, 64, 64]")
+    check(bool(torch.isfinite(samples).all()) and samples.min() >= -1 and samples.max() <= 1, "samples are finite and in [-1, 1]")
+
+    torch.manual_seed(0)
+    same_category = model.sample((8, 3, 64, 64), device=device, category=category)
+    torch.manual_seed(0)
+    other_category = model.sample((8, 3, 64, 64), device=device, category=(category + 1) % model.backbone.label_dim)
+    check(torch.equal(samples, same_category), "sampling is deterministic given the seed and categories")
+    difference = (samples - other_category).abs().mean().item()
+    check(difference > 0, f"changing only the category changes the output (mean abs difference {difference:.4f})")
+    print("All checks passed.")
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Sanity checks for ModelOneNFE / ModelFewNFE")
+    parser.add_argument("--mode", default="one_nfe", choices=("one_nfe", "few_nfe"))
+    parser.add_argument("--checkpoint", default=None, help="checkpoint of the selected mode; a randomly initialised model is used if omitted")
+    parser.add_argument("--edm", default=None, help="stage-0 EDM snapshot for the discriminator feature network")
+    parser.add_argument("--d_teacher", default=None, help="EDM2 checkpoint, if the run was trained with train_d2o.py --d_teacher")
+    parser.add_argument("--d_teacher_min_res", type=int, default=16)
+    parser.add_argument("--d_shared", type=int, default=0, help="1 = the run was trained with train_d2o.py --d_shared 1")
+    parser.add_argument("--d_width", type=float, default=1.0, help="train_d2o.py --d_width of the run")
+    parser.add_argument("--device", default="cuda")
+    main(parser.parse_args())
